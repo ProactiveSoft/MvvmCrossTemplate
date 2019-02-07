@@ -148,6 +148,10 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.5" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MvvmCrossTest.Core\MvvmCrossTest.Core.csproj">
+      <Project>{aee678e2-f59f-4b5c-96cc-6c7c8eb73bdf}</Project>
+      <Name>MvvmCrossTest.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MvvmCrossTest\MvvmCrossTest.csproj">
       <Project>{94BA4437-58A6-43D3-A734-78DF4D585F50}</Project>
       <Name>MvvmCrossTest</Name>
