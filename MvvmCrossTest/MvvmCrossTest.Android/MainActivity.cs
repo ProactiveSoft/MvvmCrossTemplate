@@ -1,25 +1,37 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using MvvmCross.Forms.Platforms.Android.Views;
 
 namespace MvvmCrossTest.Droid
 {
-    [Activity(Label = "MvvmCrossTest", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    [Activity(
+        Label = "MvvmCrossTest",
+        Icon = "@mipmap/icon",
+        Theme = "@style/MainTheme",
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
+        LaunchMode = LaunchMode.SingleTask)]
+    public class MainActivity : MvxFormsAppCompatActivity
     {
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            base.OnCreate(savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App());
+
+
+            base.OnCreate(bundle);
+
+
+
+            // Initialize 3rd-party ui libraries
         }
+
+
+        ///// <inheritdoc />
+        //protected override void OnDestroy()
+        //{
+        //    base.OnDestroy();
+        //}
     }
 }
