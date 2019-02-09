@@ -2,9 +2,9 @@
 using System.Runtime.CompilerServices;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using MvvmCrossTest.Core.Annotations;
+using MvvmCrossTest.Abstraction.Annotations;
 
-namespace MvvmCrossTest.Core.ViewModels
+namespace MvvmCrossTest.Abstraction.ViewModels
 {
     public abstract class BaseViewModel : MvxViewModel, INotifyPropertyChanged
     {

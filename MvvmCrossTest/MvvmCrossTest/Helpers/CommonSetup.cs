@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MvvmCross;
 using MvvmCross.Views;
+using MvvmCrossTest.Abstraction.Helpers;
 using MvvmCrossTest.Core.ViewModels;
 using MvvmCrossTest.Views;
 

@@ -108,6 +108,10 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MvvmCrossTest.Abstraction\MvvmCrossTest.Abstraction.csproj">
+      <Project>{2e3244ef-39d5-43cb-ac36-70a8d42c8e85}</Project>
+      <Name>MvvmCrossTest.Abstraction</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MvvmCrossTest.Core\MvvmCrossTest.Core.csproj">
       <Project>{aee678e2-f59f-4b5c-96cc-6c7c8eb73bdf}</Project>
       <Name>MvvmCrossTest.Core</Name>

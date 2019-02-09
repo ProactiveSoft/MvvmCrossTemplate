@@ -1,4 +1,5 @@
 ﻿using MvvmCross.Navigation;
+using MvvmCrossTest.Abstraction.ViewModels;
 
 namespace MvvmCrossTest.Core.ViewModels
 {
@@ -7,7 +8,7 @@ namespace MvvmCrossTest.Core.ViewModels
         /// <inheritdoc />
         public MainViewModel(IMvxNavigationService navigationService) : base(navigationService)
         {
-            Title = "Home";
+            Title = "Home abstract";
         }
     }
 }

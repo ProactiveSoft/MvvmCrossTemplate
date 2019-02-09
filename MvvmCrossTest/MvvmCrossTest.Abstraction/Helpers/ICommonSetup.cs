@@ -1,4 +1,4 @@
-﻿namespace MvvmCrossTest.Helpers
+﻿namespace MvvmCrossTest.Abstraction.Helpers
 {
     public interface ICommonSetup
     {

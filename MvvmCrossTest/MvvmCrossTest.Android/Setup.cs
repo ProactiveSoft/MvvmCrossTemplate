@@ -4,6 +4,7 @@ using MvvmCross;
 using MvvmCross.Forms.Platforms.Android.Core;
 using MvvmCross.Logging;
 using MvvmCross.Views;
+using MvvmCrossTest.Abstraction.Helpers;
 using MvvmCrossTest.Core.ViewModels;
 using MvvmCrossTest.Helpers;
 using MvvmCrossTest.Views;

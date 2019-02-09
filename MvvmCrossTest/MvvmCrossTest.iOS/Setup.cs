@@ -1,5 +1,6 @@
 ﻿using MvvmCross;
 using MvvmCross.Forms.Platforms.Ios.Core;
+using MvvmCrossTest.Abstraction.Helpers;
 using MvvmCrossTest.Helpers;
 using Forms = MvvmCrossTest;
 
