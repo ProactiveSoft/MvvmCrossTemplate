@@ -24,7 +24,7 @@ namespace MvvmCrossTest.Droid
 
 
 
-            // Initialize 3rd-party ui libraries
+            //+ Initialize 3rd-party libraries
         }
 
 
