@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
+using MvvmCross.Forms.Platforms.Ios.Core;
 using UIKit;
+using Forms = MvvmCrossTest;
 
 namespace MvvmCrossTest.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
-    [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    [Register(nameof(AppDelegate))]
+    public partial class AppDelegate : MvxFormsApplicationDelegate<Setup, Core.App, Forms.App>
     {
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
@@ -22,8 +20,12 @@ namespace MvvmCrossTest.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            //+ Initialize 3rd-party libraries
+
+
+
+            UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(65, 105, 225);
+            UINavigationBar.Appearance.TintColor = UIColor.FromRGB(255, 255, 255);
 
             return base.FinishedLaunching(app, options);
         }
