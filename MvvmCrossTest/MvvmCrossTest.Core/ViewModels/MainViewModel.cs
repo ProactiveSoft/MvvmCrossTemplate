@@ -8,7 +8,7 @@ namespace MvvmCrossTest.Core.ViewModels
         /// <inheritdoc />
         public MainViewModel(IMvxNavigationService navigationService) : base(navigationService)
         {
-            Title = "Home Template";
+            Title = "Home";
         }
     }
 }
