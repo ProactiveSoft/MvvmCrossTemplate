@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-namespace MvvmCrossTest
+namespace MvvmCrossTest.Forms
 {
-    public partial class App : Application
+	public partial class App : Application
     {
         public App()
         {

@@ -4,9 +4,9 @@ using MvvmCross;
 using MvvmCross.Views;
 using MvvmCrossTest.Abstraction.Helpers;
 using MvvmCrossTest.Core.ViewModels;
-using MvvmCrossTest.Views;
+using MvvmCrossTest.Forms.Views;
 
-namespace MvvmCrossTest.Helpers
+namespace MvvmCrossTest.Forms.Helpers
 {
     public class CommonSetup : ICommonSetup
     {

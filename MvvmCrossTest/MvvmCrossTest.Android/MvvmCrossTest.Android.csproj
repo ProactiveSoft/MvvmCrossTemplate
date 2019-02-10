@@ -63,12 +63,14 @@
     <PackageReference Include="Serilog.Sinks.Xamarin">
       <Version>0.1.29</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.5.0.129452" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="27.0.2.1" />
+    <PackageReference Include="Xamarin.Forms">
+      <Version>3.5.0.129452</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LinkerPleaseInclude.cs" />
@@ -116,9 +118,9 @@
       <Project>{aee678e2-f59f-4b5c-96cc-6c7c8eb73bdf}</Project>
       <Name>MvvmCrossTest.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MvvmCrossTest\MvvmCrossTest.csproj">
-      <Project>{94BA4437-58A6-43D3-A734-78DF4D585F50}</Project>
-      <Name>MvvmCrossTest</Name>
+    <ProjectReference Include="..\MvvmCrossTest.Forms\MvvmCrossTest.Forms.csproj">
+      <Project>{4a6045c2-2ed5-4c7d-95ad-8b82d3e11fb9}</Project>
+      <Name>MvvmCrossTest.Forms</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

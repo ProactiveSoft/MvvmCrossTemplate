@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿.Forms<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -160,9 +160,9 @@
       <Project>{aee678e2-f59f-4b5c-96cc-6c7c8eb73bdf}</Project>
       <Name>MvvmCrossTest.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MvvmCrossTest\MvvmCrossTest.csproj">
+    <ProjectReference Include="..\MvvmCrossTest.Forms\MvvmCrossTest.Forms.csproj">
       <Project>{94BA4437-58A6-43D3-A734-78DF4D585F50}</Project>
-      <Name>MvvmCrossTest</Name>
+      <Name>MvvmCrossTest.Forms</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

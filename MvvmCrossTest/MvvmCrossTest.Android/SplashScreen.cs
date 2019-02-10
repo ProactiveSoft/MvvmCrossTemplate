@@ -1,10 +1,8 @@
-﻿using System.Threading.Tasks;
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using MvvmCross;
 using MvvmCross.Forms.Platforms.Android.Views;
-using MvvmCross.ViewModels;
+using System.Threading.Tasks;
 
 namespace MvvmCrossTest.Droid
 {
@@ -16,7 +14,7 @@ namespace MvvmCrossTest.Droid
         NoHistory = true,
         ScreenOrientation = ScreenOrientation.Portrait,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class SplashScreen : MvxFormsSplashScreenActivity<Setup, Core.App, App>
+    public class SplashScreen : MvxFormsSplashScreenActivity<Setup, Core.App, Forms.App>
     {
         public SplashScreen() : base(Resource.Layout.SplashScreen) { }
 
