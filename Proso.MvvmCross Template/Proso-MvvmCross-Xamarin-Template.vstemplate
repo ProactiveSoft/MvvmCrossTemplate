@@ -1,0 +1,59 @@
+<VSTemplate Version="3.0.0" Type="ProjectGroup" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>MvvmCross Template 6.2.2</Name>
+    <Description>MvvmCross template for Xamrain.Forms.</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Proso.</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+
+    <TemplateContent>
+		<ProjectCollection>
+
+            <SolutionFolder Name="Desktop">
+
+                <ProjectTemplateLink ProjectName="$projectname$.UWP" CopyParameters="true">
+					Proso.MvvmCross.UWP\MyTemplate.vstemplate
+				</ProjectTemplateLink>
+
+            </SolutionFolder>
+
+            <SolutionFolder Name="Mobile">
+
+                <ProjectTemplateLink ProjectName="$projectname$.Android" CopyParameters="true">
+					Proso.MvvmCross.Android\MyTemplate.vstemplate
+				</ProjectTemplateLink>
+
+                <ProjectTemplateLink ProjectName="$projectname$.iOS" CopyParameters="true">
+					Proso.MvvmCross.iOS\MyTemplate.vstemplate
+				</ProjectTemplateLink>
+
+            </SolutionFolder>
+
+            <SolutionFolder Name="Common">
+            
+                <ProjectTemplateLink ProjectName="$projectname$.Forms" CopyParameters="true">
+					Proso.MvvmCross.Forms\MyTemplate.vstemplate
+				</ProjectTemplateLink>
+
+                <ProjectTemplateLink ProjectName="$projectname$.Abstraction" CopyParameters="true">
+					Proso.MvvmCross.Abstraction\MyTemplate.vstemplate
+				</ProjectTemplateLink>
+
+                <ProjectTemplateLink ProjectName="$projectname$.Core" CopyParameters="true">
+					Proso.MvvmCross.Core\MyTemplate.vstemplate
+				</ProjectTemplateLink>
+            
+            </SolutionFolder>
+
+        </ProjectCollection>
+    </TemplateContent>
+
+</VSTemplate>
