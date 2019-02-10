@@ -1,8 +1,7 @@
 ﻿using MvvmCross;
 using MvvmCross.Forms.Platforms.Uap.Core;
 using MvvmCrossTest.Abstraction.Helpers;
-using MvvmCrossTest.Helpers;
-using Forms = MvvmCrossTest;
+using MvvmCrossTest.Forms.Helpers;
 
 namespace MvvmCrossTest.UWP
 {
