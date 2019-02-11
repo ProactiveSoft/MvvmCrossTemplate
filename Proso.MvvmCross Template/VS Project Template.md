@@ -14,8 +14,106 @@ ___
 
 
 ## List of Contents
+- [List of Contents](#list-of-contents)
+- [Overview](#overview)
+- [Steps](#steps)
+  - [Gotchas](#gotchas)
+- [Resources](#resources)
 
 
+
+___
+___
+
+
+
+## Overview
+
+*Use*: Creating reusable VS Solution.
+
+
+___
+
+
+
+## Steps
+
+![Create VS project template wizard image][6]
+
+![Final wizard page image][7]
+
+![Projects (in the Solution) drop-down menu image][5]
+
+
+1. Create project
+2. Write all the boilerplate code
+3. Create project template zips
+   1. Menu  -->  Project  -->  Export Template
+   2. Select Project template & then next
+   3. Uncheck Automatically import  -->  Finish
+   4. Repeat steps (3.1), (3.2) & (3.3) for all projects
+4. Edit files
+   1. Create new folder
+   2. Unzip all project template zips in respective folders
+   3. Edit each folder\`s files   ...*more details in notes*
+      1. Things to edit:
+         * `using` import statements
+         * `namespace`
+         * `csproj` file
+         * Project references in `csproj` file
+5. Create soluton `.vstemplate`
+   1. Create new xml file
+   2. Fill `TemplateData` details
+   3. Use some icon for template
+   4. Define solution level folders
+   5. Add path for each sub-project `.vstemplate`
+6. Zip all: Select all  -->  Context menu  -->  Send to  -->  Compressed (zipped) folder
+7. Copy zipped folder to:  
+   `C:\Users\<user-name>\OneDrive\Documents\Visual Studio 2017\Templates\ProjectTemplates\Visual C#\Cross-Platform`
+
+
+___
+
+
+*Notes*:
+
+To use project\`s name: use `$safeprojectname$`  
+To use solution\`s name: use `$ext_safeprojectname$`
+
+
+___
+___
+
+
+### Gotchas
+
+* iOS `Info.plist`\`s parameters are not replaced by default. Configure `.vstemplate` to replace.  
+  `<ProjectItem ReplaceParameters="true" TargetFileName="Info.plist">Info.plist</ProjectItem>`
+
+
+* Copy `Assets.xcassets` folder from the builtin Xamarin.Forms template (*not created by custom template*).
+* Copy images from `Resources` folder
+
+
+___
+
+
+* In Android, create namespace alias for `Android` namespace.
+* E.g. in `LinkerPleaseInclude`:  
+
+```csharp
+using Droid = Android;
+
+[Droid.Runtime.Preserve(AllMembers = true)]
+public class LinkerPleaseInclude {}
+```
+
+
+___
+
+
+* In UWP, configure `MyTemplate.vstemplate` to replace `Package.appxmanifest`\`s parameters.  
+  `<ProjectItem ReplaceParameters="true" TargetFileName="Package.appxmanifest">Package.appxmanifest</ProjectItem>`
 
 
 
@@ -48,3 +146,6 @@ ___
 [2]: https://github.com/JTOne123/XamFormsMvxTemplate "A Visual Studio 2017 template for projects based on Xamarin.Forms 3.3 and MvvmCross 6.2 - GitHub"
 [3]: https://docs.microsoft.com/en-us/visualstudio/ide/creating-project-and-item-templates?view=vs-2017 "Create Project & Item Templates - MS Doc"
 [4]: https://www.youtube.com/watch?v=Jhi1WFp47Qk "Create Project template & pack it into a VSIX VS extension - MS Doc"
+[5]: \Images\Projects-drop-down-menu.png "Projects (in the Solution) drop-down menu"
+[6]: \Images\Export-Template-Wizard.png "Create VS project template wizard"
+[7]: \Images\Final-wizard.png "Final wizard page"
