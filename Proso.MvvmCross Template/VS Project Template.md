@@ -91,7 +91,7 @@ ___
   `<ProjectItem ReplaceParameters="true" TargetFileName="Info.plist">Info.plist</ProjectItem>`
 
 
-* Copy `Assets.xcassets` folder from the builtin Xamarin.Forms template (*not created by custom template*).
+* Copy `Assets.xcassets` folder from the builtin Xamarin.Forms template (*not created by custom template*).   ...*[more details][8]*
 * Copy images from `Resources` folder
 
 
@@ -149,3 +149,4 @@ ___
 [5]: \Images\Projects-drop-down-menu.png "Projects (in the Solution) drop-down menu"
 [6]: \Images\Export-Template-Wizard.png "Create VS project template wizard"
 [7]: \Images\Final-wizard.png "Final wizard page"
+[8]: https://forums.xamarin.com/discussion/comment/362053/#Comment_362053 "Solution: iOS images in Assets.xcassets is not copied in Custom VS project template - Xam Forum"
