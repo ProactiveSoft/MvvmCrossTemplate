@@ -9,6 +9,33 @@ platforms:
 ```csharp
 using static System.Console;
 ```
+___
+
+> When upgrading MvvmCross template for VS 2019:
+
+Initialize custom controls in UWP in `Setup` class.
+
+```csharp
+public class Setup : MvxFormsWindowsSetup<Core.App, Forms.App>
+{
+      public override IEnumerable<Assembly> GetViewAssemblies() =>
+            new HashSet<Assembly>(base.GetViewAssemblies())
+            {
+                //+ Initialize custom controls
+                typeof(SfSegmentedControlRenderer).GetTypeInfo().Assembly,
+                typeof(Forms.Views.MainPage).GetTypeInfo().Assembly
+            };
+}
+```
+
+Add `LinkedPleaseInclude` for UWP.
+
+Code sample is present in EggTimer app (`D:\LearnApps\Proso.EggTimer\Proso.EggTimer\Proso.EggTimer.UWP`).
+
+Other things to do:
+
+* Upgrade to VS 2019
+* Upgrade MvvmCross
 
 ___
 
