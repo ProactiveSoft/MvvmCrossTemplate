@@ -28,14 +28,25 @@ public class Setup : MvxFormsWindowsSetup<Core.App, Forms.App>
 }
 ```
 
+___
+
 Add `LinkedPleaseInclude` for UWP.
 
 Code sample is present in EggTimer app (`D:\LearnApps\Proso.EggTimer\Proso.EggTimer\Proso.EggTimer.UWP`).
 
+
+___
+
+Don\`t inject `INavigationService` in every VM. Not all VMs need to navigate.
+
+___
+
 Other things to do:
 
-* Upgrade to VS 2019
+* Upgrade project template for VS 2019
+* Upgrade Xam.Forms
 * Upgrade MvvmCross
+* Upgrade UWP Nuget package `Microsoft.NETCore.UniversalWindowsPlatform`
 
 ___
 
