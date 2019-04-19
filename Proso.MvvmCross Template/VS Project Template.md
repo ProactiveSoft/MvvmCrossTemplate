@@ -37,7 +37,8 @@ Code sample is present in EggTimer app (`D:\LearnApps\Proso.EggTimer\Proso.EggTi
 
 ___
 
-Don\`t inject `INavigationService` in every VM. Not all VMs need to navigate.
+* Don\`t inject `INavigationService` in every VM. Not all VMs need to navigate.
+* Only keep non-generic `BaseViewModel`; Remove generic `BaseViewModel`.
 
 ___
 
@@ -45,6 +46,7 @@ Other things to do:
 
 * Upgrade project template for VS 2019
 * Upgrade Xam.Forms
+* Remove MvvmCross.Json plugin
 * Upgrade MvvmCross
 * Upgrade UWP Nuget package `Microsoft.NETCore.UniversalWindowsPlatform`
 
