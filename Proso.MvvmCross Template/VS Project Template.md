@@ -28,6 +28,19 @@ public class Setup : MvxFormsWindowsSetup<Core.App, Forms.App>
 }
 ```
 
+Also in UWP `MainPage`\`s ctor *(if needed, not all controls to be initialized here)*:
+
+```csharp
+public MainPage()
+{
+      this.InitializeComponent();
+
+
+      // Initialize 3rd-party libraries
+      CrossMediaManager.Current.Init();
+}
+```
+
 ___
 
 Add `LinkedPleaseInclude` for UWP.
