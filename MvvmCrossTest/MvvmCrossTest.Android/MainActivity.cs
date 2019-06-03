@@ -3,6 +3,7 @@ using Android.Content.PM;
 using Android.OS;
 using MvvmCross.Forms.Platforms.Android.Views;
 
+
 namespace MvvmCrossTest.Droid
 {
     [Activity(
