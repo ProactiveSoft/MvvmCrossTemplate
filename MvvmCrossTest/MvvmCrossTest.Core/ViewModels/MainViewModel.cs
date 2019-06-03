@@ -1,14 +1,29 @@
-﻿using MvvmCross.Navigation;
-using MvvmCrossTest.Abstraction.ViewModels;
+﻿using MvvmCrossTest.Abstraction.ViewModels;
 
 namespace MvvmCrossTest.Core.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        /// <inheritdoc />
-        public MainViewModel(IMvxNavigationService navigationService) : base(navigationService)
+        public MainViewModel()
         {
-            Title = "V 6.3.0 T1";
+            // Ctor injection
         }
+
+
+        /// <inheritdoc />
+        public override void Prepare()
+        {
+            // Initialize VM`s fields & properties 
+            Title = "V 6.3.0 T2";
+        }
+
+        ///// <inheritdoc />
+        //public override async Task Initialize()
+        //{
+        //    await base.Initialize();
+
+
+        //    // Other heavy initialization
+        //}
     }
 }

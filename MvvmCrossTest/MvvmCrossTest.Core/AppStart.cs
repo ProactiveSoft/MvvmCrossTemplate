@@ -9,9 +9,7 @@ namespace MvvmCrossTest.Core
     {
         /// <inheritdoc />
         public AppStart(IMvxApplication application, IMvxNavigationService navigationService) : base(application,
-            navigationService)
-        {
-        }
+            navigationService) { }
 
         /// <inheritdoc />
         protected override Task NavigateToFirstViewModel(object hint = null) =>
