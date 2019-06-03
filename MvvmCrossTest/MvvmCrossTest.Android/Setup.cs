@@ -23,6 +23,9 @@ namespace MvvmCrossTest.Droid
         ///// <inheritdoc />
         //protected override void InitializeLastChance()
         //{
+        //    // Your code
+
+
         //    base.InitializeLastChance();
         //}
 

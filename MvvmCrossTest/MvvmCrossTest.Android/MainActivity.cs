@@ -27,12 +27,5 @@ namespace MvvmCrossTest.Droid
 
             //+ Initialize 3rd-party libraries
         }
-
-
-        ///// <inheritdoc />
-        //protected override void OnDestroy()
-        //{
-        //    base.OnDestroy();
-        //}
     }
 }
