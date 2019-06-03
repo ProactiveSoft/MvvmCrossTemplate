@@ -13,55 +13,10 @@ ___
 
 > When upgrading MvvmCross template for VS 2019:
 
-Initialize custom controls in UWP in `Setup` class.
-
-```csharp
-public class Setup : MvxFormsWindowsSetup<Core.App, Forms.App>
-{
-      public override IEnumerable<Assembly> GetViewAssemblies() =>
-            new HashSet<Assembly>(base.GetViewAssemblies())
-            {
-                //+ Initialize custom controls
-                typeof(SfSegmentedControlRenderer).GetTypeInfo().Assembly,
-                typeof(Forms.Views.MainPage).GetTypeInfo().Assembly
-            };
-}
-```
-
-Also in UWP `MainPage`\`s ctor *(if needed, not all controls to be initialized here)*:
-
-```csharp
-public MainPage()
-{
-      this.InitializeComponent();
-
-
-      // Initialize 3rd-party libraries
-      CrossMediaManager.Current.Init();
-}
-```
-
-___
-
-Add `LinkedPleaseInclude` for UWP.
-
-Code sample is present in EggTimer app (`D:\LearnApps\Proso.EggTimer\Proso.EggTimer\Proso.EggTimer.UWP`).
-
-
-___
-
-* Don\`t inject `INavigationService` in every VM. Not all VMs need to navigate.
-* Only keep non-generic `BaseViewModel`; Remove generic `BaseViewModel`.
-
-___
 
 Other things to do:
 
 * Upgrade project template for VS 2019
-* Upgrade Xam.Forms
-* Remove MvvmCross.Json plugin
-* Upgrade MvvmCross
-* Upgrade UWP Nuget package `Microsoft.NETCore.UniversalWindowsPlatform`
 
 ___
 
@@ -179,6 +134,8 @@ ___
 
 * [Create Multi-Project VS Template][1]
 * [Multi-Project VS Template Sample][2]
+* [MvvmCross Playground][10]
+* [MvvmCross 6.3.0 Template][9]
 * [Create VS Project Template][3]
 * [Pack VS Project Template into VSIX][4]
 
@@ -203,3 +160,5 @@ ___
 [6]: \Images\Export-Template-Wizard.png "Create VS project template wizard"
 [7]: \Images\Final-wizard.png "Final wizard page"
 [8]: https://forums.xamarin.com/discussion/comment/362053/#Comment_362053 "Solution: iOS images in Assets.xcassets is not copied in Custom VS project template - Xam Forum"
+[9]: https://github.com/Plac3hold3r/MvxScaffolding/tree/develop/src/Templates/MvxForms/Blank/src "MvvmCross 6.3.0 template - Placeholder"
+[10]: https://github.com/MvvmCross/MvvmCross/tree/develop/Projects/Playground "MvvmCross Playground Sample"
