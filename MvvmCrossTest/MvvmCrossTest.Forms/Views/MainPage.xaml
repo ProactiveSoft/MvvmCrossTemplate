@@ -13,12 +13,13 @@
         <viewModels:MainViewModel/>
     </views:MvxContentPage.BindingContext>-->
 
-    <StackLayout>
-        <!--  Place new controls here  -->
+    <Grid>
         <Label
+            FontAttributes="Bold"
+            FontSize="Large"
             HorizontalOptions="Center"
             Text="{Binding Title}"
-            VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+            VerticalOptions="Center" />
+    </Grid>
 
 </views:MvxContentPage>

@@ -125,9 +125,12 @@ namespace MvvmCrossTest.Droid
             Console.ForegroundColor = ConsoleColor.DarkGray;
         }
 
-        public void Include(MvvmCross.Plugin.Json.Plugin plugin)
-        {
-            plugin.Load();
-        }
+
+
+        // Initialize MvvmCross plugins
+        //public void Include(MvvmCross.Plugin.Json.Plugin plugin)
+        //{
+        //    plugin.Load();
+        //}
     }
 }

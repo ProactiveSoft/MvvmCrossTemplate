@@ -21,6 +21,9 @@ namespace MvvmCrossTest.iOS
         ///// <inheritdoc />
         //protected override void InitializeLastChance()
         //{
+        //    // Your code
+
+
         //    base.InitializeLastChance();
         //}
 

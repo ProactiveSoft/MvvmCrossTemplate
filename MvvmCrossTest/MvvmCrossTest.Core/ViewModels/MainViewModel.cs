@@ -14,7 +14,7 @@ namespace MvvmCrossTest.Core.ViewModels
         public override void Prepare()
         {
             // Initialize VM`s fields & properties 
-            Title = "V 6.3.0 T2";
+            Title = "V 6.3.0 T3";
         }
 
         ///// <inheritdoc />
