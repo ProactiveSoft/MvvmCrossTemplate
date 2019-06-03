@@ -17,6 +17,12 @@ namespace MvvmCrossTest.UWP
 {
     public sealed partial class MainPage
     {
-        public MainPage() => this.InitializeComponent();
+        public MainPage()
+        {
+            this.InitializeComponent();
+
+
+            // Initialize 3rd-party libraries
+        }
     }
 }
