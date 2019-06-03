@@ -21,7 +21,7 @@ namespace MvvmCrossTest.UWP
         ///// <inheritdoc />
         //protected override void InitializeLastChance()
         //{
-
+        //    // Your code
 
 
         //    base.InitializeLastChance();

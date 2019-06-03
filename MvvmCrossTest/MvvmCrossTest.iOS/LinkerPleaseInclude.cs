@@ -139,9 +139,8 @@ namespace MvvmCrossTest.iOS
 
 
         // Initialize MvvmCross plugins
-        //public void Include(MvvmCross.Plugin.Json.Plugin plugin)
-        //{
-        //    plugin.Load();
-        //}
+        //public void Include(MvvmCross.Plugin.Json.Plugin plugin) => plugin.Load();
+
+        //public void Include(MvvmCross.Plugin.Messenger.Plugin plugin) => plugin.Load();
     }
 }

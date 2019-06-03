@@ -1,5 +1,4 @@
 ﻿using MvvmCross.Forms.Platforms.Uap.Views;
-using Forms = MvvmCrossTest;
 
 namespace MvvmCrossTest.UWP
 {
