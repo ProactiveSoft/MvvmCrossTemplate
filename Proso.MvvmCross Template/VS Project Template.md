@@ -85,8 +85,13 @@ ___
 
 *Notes*:
 
-To use project\`s name: use `$safeprojectname$`  
-To use solution\`s name: use `$ext_safeprojectname$`
+* To use project\`s name: use `$safeprojectname$`
+* To use solution\`s name: use `$ext_safeprojectname$`
+
+___
+
+* Update MvvmCross VS template after every major release *(7.0.0, 8.0.0)* of MvvmCross.
+* Don\`t update template for minor releases *(e.g. 7.2.0, 7.3.1)*.
 
 
 ___

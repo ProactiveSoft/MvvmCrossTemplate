@@ -7,6 +7,7 @@ using MvvmCross.ViewModels;
 using System;
 using System.Collections.Specialized;
 using System.Windows.Input;
+//using Droid = Android;
 
 namespace MvvmCrossTest.Droid
 {
