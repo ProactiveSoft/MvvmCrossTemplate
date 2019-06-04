@@ -1,7 +1,8 @@
 ﻿using Foundation;
 using MvvmCross.Forms.Platforms.Ios.Core;
+using Syncfusion.XForms.iOS.Border;
+using Syncfusion.XForms.iOS.Buttons;
 using UIKit;
-using Forms = MvvmCrossTest;
 
 namespace MvvmCrossTest.iOS
 {
@@ -20,7 +21,9 @@ namespace MvvmCrossTest.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            //+ Initialize 3rd-party libraries
+            // Initialize 3rd-party libraries
+            SfBorderRenderer.Init();
+            SfButtonRenderer.Init();
 
 
 

@@ -3,6 +3,7 @@
     x:Class="MvvmCrossTest.Forms.Views.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:local="clr-namespace:MvvmCrossTest"
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:MvvmCrossTest.Core.ViewModels;assembly=MvvmCrossTest.Core"
@@ -14,12 +15,14 @@
     </views:MvxContentPage.BindingContext>-->
 
     <Grid>
-        <Label
+        <buttons:SfButton
             FontAttributes="Bold"
             FontSize="Large"
             HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
             Text="{Binding Title}"
-            VerticalOptions="Center" />
+            VerticalOptions="Center"
+            VerticalTextAlignment="Center" />
     </Grid>
 
 </views:MvxContentPage>

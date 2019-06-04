@@ -60,6 +60,9 @@
     <PackageReference Include="Serilog.Sinks.Xamarin">
       <Version>0.1.29</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.Buttons">
+      <Version>17.1.0.50</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms">
       <Version>4.0.0.482894</Version>
     </PackageReference>
