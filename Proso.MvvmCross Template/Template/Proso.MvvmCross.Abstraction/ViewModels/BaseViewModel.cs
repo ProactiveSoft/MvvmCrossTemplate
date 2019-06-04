@@ -1,9 +1,10 @@
-﻿using MvvmCross.ViewModels;
-using MvvmCrossTest.Abstraction.Annotations;
+﻿using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
+using $safeprojectname$.Annotations;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace MvvmCrossTest.Abstraction.ViewModels
+namespace $safeprojectname$.ViewModels
 {
     public abstract class BaseViewModel : MvxViewModel, INotifyPropertyChanged
     {
@@ -35,6 +36,9 @@ namespace MvvmCrossTest.Abstraction.ViewModels
         #region Fields
 
         private string _title;
+
+
+        protected readonly IMvxNavigationService NavigationService;
 
         #endregion
     }
