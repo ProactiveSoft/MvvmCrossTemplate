@@ -173,7 +173,7 @@ ___
 
 [1]: https://www.youtube.com/watch?v=jUmRUQs2xrs "How to create a visual studio solution template (multi project) - YouTube"
 [2]: https://github.com/JTOne123/XamFormsMvxTemplate "A Visual Studio 2017 template for projects based on Xamarin.Forms 3.3 and MvvmCross 6.2 - GitHub"
-[3]: https://docs.microsoft.com/en-us/visualstudio/ide/creating-project-and-item-templates?view=vs-2017 "Create Project & Item Templates - MS Doc"
+[3]: https://docs.microsoft.com/en-us/visualstudio/ide/creating-project-and-item-templates?view=vs-2019 "Create Project & Item Templates - MS Doc"
 [4]: https://www.youtube.com/watch?v=Jhi1WFp47Qk "Create Project template & pack it into a VSIX VS extension - MS Doc"
 [5]: \Images\Projects-drop-down-menu.png "Projects (in the Solution) drop-down menu"
 [6]: \Images\Export-Template-Wizard.png "Create VS project template wizard"
