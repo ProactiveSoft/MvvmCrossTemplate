@@ -11,15 +11,6 @@ using static System.Console;
 ```
 ___
 
-> When upgrading MvvmCross template for VS 2019:
-
-
-Other things to do:
-
-* Upgrade project template for VS 2019
-
-___
-
 
 ## List of Contents
 - [List of Contents](#list-of-contents)
@@ -69,15 +60,17 @@ ___
          * `namespace`
          * `csproj` file
          * Project references in `csproj` file
+         * `MyTemplate.vstemplate` file
 5. Create soluton `.vstemplate`
    1. Create new xml file
    2. Fill `TemplateData` details
-   3. Use some icon for template
-   4. Define solution level folders
-   5. Add path for each sub-project `.vstemplate`
+      1. Use some icon for template
+      2. Fill Tags
+   3. Define solution level folders
+   4. Add path for each sub-project `.vstemplate`
 6. Zip all: Select all  -->  Context menu  -->  Send to  -->  Compressed (zipped) folder
 7. Copy zipped folder to:  
-   `C:\Users\<user-name>\OneDrive\Documents\Visual Studio 2017\Templates\ProjectTemplates\Visual C#\Cross-Platform`
+   `C:\Users\<user-name>\OneDrive\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#\Cross-Platform`
 
 
 ___
@@ -90,7 +83,7 @@ ___
 
 ___
 
-* Update MvvmCross VS template after every major release *(7.0.0, 8.0.0)* of MvvmCross.
+* Update MvvmCross VS template after every MvvmCross major release *(7.0.0, 8.0.0)* of MvvmCross.
 * Don\`t update template for minor releases *(e.g. 7.2.0, 7.3.1)*.
 
 
@@ -100,34 +93,55 @@ ___
 
 ### Gotchas
 
-* iOS `Info.plist`\`s parameters are not replaced by default. Configure `.vstemplate` to replace.  
-  `<ProjectItem ReplaceParameters="true" TargetFileName="Info.plist">Info.plist</ProjectItem>`
+*iOS*:
+
+* `Info.plist`\`s parameters are not replaced by default. Configure `.vstemplate` to replace.
+
+```xml
+<ProjectItem ReplaceParameters="true" TargetFileName="Info.plist">Info.plist</ProjectItem>
+```
 
 
-* Copy `Assets.xcassets` folder from the builtin Xamarin.Forms template (*not created by custom template*).   ...*[more details][8]*
-* Copy images from `Resources` folder
+* Copy `Assets.xcassets` folder from the builtin Xamarin.Forms template or from your template folder (`D:\Plugins\MvvmCrossTest\Proso.MvvmCross Template\Template\Proso.MvvmCross.iOS\Assets.xcassets`).   ...*[more details][8]*
 
 
 ___
 
+*Android*:
 
-* In Android, create namespace alias for `Android` namespace.
-* E.g. in `LinkerPleaseInclude`:  
+* Suffix android project name w/ *Droid*.
+* Suffixing w/ *Android* causes problems in namespace.
 
-```csharp
-using Droid = Android;
+```xml
+<ProjectTemplateLink ProjectName="$safeprojectname$.Droid" CopyParameters="true">
+      Proso.MvvmCross.Android\MyTemplate.vstemplate
+</ProjectTemplateLink>
+```
 
-[Droid.Runtime.Preserve(AllMembers = true)]
-public class LinkerPleaseInclude {}
+
+* `AndroidManifest.xml`\`s parameters are not replaced by default. Configure `.vstemplate` to replace.
+
+```xml
+<ProjectItem ReplaceParameters="true" TargetFileName="AndroidManifest.xml">AndroidManifest.xml</ProjectItem>
+```
+
+
+___
+
+*UWP*:
+
+* `Package.appxmanifest`\`s parameters are not replaced by default. Configure `.vstemplate` to replace.
+
+```xml
+<ProjectItem ReplaceParameters="true" TargetFileName="Package.appxmanifest">Package.appxmanifest</ProjectItem>
 ```
 
 
 ___
 
 
-* In UWP, configure `MyTemplate.vstemplate` to replace `Package.appxmanifest`\`s parameters.  
-  `<ProjectItem ReplaceParameters="true" TargetFileName="Package.appxmanifest">Package.appxmanifest</ProjectItem>`
-
+* When creating a project, to create project folders in the solution folder *(directly inside solution folder)*, check **Place solution & project in the same directory** option.
+* Otherwise project folders are added in solution sub-folder\`s directory.
 
 
 ___
