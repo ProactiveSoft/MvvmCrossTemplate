@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace $safeprojectname$
 {
     [Activity(
-        Label = "MvvmCrossTest",
+        Label = "$ext_safeprojectname$",
         MainLauncher = true,
         Icon = "@mipmap/icon",
         Theme = "@style/MainTheme.Splash",

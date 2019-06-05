@@ -1,7 +1,7 @@
 ﻿using MvvmCross;
 using MvvmCross.Forms.Platforms.Ios.Core;
-using MvvmCrossTest.Abstraction.Helpers;
-using MvvmCrossTest.Forms.Helpers;
+using $ext_safeprojectname$.Abstraction.Helpers;
+using $ext_safeprojectname$.Forms.Helpers;
 
 namespace $safeprojectname$
 {

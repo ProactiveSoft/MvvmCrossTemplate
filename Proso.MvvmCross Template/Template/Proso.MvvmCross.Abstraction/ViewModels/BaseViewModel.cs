@@ -1,5 +1,4 @@
-﻿using MvvmCross.Navigation;
-using MvvmCross.ViewModels;
+﻿using MvvmCross.ViewModels;
 using $safeprojectname$.Annotations;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -36,9 +35,6 @@ namespace $safeprojectname$.ViewModels
         #region Fields
 
         private string _title;
-
-
-        protected readonly IMvxNavigationService NavigationService;
 
         #endregion
     }

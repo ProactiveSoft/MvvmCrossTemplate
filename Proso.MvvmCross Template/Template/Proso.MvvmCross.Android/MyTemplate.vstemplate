@@ -13,9 +13,10 @@
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
     <Icon>__TemplateIcon.ico</Icon>
     <PreviewImage>__PreviewImage.jpg</PreviewImage>
+    <Hidden>true</Hidden>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="MvvmCrossTest.Android.csproj" File="MvvmCrossTest.Android.csproj" ReplaceParameters="true">
+    <Project TargetFileName="$safeprojectname$.csproj" File="MvvmCrossTest.Android.csproj" ReplaceParameters="true">
       <Folder Name="Assets" TargetFolderName="Assets">
         <ProjectItem ReplaceParameters="true" TargetFileName="AboutAssets.txt">AboutAssets.txt</ProjectItem>
       </Folder>

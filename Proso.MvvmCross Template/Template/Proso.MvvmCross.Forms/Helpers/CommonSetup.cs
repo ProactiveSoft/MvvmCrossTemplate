@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using MvvmCross;
 using MvvmCross.Views;
-using MvvmCrossTest.Abstraction.Helpers;
-using MvvmCrossTest.Core.ViewModels;
+using $ext_safeprojectname$.Abstraction.Helpers;
+using $ext_safeprojectname$.Core.ViewModels;
 using $safeprojectname$.Views;
 
 namespace $safeprojectname$.Helpers

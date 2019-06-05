@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MvvmCrossTest.Abstraction\MvvmCrossTest.Abstraction.csproj" />
-    <ProjectReference Include="..\MvvmCrossTest.Core\MvvmCrossTest.Core.csproj" />
+    <ProjectReference Include="..\$ext_safeprojectname$.Abstraction\$ext_safeprojectname$.Abstraction.csproj" />
+    <ProjectReference Include="..\$ext_safeprojectname$.Core\$ext_safeprojectname$.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

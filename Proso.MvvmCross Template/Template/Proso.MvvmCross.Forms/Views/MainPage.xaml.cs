@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MvvmCross.Forms.Views;
-using MvvmCrossTest.Core.ViewModels;
+using $ext_safeprojectname$.Core.ViewModels;
 
 namespace $safeprojectname$.Views
 {

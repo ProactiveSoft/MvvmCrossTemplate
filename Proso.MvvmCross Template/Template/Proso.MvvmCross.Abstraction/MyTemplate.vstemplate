@@ -17,7 +17,7 @@
     <Hidden>true</Hidden>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="MvvmCrossTest.Abstraction.csproj" File="MvvmCrossTest.Abstraction.csproj" ReplaceParameters="true">
+    <Project TargetFileName="$safeprojectname$.csproj" File="MvvmCrossTest.Abstraction.csproj" ReplaceParameters="true">
       <Folder Name="Helpers" TargetFolderName="Helpers">
         <ProjectItem ReplaceParameters="true" TargetFileName="ICommonSetup.cs">ICommonSetup.cs</ProjectItem>
       </Folder>

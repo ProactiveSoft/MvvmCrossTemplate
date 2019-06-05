@@ -8,7 +8,7 @@
     <TemplateGuid>{c9e5eea5-ca05-42a1-839b-61506e0a37df}</TemplateGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>$safeprojectname$</RootNamespace>
-    <AssemblyName>MvvmCrossTest.Android</AssemblyName>
+    <AssemblyName>$safeprojectname$</AssemblyName>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -105,17 +105,17 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MvvmCrossTest.Abstraction\MvvmCrossTest.Abstraction.csproj">
+    <ProjectReference Include="..\$ext_safeprojectname$.Abstraction\$ext_safeprojectname$.Abstraction.csproj">
       <Project>{2e3244ef-39d5-43cb-ac36-70a8d42c8e85}</Project>
-      <Name>MvvmCrossTest.Abstraction</Name>
+      <Name>$ext_safeprojectname$.Abstraction</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MvvmCrossTest.Core\MvvmCrossTest.Core.csproj">
+    <ProjectReference Include="..\$ext_safeprojectname$.Core\$ext_safeprojectname$.Core.csproj">
       <Project>{aee678e2-f59f-4b5c-96cc-6c7c8eb73bdf}</Project>
-      <Name>MvvmCrossTest.Core</Name>
+      <Name>$ext_safeprojectname$.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MvvmCrossTest.Forms\MvvmCrossTest.Forms.csproj">
+    <ProjectReference Include="..\$ext_safeprojectname$.Forms\$ext_safeprojectname$.Forms.csproj">
       <Project>{4a6045c2-2ed5-4c7d-95ad-8b82d3e11fb9}</Project>
-      <Name>MvvmCrossTest.Forms</Name>
+      <Name>$ext_safeprojectname$.Forms</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
