@@ -12,7 +12,25 @@ using static System.Console;
 ___
 
 
+## To Do
+
+Use `Directory.Build.props` file to specify latest C# version for all projects in a solution at one place.  
+Source - [C# language versioning](https://docs.microsoft.com/en-in/dotnet/csharp/language-reference/configure-language-version "C# language versioning - MS Doc")
+
+```xml
+<Project>
+ <PropertyGroup>
+   <LangVersion>latest</LangVersion>
+ </PropertyGroup>
+</Project>
+```
+
+___
+___
+
+
 ## List of Contents
+- [To Do](#to-do)
 - [List of Contents](#list-of-contents)
 - [Overview](#overview)
 - [Steps](#steps)
