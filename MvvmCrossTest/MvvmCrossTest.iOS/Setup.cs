@@ -31,9 +31,6 @@ namespace MvvmCrossTest.iOS
 
 
         /// <inheritdoc />
-        //protected override void InitializeViewLookup() =>
-        //    Mvx.IoCProvider.Resolve<ICommonSetup>().InitializeLookupDictionary();
-        /// <inheritdoc />
         protected override IDictionary<Type, Type> InitializeLookupDictionary() =>
             Mvx.IoCProvider.Resolve<ICommonSetup>().InitializeLookupDictionary();
     }
