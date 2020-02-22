@@ -1,4 +1,6 @@
-﻿using MvvmCross;
+﻿using System;
+using System.Collections.Generic;
+using MvvmCross;
 using MvvmCross.Forms.Platforms.Ios.Core;
 using MvvmCrossTest.Abstraction.Helpers;
 using MvvmCrossTest.Forms.Helpers;
@@ -29,7 +31,10 @@ namespace MvvmCrossTest.iOS
 
 
         /// <inheritdoc />
-        protected override void InitializeViewLookup() =>
-            Mvx.IoCProvider.Resolve<ICommonSetup>().InitializeViewLookup();
+        //protected override void InitializeViewLookup() =>
+        //    Mvx.IoCProvider.Resolve<ICommonSetup>().InitializeLookupDictionary();
+        /// <inheritdoc />
+        protected override IDictionary<Type, Type> InitializeLookupDictionary() =>
+            Mvx.IoCProvider.Resolve<ICommonSetup>().InitializeLookupDictionary();
     }
 }
