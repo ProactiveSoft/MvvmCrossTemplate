@@ -11,15 +11,20 @@ namespace MvvmCrossTest.Forms.Helpers
     public class CommonSetup : ICommonSetup
     {
         /// <inheritdoc />
-        public void InitializeViewLookup()
-        {
-            var viewModelViewPairs = new Dictionary<Type, Type>
+        //public IDictionary<Type, Type> InitializeViewLookup()
+        //{
+        //    var viewModelViewPairs = new Dictionary<Type, Type>
+        //    {
+        //        [typeof(MainViewModel)] = typeof(MainPage)
+        //    };
+
+        //    var mvxViewModelViewsPairs = Mvx.IoCProvider.Resolve<IMvxViewsContainer>();
+        //    mvxViewModelViewsPairs.AddAll(viewModelViewPairs);
+        //}
+        public IDictionary<Type, Type> InitializeLookupDictionary() =>
+            new Dictionary<Type, Type>
             {
                 [typeof(MainViewModel)] = typeof(MainPage)
             };
-
-            var mvxViewModelViewsPairs = Mvx.IoCProvider.Resolve<IMvxViewsContainer>();
-            mvxViewModelViewsPairs.AddAll(viewModelViewPairs);
-        }
     }
 }

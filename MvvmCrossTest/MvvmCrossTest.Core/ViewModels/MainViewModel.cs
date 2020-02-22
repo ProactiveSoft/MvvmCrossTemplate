@@ -4,17 +4,17 @@ namespace MvvmCrossTest.Core.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        public MainViewModel()
-        {
-            // Ctor injection
-        }
+        //public MainViewModel()
+        //{
+        //    // Ctor injection
+        //}
 
 
         /// <inheritdoc />
         public override void Prepare()
         {
             // Initialize VM`s fields & properties 
-            Title = "V 6.3.0";
+            Title = "V 6.4.2";
         }
 
         ///// <inheritdoc />

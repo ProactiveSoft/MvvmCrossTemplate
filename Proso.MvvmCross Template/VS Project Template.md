@@ -101,8 +101,9 @@ ___
 
 ___
 
-* Update MvvmCross VS template after every MvvmCross major release *(7.0.0, 8.0.0)* of MvvmCross.
-* Don\`t update template for minor releases *(e.g. 7.2.0, 7.3.1)*.
+* MvvmCross version format: *major.micro.mini*. E.g 7 (major).2 (micro).4 (mini)
+* Update MvvmCross VS template after every MvvmCross major & micro release *(7.0.0, 7.1.0)* of MvvmCross.
+* Don\`t update template for mini releases *(e.g. 7.2.0, 7.2.1)*.
 
 
 ___

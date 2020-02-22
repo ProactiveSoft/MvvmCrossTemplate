@@ -1,7 +1,10 @@
-﻿namespace MvvmCrossTest.Abstraction.Helpers
+﻿using System;
+using System.Collections.Generic;
+
+namespace MvvmCrossTest.Abstraction.Helpers
 {
     public interface ICommonSetup
     {
-        void InitializeViewLookup();
+        IDictionary<Type, Type> InitializeLookupDictionary();
     }
 }
