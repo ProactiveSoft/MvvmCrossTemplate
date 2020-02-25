@@ -1,7 +1,12 @@
-﻿namespace $safeprojectname$.Helpers
+﻿using System;
+using System.Collections.Generic;
+
+namespace $safeprojectname$.Helpers
 {
     public interface ICommonSetup
     {
-        void InitializeViewLookup();
+        /// <summary>  Link ViewModels to Views.</summary>
+        /// <returns>IDictionary&lt;ViewModelType, ViewType&gt;.</returns>
+        IDictionary<Type, Type> InitializeLookupDictionary();
     }
 }

@@ -25,7 +25,7 @@
     <key>CFBundleDisplayName</key>
     <string>$ext_safeprojectname$</string>
     <key>CFBundleIdentifier</key>
-    <string>com.$ext_safeprojectname$</string>
+    <string>com.proso.$ext_safeprojectname$</string>
     <key>CFBundleVersion</key>
     <string>1.0</string>
     <key>UILaunchStoryboardName</key>

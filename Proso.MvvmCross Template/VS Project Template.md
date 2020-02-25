@@ -33,8 +33,9 @@ ___
 - [To Do](#to-do)
 - [List of Contents](#list-of-contents)
 - [Overview](#overview)
-- [Steps](#steps)
-  - [Gotchas](#gotchas)
+- [Template Creation Steps](#template-creation-steps)
+- [Gotchas](#gotchas)
+- [Template Usage Steps](#template-usage-steps)
 - [Resources](#resources)
 
 
@@ -53,7 +54,7 @@ ___
 
 
 
-## Steps
+## Template Creation Steps 
 
 ![Create VS project template wizard image][6]
 
@@ -67,15 +68,19 @@ ___
 3. Create project template zips
    1. Menu  -->  Project  -->  Export Template
    2. Select Project template & then next
-   3. Uncheck Automatically import  -->  Finish
-   4. Repeat steps (3.1), (3.2) & (3.3) for all projects
+   3. Fill form   ...*more details in notes*
+   4. Uncheck Automatically import  -->  Finish
+   5. Repeat steps (3.1), (3.2), (3.3) & (3.4) for all projects
 4. Edit files
    1. Create new folder
    2. Unzip all project template zips in respective folders
    3. Edit each folder\`s files   ...*more details in notes*
       1. Things to edit:
+         * `xaml` files
          * `using` import statements
          * `namespace`
+         * AssemblyInfo.cs file
+         * Manifest files
          * `csproj` file
          * Project references in `csproj` file
          * `MyTemplate.vstemplate` file
@@ -110,21 +115,32 @@ ___
 ___
 
 
-### Gotchas
+## Gotchas
+
+Fill Export Template Wizard:
+
+![Final wizard page image][7]
+
+For the template name, replace "MvvmCrossTest.Android" w/ "Proso.MvvmCross.Android".
+Similary replace template name for other projects.
+
+
+___
+___
+
+
 
 *iOS*:
 
-* `Info.plist`\`s parameters are not replaced by default. Configure `.vstemplate` to replace.
+* `Info.plist`'s & `Entitlements.plist`'s parameters are not replaced by default. Configure `.vstemplate` to replace.
 
 ```xml
 <ProjectItem ReplaceParameters="true" TargetFileName="Info.plist">Info.plist</ProjectItem>
 ```
 
 
-* Copy `Assets.xcassets` folder from the builtin Xamarin.Forms template or from your template folder (`D:\Plugins\MvvmCrossTest\Proso.MvvmCross Template\Template\Proso.MvvmCross.iOS\Assets.xcassets`).   ...*[more details][8]*
-
-
 ___
+
 
 *Android*:
 
@@ -138,14 +154,8 @@ ___
 ```
 
 
-* `AndroidManifest.xml`\`s parameters are not replaced by default. Configure `.vstemplate` to replace.
-
-```xml
-<ProjectItem ReplaceParameters="true" TargetFileName="AndroidManifest.xml">AndroidManifest.xml</ProjectItem>
-```
-
-
 ___
+
 
 *UWP*:
 
@@ -157,12 +167,29 @@ ___
 
 
 ___
+___
+___
+___
+___
+___
+
+
+
+## Template Usage Steps
+
+1. Copy `SharedAssemblyInfo.cs` & `Directory.Build.props` to solution folder
+2. Add both to solution using: Add  -->  Existing Item
+3. Add `SharedAssemblyInfo.cs` as a link to each platform projects (UWP, Android & iOS)
+4. Copy `Assets.xcassets` folder from the builtin Xamarin.Forms template or from your template folder (`D:\Plugins\MvvmCrossTest\Proso.MvvmCross Template\Template\Proso.MvvmCross.iOS\Assets.xcassets`).   ...*[more details][8]*
+
 
 
 * When creating a project, to create project folders in the solution folder *(directly inside solution folder)*, check **Place solution & project in the same directory** option.
 * Otherwise project folders are added in solution sub-folder\`s directory.
 
 
+___
+___
 ___
 ___
 

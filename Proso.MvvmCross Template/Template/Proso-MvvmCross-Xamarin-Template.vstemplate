@@ -2,7 +2,7 @@
   xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
   <TemplateData>
     <Name>MvvmCross Template</Name>
-    <Description>MvvmCross template 6.3.0.</Description>
+    <Description>MvvmCross template 6.4.2.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>

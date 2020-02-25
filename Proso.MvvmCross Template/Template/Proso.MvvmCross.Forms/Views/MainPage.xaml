@@ -1,18 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<views:MvxContentPage
+<formsViews:MvxContentPage
     x:Class="$safeprojectname$.Views.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    xmlns:local="clr-namespace:$safeprojectname$"
-    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:mvxBind="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:$ext_safeprojectname$.Core.ViewModels;assembly=$ext_safeprojectname$.Core"
-    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:formsViews="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     Title="{Binding Title}">
 
-    <!--<views:MvxContentPage.BindingContext>
+    <!--<formsViews:MvxContentPage.BindingContext>
         <viewModels:MainViewModel/>
-    </views:MvxContentPage.BindingContext>-->
+    </formsViews:MvxContentPage.BindingContext>-->
 
     <Grid>
         <buttons:SfButton
@@ -25,4 +24,4 @@
             VerticalTextAlignment="Center" />
     </Grid>
 
-</views:MvxContentPage>
+</formsViews:MvxContentPage>

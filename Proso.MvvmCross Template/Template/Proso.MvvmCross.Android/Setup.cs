@@ -1,4 +1,6 @@
-﻿using MvvmCross;
+﻿using System;
+using System.Collections.Generic;
+using MvvmCross;
 using MvvmCross.Forms.Platforms.Android.Core;
 using MvvmCross.Logging;
 using $ext_safeprojectname$.Abstraction.Helpers;
@@ -31,8 +33,8 @@ namespace $safeprojectname$
 
 
         /// <inheritdoc />
-        protected override void InitializeViewLookup() =>
-            Mvx.IoCProvider.Resolve<ICommonSetup>().InitializeViewLookup();
+        protected override IDictionary<Type, Type> InitializeLookupDictionary() =>
+            Mvx.IoCProvider.Resolve<ICommonSetup>().InitializeLookupDictionary();
 
 
         /// <inheritdoc />

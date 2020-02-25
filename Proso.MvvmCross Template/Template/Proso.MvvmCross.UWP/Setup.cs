@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using MvvmCross;
 using MvvmCross.Forms.Platforms.Uap.Core;
@@ -33,8 +34,8 @@ namespace $safeprojectname$
 
 
         /// <inheritdoc />
-        protected override void InitializeViewLookup() =>
-            Mvx.IoCProvider.Resolve<ICommonSetup>().InitializeViewLookup();
+        protected override IDictionary<Type, Type> InitializeLookupDictionary() =>
+            Mvx.IoCProvider.Resolve<ICommonSetup>().InitializeLookupDictionary();
 
         /// <inheritdoc />
         public override IEnumerable<Assembly> GetViewAssemblies() => new HashSet<Assembly>(base.GetViewAssemblies())

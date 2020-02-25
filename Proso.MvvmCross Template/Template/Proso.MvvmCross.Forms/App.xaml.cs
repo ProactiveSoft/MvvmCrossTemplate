@@ -10,7 +10,7 @@ namespace $safeprojectname$
         {
             // Syncfusion license key
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(
-                "OTQxODRAMzEzNzJlMzEyZTMwWXd5VEZNczJudm5ZekJLVTR1U2k4UFJvWGFUdWI4c3p0RVNkNlc2TWFRMD0=");
+                "MjE1MDMzQDMxMzcyZTM0MmUzMENCN2dHMFRYb3h2N2tmSUxtSWVra3JuY0tzTnR2dGhsc0h6SXgxbGxQUG89");
 
 
 

@@ -1,4 +1,6 @@
-﻿using MvvmCross;
+﻿using System;
+using System.Collections.Generic;
+using MvvmCross;
 using MvvmCross.Forms.Platforms.Ios.Core;
 using $ext_safeprojectname$.Abstraction.Helpers;
 using $ext_safeprojectname$.Forms.Helpers;
@@ -29,7 +31,7 @@ namespace $safeprojectname$
 
 
         /// <inheritdoc />
-        protected override void InitializeViewLookup() =>
-            Mvx.IoCProvider.Resolve<ICommonSetup>().InitializeViewLookup();
+        protected override IDictionary<Type, Type> InitializeLookupDictionary() =>
+            Mvx.IoCProvider.Resolve<ICommonSetup>().InitializeLookupDictionary();
     }
 }
