@@ -6,7 +6,9 @@ namespace MvvmCross.Template
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Edit template.");
+            CorrectProjects correctProjects = new CorrectProjects();
+
+            //correctProjects.CorrectAbstraction();
         }
     }
 }
