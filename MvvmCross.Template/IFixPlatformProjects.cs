@@ -1,6 +1,6 @@
 ﻿namespace MvvmCross.Template
 {
-    interface ICorrectPlatformProjects : ICorrectLibraryProjects
+    interface IFixPlatformProjects : IFixLibraryProjects
     {
         void CorrectManifest();
     }

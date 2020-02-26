@@ -6,9 +6,11 @@ namespace MvvmCross.Template
     {
         static void Main(string[] args)
         {
-            CorrectAbstraction correctAbstraction = new CorrectAbstraction();
+            //FixAbstraction fixAbstraction = new FixAbstraction();
+            //fixAbstraction.FixVsTemplate();
 
-            //correctAbstraction.CorrectVsTemplate();
+            FixCore fixCore = new FixCore();
+            fixCore.FixCSharp();
         }
     }
 }

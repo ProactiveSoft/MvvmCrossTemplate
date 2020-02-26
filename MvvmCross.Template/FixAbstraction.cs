@@ -5,23 +5,18 @@ using static System.Console;
 
 namespace MvvmCross.Template
 {
-    public class CorrectAbstraction : ICorrectLibraryProjects
+    internal class FixAbstraction : BaseFixProjects
     {
+
         /// <inheritdoc />
-        public void CorrectCSharp()
+        public override void FixCsProj()
         {
             throw new System.NotImplementedException();
         }
 
-        /// <inheritdoc />
-        public void CorrectCsProj()
+        public override void FixVsTemplate()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void CorrectVsTemplate()
-        {
-            string abstractionFolder = Path.Combine(_templateFolder, "Proso.MvvmCross.Abstraction");
+            string abstractionFolder = Path.Combine(TemplateFolder, "Proso.MvvmCross.Abstraction");
 
             // Edit .vstemplate
             WriteLine(@"Editing Abstraction\MyTemplate.vstemplate");
@@ -42,9 +37,5 @@ namespace MvvmCross.Template
 
             WriteLine(@"Finished Abstraction\MyTemplate.vstemplate");
         }
-
-
-
-        private readonly string _templateFolder = @"D:\Plugins\MvvmCrossTest\Temp";
     }
 }
