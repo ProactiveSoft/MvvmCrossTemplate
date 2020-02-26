@@ -6,9 +6,9 @@ namespace MvvmCross.Template
     {
         static void Main(string[] args)
         {
-            CorrectProjects correctProjects = new CorrectProjects();
+            CorrectAbstraction correctAbstraction = new CorrectAbstraction();
 
-            //correctProjects.CorrectAbstraction();
+            //correctAbstraction.CorrectVsTemplate();
         }
     }
 }

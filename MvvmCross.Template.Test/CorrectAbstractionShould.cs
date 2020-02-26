@@ -5,9 +5,9 @@ using Xunit;
 
 namespace MvvmCross.Template.Test
 {
-    public class AbstractionProjectShould
+    public class CorrectAbstractionShould
     {
-        public AbstractionProjectShould()
+        public CorrectAbstractionShould()
         {
             _templateFolder = @"D:\Plugins\MvvmCrossTest\Temp";
             _abstractionFolder = Path.Combine(_templateFolder, "Proso.MvvmCross.Abstraction");

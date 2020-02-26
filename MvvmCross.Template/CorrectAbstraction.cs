@@ -5,9 +5,21 @@ using static System.Console;
 
 namespace MvvmCross.Template
 {
-    public class CorrectProjects
+    public class CorrectAbstraction : ICorrectLibraryProjects
     {
-        internal void CorrectAbstraction()
+        /// <inheritdoc />
+        public void CorrectCSharp()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        /// <inheritdoc />
+        public void CorrectCsProj()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void CorrectVsTemplate()
         {
             string abstractionFolder = Path.Combine(_templateFolder, "Proso.MvvmCross.Abstraction");
 
