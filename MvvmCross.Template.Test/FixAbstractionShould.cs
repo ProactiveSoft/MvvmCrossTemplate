@@ -3,9 +3,9 @@ using Xunit;
 
 namespace MvvmCross.Template.Test
 {
-    public class CorrectAbstractionShould
+    public class FixAbstractionShould
     {
-        public CorrectAbstractionShould()
+        public FixAbstractionShould()
         {
             _templateFolder = @"D:\Plugins\MvvmCrossTest\Temp";
             _abstractionFolder = Path.Combine(_templateFolder, "Proso.MvvmCross.Abstraction");
@@ -16,7 +16,8 @@ namespace MvvmCross.Template.Test
 
 
         [Fact]
-        public void ManipulateVsTemplate()
+        [Trait("File", ".vstemplate")]
+        public void FixVsTemplate()
         {
             // Arrange
             // Read file
