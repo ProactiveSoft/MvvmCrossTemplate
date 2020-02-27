@@ -31,6 +31,8 @@ namespace MvvmCross.Template
                 if (vsTemplate[i] == "  </TemplateData>")
                 {
                     vsTemplate.Insert(i, "    <Hidden>true</Hidden>");
+                    // After inserting, next index will again point to "  </TemplateData>"
+                    // So increment i for go to next line
                     i++;
 
                     continue;
