@@ -25,7 +25,7 @@ namespace MvvmCross.Template
 
                 File.WriteAllLines(csFile, content);
 
-                WriteLine($"Finished {csFile}");
+                WriteLine($"Finished {csFile}\n");
             }
         }
 
