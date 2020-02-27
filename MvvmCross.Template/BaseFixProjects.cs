@@ -39,7 +39,10 @@ namespace MvvmCross.Template
         }
 
         /// <inheritdoc />
-        public abstract void FixCsProj();
+        public virtual void FixCsProj()
+        {
+            throw new System.NotImplementedException();
+        }
 
         /// <inheritdoc />
         public abstract void FixVsTemplate();
