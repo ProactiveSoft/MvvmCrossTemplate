@@ -26,10 +26,24 @@ namespace MvvmCross.Template
                 File.ReadAllLines(Path.Combine(abstractionFolder, "MyTemplate.vstemplate")).ToList();
 
 
-            // Manipulate file
-            vsTemplate.Insert(16, "    <Hidden>true</Hidden>");
-            vsTemplate[19] = vsTemplate[19].Replace("TargetFileName=\"MvvmCrossTest.Abstraction.csproj\"",
-                "TargetFileName=\"$safeprojectname$.csproj\"");
+            for (var i = 0; i < vsTemplate.Count; i++)
+            {
+                if (vsTemplate[i] == "  </TemplateData>")
+                {
+                    vsTemplate.Insert(i, "    <Hidden>true</Hidden>");
+                    i++;
+
+                    continue;
+                }
+
+                if (vsTemplate[i].StartsWith("    <Project "))
+                {
+                    vsTemplate[i] = vsTemplate[i].Replace("TargetFileName=\"MvvmCrossTest.Abstraction.csproj\"",
+                        "TargetFileName=\"$safeprojectname$.csproj\"");
+
+                    break;
+                }
+            }
 
 
             // Write file
