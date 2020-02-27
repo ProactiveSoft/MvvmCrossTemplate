@@ -4,12 +4,13 @@
     {
         static void Main(string[] args)
         {
-            FixAbstraction fixAbstraction = new FixAbstraction();
-            fixAbstraction.FixVsTemplate();
+            BaseFixProjects fixProjects = new BaseFixProjects();
+            fixProjects.FixVsTemplate();
 
             FixCore fixCore = new FixCore();
             fixCore.FixCSharp();
 
+            fixProjects.FixCsProj();
             FixUwpProject fixUwp = new FixUwpProject();
             fixUwp.FixCsProj();
 

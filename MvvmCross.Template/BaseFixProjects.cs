@@ -4,7 +4,7 @@ using static System.Console;
 
 namespace MvvmCross.Template
 {
-    abstract class BaseFixProjects : IFixLibraryProjects
+    class BaseFixProjects : IFixLibraryProjects
     {
         /// <inheritdoc />
         public void FixCSharp()
@@ -45,7 +45,7 @@ namespace MvvmCross.Template
             foreach (var csprojFile in CsprojFiles)
             {
                 WriteLine($"Fixing \\MvvmCrossTest --> \\$ext_safeprojectname$: {csprojFile}");
-                
+
                 string contents = File.ReadAllText(csprojFile);
                 contents = contents.Replace("\\MvvmCrossTest", "\\$ext_safeprojectname$");
                 File.WriteAllText(csprojFile, contents);
@@ -55,7 +55,33 @@ namespace MvvmCross.Template
         }
 
         /// <inheritdoc />
-        public abstract void FixVsTemplate();
+        public virtual void FixVsTemplate()
+        {
+            IEnumerable<string> vsTemplateFiles =
+                Directory.EnumerateFiles(TemplateFolder, "*.vstemplate", SearchOption.AllDirectories);
+            foreach (var vsTemplateFile in vsTemplateFiles)
+            {
+                string contents = File.ReadAllText(vsTemplateFile);
+                string projectName = ProjectNameFromPath(vsTemplateFile);
+                string oldValue = $"TargetFileName=\"MvvmCrossTest{projectName}";
+
+                WriteLine(
+                    $"Fixing TargetFileName=\"MvvmCrossTest{projectName}  -->  TargetFileName=\"$safeprojectname$: {vsTemplateFile}");
+
+                contents = contents.Replace(oldValue, "TargetFileName=\"$safeprojectname$");
+                File.WriteAllText(vsTemplateFile, contents);
+
+                WriteLine(
+                    "Fixed TargetFileName =\"MvvmCrossTest{projectName}  -->  TargetFileName=\"$safeprojectname$\n");
+            }
+        }
+
+        private string ProjectNameFromPath(string path)
+        {
+            string projectPath = Path.GetDirectoryName(path);
+            int lastDotIndex = projectPath!.LastIndexOf('.');
+            return projectPath[lastDotIndex..];
+        }
 
 
         protected readonly string TemplateFolder = @"D:\Plugins\MvvmCrossTest\Temp";
