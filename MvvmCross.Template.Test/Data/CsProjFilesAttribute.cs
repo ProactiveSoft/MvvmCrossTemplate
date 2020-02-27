@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using Xunit.Sdk;
 
@@ -13,7 +14,7 @@ namespace MvvmCross.Template.Test.Data
             string templateFolder = @"D:\Plugins\MvvmCrossTest\Temp";
             IEnumerable<string> csprojFiles =
                 Directory.EnumerateFiles(templateFolder, "*.csproj", SearchOption.AllDirectories);
-            foreach (var csprojFile in csprojFiles) yield return new object[] { csprojFile };
+            return csprojFiles.Select(csprojFile => new object[] { csprojFile });
         }
     }
 }
