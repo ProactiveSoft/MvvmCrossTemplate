@@ -1,17 +1,20 @@
-﻿using System;
-
-namespace MvvmCross.Template
+﻿namespace MvvmCross.Template
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //FixAbstraction fixAbstraction = new FixAbstraction();
-            //fixAbstraction.FixVsTemplate();
+            FixAbstraction fixAbstraction = new FixAbstraction();
+            fixAbstraction.FixVsTemplate();
 
             FixCore fixCore = new FixCore();
-            //fixCore.FixCSharp();
-            fixCore.FixCsProj();
+            fixCore.FixCSharp();
+
+            FixUwpProject fixUwp = new FixUwpProject();
+            fixUwp.FixCsProj();
+
+            FixAndroidProject fixAndroid = new FixAndroidProject();
+            fixAndroid.FixCsProj();
         }
     }
 }

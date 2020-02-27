@@ -41,17 +41,16 @@ namespace MvvmCross.Template
         /// <inheritdoc />
         public virtual void FixCsProj()
         {
-            IEnumerable<string> csprojFiles =
-                Directory.EnumerateFiles(TemplateFolder, "*.csproj", SearchOption.AllDirectories);
-            foreach (var csprojFile in csprojFiles)
+            CsprojFiles = Directory.EnumerateFiles(TemplateFolder, "*.csproj", SearchOption.AllDirectories);
+            foreach (var csprojFile in CsprojFiles)
             {
-                WriteLine($"Fixing {csprojFile}");
+                WriteLine($"Fixing \\MvvmCrossTest --> \\$ext_safeprojectname$: {csprojFile}");
                 
                 string contents = File.ReadAllText(csprojFile);
                 contents = contents.Replace("\\MvvmCrossTest", "\\$ext_safeprojectname$");
                 File.WriteAllText(csprojFile, contents);
 
-                WriteLine("Fixed: \\MvvmCrossTest --> \\$ext_safeprojectname$\n");
+                WriteLine("Fixed \\MvvmCrossTest --> \\$ext_safeprojectname$\n");
             }
         }
 
@@ -60,5 +59,6 @@ namespace MvvmCross.Template
 
 
         protected readonly string TemplateFolder = @"D:\Plugins\MvvmCrossTest\Temp";
+        protected IEnumerable<string> CsprojFiles;
     }
 }

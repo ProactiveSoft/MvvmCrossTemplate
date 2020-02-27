@@ -9,17 +9,10 @@ namespace MvvmCross.Template
 
 
         /// <inheritdoc />
-        public override void FixCsProj()
-        {
-            base.FixCsProj();
-        }
-
-        /// <inheritdoc />
         public override void FixVsTemplate()
         {
             throw new NotImplementedException();
         }
-
 
 
         private readonly string _coreFolder;
