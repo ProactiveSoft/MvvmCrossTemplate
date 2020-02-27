@@ -62,6 +62,26 @@ namespace MvvmCross.Template
             foreach (var vsTemplateFile in vsTemplateFiles)
             {
                 string contents = File.ReadAllText(vsTemplateFile);
+
+                AddHidden(vsTemplateFile, ref contents);
+                ReplaceMvvmCrossTest(vsTemplateFile, ref contents);
+
+                File.WriteAllText(vsTemplateFile, contents);
+
+                WriteLine($"Fixed {vsTemplateFile}\n");
+            }
+
+            void AddHidden(string vsTemplateFile, ref string contents)
+            {
+                WriteLine($"Adding <Hidden>true</Hidden> in {vsTemplateFile}");
+
+                string hidden = @"    <Hidden>true</Hidden>
+  </TemplateData>";
+                contents = contents.Replace("  </TemplateData>", hidden);
+            }
+
+            void ReplaceMvvmCrossTest(string vsTemplateFile, ref string contents)
+            {
                 string projectName = ProjectNameFromPath(vsTemplateFile);
                 string oldValue = $"TargetFileName=\"MvvmCrossTest{projectName}";
 
@@ -69,22 +89,18 @@ namespace MvvmCross.Template
                     $"Fixing TargetFileName=\"MvvmCrossTest{projectName}  -->  TargetFileName=\"$safeprojectname$: {vsTemplateFile}");
 
                 contents = contents.Replace(oldValue, "TargetFileName=\"$safeprojectname$");
-                File.WriteAllText(vsTemplateFile, contents);
-
-                WriteLine(
-                    "Fixed TargetFileName =\"MvvmCrossTest{projectName}  -->  TargetFileName=\"$safeprojectname$\n");
             }
         }
 
         private string ProjectNameFromPath(string path)
         {
-            string projectPath = Path.GetDirectoryName(path);
-            int lastDotIndex = projectPath!.LastIndexOf('.');
+            string projectPath = Path.GetDirectoryName(path) ?? string.Empty;
+            int lastDotIndex = projectPath.LastIndexOf('.');
             return projectPath[lastDotIndex..];
         }
 
 
         protected readonly string TemplateFolder = @"D:\Plugins\MvvmCrossTest\Temp";
-        protected IEnumerable<string> CsprojFiles;
+        protected IEnumerable<string>? CsprojFiles;
     }
 }

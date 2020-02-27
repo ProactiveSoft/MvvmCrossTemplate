@@ -15,25 +15,25 @@ namespace MvvmCross.Template.Test
 
 
 
-        [Fact]
-        [Trait("File", ".vstemplate")]
-        public void FixVsTemplate()
-        {
-            // Arrange
-            // Read file
-            string vsTemplate = File.ReadAllText(VsTemplatePath);
+        //[Fact]
+        //[Trait("File", ".vstemplate")]
+        //public void FixVsTemplate()
+        //{
+        //    // Arrange
+        //    // Read file
+        //    string vsTemplate = File.ReadAllText(VsTemplatePath);
 
 
-            // Act
+        //    // Act
 
 
-            // Assert
-            string hidden = "    <Hidden>true</Hidden>";
-            Assert.Contains(hidden, vsTemplate);
+        //    // Assert
+        //    string hidden = "    <Hidden>true</Hidden>";
+        //    Assert.Contains(hidden, vsTemplate);
 
-            string safeProjectName = "    <Project TargetFileName=\"$safeprojectname$.csproj\"";
-            Assert.Contains(safeProjectName, vsTemplate);
-        }
+        //    string safeProjectName = "    <Project TargetFileName=\"$safeprojectname$.csproj\"";
+        //    Assert.Contains(safeProjectName, vsTemplate);
+        //}
 
 
 
