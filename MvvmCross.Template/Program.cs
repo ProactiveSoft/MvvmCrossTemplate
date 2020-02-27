@@ -10,7 +10,6 @@
             FixCore fixCore = new FixCore();
             fixCore.FixCSharp();
 
-            fixProjects.FixCsProj();
             FixUwpProject fixUwp = new FixUwpProject();
             fixUwp.FixCsProj();
 

@@ -8,7 +8,7 @@ namespace MvvmCross.Template
         /// <inheritdoc />
         public override void FixCsProj()
         {
-            base.FixCsProj();
+            base.FixCsProj();   // Fixes \MvvmCrossTest
 
             foreach (var csprojFile in CsprojFiles)
             {

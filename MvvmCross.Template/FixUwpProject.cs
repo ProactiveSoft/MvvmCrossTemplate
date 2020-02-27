@@ -11,6 +11,8 @@ namespace MvvmCross.Template
         /// <inheritdoc />
         public override void FixCsProj()
         {
+            base.FixCsProj();   // Fixes "<Name>MvvmCrossTest"
+
             string csproj = Path.Combine(_uwpFolder, "MvvmCrossTest.UWP.csproj");
             WriteLine(
                 $"Fixing <PackageCertificateKeyFile>MvvmCrossTest.UWP  -->  <PackageCertificateKeyFile>$safeprojectname$: {csproj}");
