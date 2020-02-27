@@ -41,7 +41,18 @@ namespace MvvmCross.Template
         /// <inheritdoc />
         public virtual void FixCsProj()
         {
-            throw new System.NotImplementedException();
+            IEnumerable<string> csprojFiles =
+                Directory.EnumerateFiles(TemplateFolder, "*.csproj", SearchOption.AllDirectories);
+            foreach (var csprojFile in csprojFiles)
+            {
+                WriteLine($"Fixing {csprojFile}");
+                
+                string contents = File.ReadAllText(csprojFile);
+                contents = contents.Replace("\\MvvmCrossTest", "\\$ext_safeprojectname$");
+                File.WriteAllText(csprojFile, contents);
+
+                WriteLine("Fixed: \\MvvmCrossTest --> \\$ext_safeprojectname$\n");
+            }
         }
 
         /// <inheritdoc />

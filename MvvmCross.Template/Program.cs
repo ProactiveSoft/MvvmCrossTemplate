@@ -11,6 +11,7 @@ namespace MvvmCross.Template
 
             FixCore fixCore = new FixCore();
             //fixCore.FixCSharp();
+            fixCore.FixCsProj();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -168,15 +168,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\MvvmCrossTest.Abstraction\MvvmCrossTest.Abstraction.csproj">
+    <ProjectReference Include="..\$ext_safeprojectname$.Abstraction\$ext_safeprojectname$.Abstraction.csproj">
       <Project>{2e3244ef-39d5-43cb-ac36-70a8d42c8e85}</Project>
       <Name>MvvmCrossTest.Abstraction</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MvvmCrossTest.Core\MvvmCrossTest.Core.csproj">
+    <ProjectReference Include="..\$ext_safeprojectname$.Core\$ext_safeprojectname$.Core.csproj">
       <Project>{aee678e2-f59f-4b5c-96cc-6c7c8eb73bdf}</Project>
       <Name>MvvmCrossTest.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MvvmCrossTest.Forms\MvvmCrossTest.Forms.csproj">
+    <ProjectReference Include="..\$ext_safeprojectname$.Forms\$ext_safeprojectname$.Forms.csproj">
       <Project>{4a6045c2-2ed5-4c7d-95ad-8b82d3e11fb9}</Project>
       <Name>MvvmCrossTest.Forms</Name>
     </ProjectReference>

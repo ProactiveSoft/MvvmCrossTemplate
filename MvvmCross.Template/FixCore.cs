@@ -11,7 +11,7 @@ namespace MvvmCross.Template
         /// <inheritdoc />
         public override void FixCsProj()
         {
-            throw new NotImplementedException();
+            base.FixCsProj();
         }
 
         /// <inheritdoc />
