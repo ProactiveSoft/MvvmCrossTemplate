@@ -8,12 +8,6 @@ namespace MvvmCross.Template
         public FixCore() => _coreFolder = Path.Combine(TemplateFolder, "Proso.MvvmCross.Core");
 
 
-        /// <inheritdoc />
-        public override void FixVsTemplate()
-        {
-            throw new NotImplementedException();
-        }
-
 
         private readonly string _coreFolder;
     }

@@ -4,17 +4,15 @@
     {
         static void Main(string[] args)
         {
-            BaseFixProjects fixProjects = new BaseFixProjects();
+            IFixLibraryProjects fixProjects = new BaseFixProjects();
             fixProjects.FixVsTemplate();
+            fixProjects.FixCSharp();
 
-            FixCore fixCore = new FixCore();
-            fixCore.FixCSharp();
+            IFixPlatformProjects fixPlatformProjects = new FixUwpProject();
+            fixPlatformProjects.FixCsProj();
 
-            FixUwpProject fixUwp = new FixUwpProject();
-            fixUwp.FixCsProj();
-
-            FixAndroidProject fixAndroid = new FixAndroidProject();
-            fixAndroid.FixCsProj();
+            fixPlatformProjects = new FixAndroidProject();
+            fixPlatformProjects.FixCsProj();
         }
     }
 }

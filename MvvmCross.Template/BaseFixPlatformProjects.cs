@@ -10,7 +10,7 @@ namespace MvvmCross.Template
         {
             base.FixCsProj();   // Fixes \MvvmCrossTest
 
-            foreach (var csprojFile in CsprojFiles)
+            foreach (var csprojFile in CsprojFiles!)
             {
                 WriteLine($"Fixing <Name>MvvmCrossTest  -->  <Name>$ext_safeprojectname$: {csprojFile}");
 
@@ -20,12 +20,6 @@ namespace MvvmCross.Template
 
                 WriteLine($"Fixed <Name>MvvmCrossTest  -->  <Name>$ext_safeprojectname$.\n");
             }
-        }
-
-        /// <inheritdoc />
-        public override void FixVsTemplate()
-        {
-            throw new System.NotImplementedException();
         }
 
         /// <inheritdoc />
