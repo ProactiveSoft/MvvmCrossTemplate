@@ -59,9 +59,9 @@ namespace MvvmCross.Template.Test
         }
 
         [Theory]
-        [Trait("File ", ".vstemplate")]
+        [Trait("File", ".vstemplate")]
         [VsTemplateFiles]
-        public void FixVsTemplate(string path)
+        public void HiddenAndRemoveMvvmCrossTest(string path)
         {
             // Arrange
             _console.WriteLine($"Reading {path}");

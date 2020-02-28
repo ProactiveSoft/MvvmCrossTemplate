@@ -23,7 +23,25 @@ namespace MvvmCross.Template
             File.WriteAllText(csproj, contents);
 
             WriteLine(
-                "Fixed <PackageCertificateKeyFile>MvvmCrossTest.UWP  -->  <PackageCertificateKeyFile>$safeprojectname$");
+                "Fixed <PackageCertificateKeyFile>MvvmCrossTest.UWP  -->  <PackageCertificateKeyFile>$safeprojectname$\n");
+        }
+
+        /// <inheritdoc />
+        public override void FixVsTemplate()
+        {
+            base.FixVsTemplate();
+
+            string vsTemplate = Path.Combine(_uwpFolder, "MyTemplate.vstemplate");
+            WriteLine(
+                $"Fixing <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Package.appxmanifest\"  -->  <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Package.appxmanifest\": {vsTemplate}");
+
+            string contents = File.ReadAllText(vsTemplate);
+            contents = contents.Replace(
+                "      <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Package.appxmanifest\"",
+                "      <ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Package.appxmanifest\"");
+            File.WriteAllText(vsTemplate, contents);
+
+            WriteLine("Fixed ReplaceParameters=\"false\"  -->  ReplaceParameters=\"true\"\n");
         }
 
         /// <inheritdoc />
