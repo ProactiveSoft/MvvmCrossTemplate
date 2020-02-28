@@ -1,6 +1,6 @@
 ﻿using System.IO;
-using System.Reflection;
 using MvvmCross.Template.Test.Data;
+using MvvmCross.Template.Test.Helpers;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -8,7 +8,11 @@ namespace MvvmCross.Template.Test
 {
     public class BaseFixProjectsShould
     {
-        public BaseFixProjectsShould(ITestOutputHelper console) => _console = console;
+        public BaseFixProjectsShould(ITestOutputHelper console)
+        {
+            _console = console;
+            _usingReflection = new UsingReflection(_console);
+        }
 
 
         [Theory]
@@ -40,13 +44,13 @@ namespace MvvmCross.Template.Test
         {
             // Arrange
             BaseFixProjects sut = new BaseFixProjects();
-            MethodInfo projectNameFromPathInfo = typeof(BaseFixProjects).GetMethod("ProjectNameFromPath",
-                BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Act
             _console.WriteLine($"Getting project name from {path}");
 
-            var actualProjectName = projectNameFromPathInfo.Invoke(sut, new object?[] { path });
+            string actualProjectName =
+                _usingReflection.CallPrivateMethod<BaseFixProjects, string>(sut, "ProjectNameFromPath",
+                    new object[] { path });
 
             // Assert
             Assert.Equal(expectedProjectName, actualProjectName);
@@ -74,5 +78,6 @@ namespace MvvmCross.Template.Test
 
 
         private readonly ITestOutputHelper _console;
+        private readonly UsingReflection _usingReflection;
     }
 }
