@@ -1,11 +1,16 @@
 ﻿using System.IO;
+using MvvmCross.Template.Helpers;
 using static System.Console;
 
 namespace MvvmCross.Template
 {
     class FixIosProject : BaseFixPlatformProjects
     {
-        public FixIosProject() => _iOsFolder = Path.Combine(TemplateFolder, "Proso.MvvmCross.iOS");
+        public FixIosProject(IFolderHelper folderHelper)
+        {
+            _folderHelper = folderHelper;
+            _iOsFolder = Path.Combine(TemplateFolder, "Proso.MvvmCross.iOS");
+        }
 
 
         /// <inheritdoc />
@@ -28,6 +33,14 @@ namespace MvvmCross.Template
         }
 
         /// <inheritdoc />
+        public void CopyItems()
+        {
+            // Copy Assets.xcassets folder
+            string source = Path.Combine(TemplateFolder, "..", "MvvmCrossTest", "MvvmCrossTest.iOS", "Assets.xcassets");
+            _folderHelper.NaiveCopyFolder(source, _iOsFolder);
+        }
+
+        /// <inheritdoc />
         public override void CorrectManifest()
         {
             throw new System.NotImplementedException();
@@ -35,5 +48,6 @@ namespace MvvmCross.Template
 
 
         private readonly string _iOsFolder;
+        private readonly IFolderHelper _folderHelper;
     }
 }

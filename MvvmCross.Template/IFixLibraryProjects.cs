@@ -5,5 +5,6 @@
         void FixCSharp();
         void FixCsProj();
         void FixVsTemplate();
+        public void CopyItems() { }
     }
 }

@@ -92,6 +92,7 @@ namespace MvvmCross.Template
             }
         }
 
+
         private string ProjectNameFromPath(string path)
         {
             string projectPath = Path.GetDirectoryName(path) ?? string.Empty;

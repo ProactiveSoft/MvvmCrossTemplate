@@ -1,11 +1,12 @@
-﻿namespace MvvmCross.Template
+﻿using MvvmCross.Template.Helpers;
+
+namespace MvvmCross.Template
 {
     class Program
     {
         static void Main(string[] args)
         {
             IFixLibraryProjects fixProjects = new BaseFixProjects();
-            //fixProjects.FixVsTemplate();
             fixProjects.FixCSharp();
 
             IFixPlatformProjects fixPlatformProjects = new FixUwpProject();
@@ -15,8 +16,9 @@
             fixPlatformProjects = new FixAndroidProject();
             fixPlatformProjects.FixCsProj();
 
-            fixPlatformProjects = new FixIosProject();
+            fixPlatformProjects = new FixIosProject(new FolderHelper());
             fixPlatformProjects.FixVsTemplate();
+            ((FixIosProject)fixPlatformProjects).CopyItems();
         }
     }
 }
