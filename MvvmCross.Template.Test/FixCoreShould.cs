@@ -7,7 +7,7 @@ namespace MvvmCross.Template.Test
 {
     public class FixCoreShould
     {
-        public FixCoreShould(ITestOutputHelper console) => _console = console;
+        public FixCoreShould(ITestOutputHelper output) => _output = output;
 
 
         [Theory]
@@ -16,18 +16,18 @@ namespace MvvmCross.Template.Test
         public void FixCsProj(string csprojFile)
         {
             // Arrange
-            _console.WriteLine($"Checking .csproj file for MvvmCrossTest: {csprojFile}");
+            _output.WriteLine($"Checking .csproj file for MvvmCrossTest: {csprojFile}");
 
             string contents = File.ReadAllText(csprojFile);
 
             // Assert
             Assert.DoesNotContain("MvvmCrossTest", contents);
 
-            _console.WriteLine("Checked file.");
+            _output.WriteLine("Checked file.");
         }
 
 
 
-        private readonly ITestOutputHelper _console;
+        private readonly ITestOutputHelper _output;
     }
 }

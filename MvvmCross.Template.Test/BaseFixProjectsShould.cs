@@ -8,10 +8,10 @@ namespace MvvmCross.Template.Test
 {
     public class BaseFixProjectsShould
     {
-        public BaseFixProjectsShould(ITestOutputHelper console)
+        public BaseFixProjectsShould(ITestOutputHelper output)
         {
-            _console = console;
-            _usingReflection = new UsingReflection(_console);
+            _output = output;
+            _usingReflection = new UsingReflection(_output);
         }
 
 
@@ -21,7 +21,7 @@ namespace MvvmCross.Template.Test
         public void FixCSharp(string filePath)
         {
             // Arrange
-            _console.WriteLine($"Reading {filePath}");
+            _output.WriteLine($"Reading {filePath}");
 
             string contents = File.ReadAllText(filePath);
 
@@ -29,7 +29,7 @@ namespace MvvmCross.Template.Test
             // Assert
             Assert.DoesNotContain("MvvmCrossTest", contents);
 
-            _console.WriteLine($"Checked {filePath}");
+            _output.WriteLine($"Checked {filePath}");
         }
 
         [Theory]
@@ -46,7 +46,7 @@ namespace MvvmCross.Template.Test
             BaseFixProjects sut = new BaseFixProjects();
 
             // Act
-            _console.WriteLine($"Getting project name from {path}");
+            _output.WriteLine($"Getting project name from {path}");
 
             string actualProjectName =
                 _usingReflection.CallPrivateMethod<BaseFixProjects, string>(sut, "ProjectNameFromPath",
@@ -55,7 +55,7 @@ namespace MvvmCross.Template.Test
             // Assert
             Assert.Equal(expectedProjectName, actualProjectName);
 
-            _console.WriteLine($"Project name: {actualProjectName}");
+            _output.WriteLine($"Project name: {actualProjectName}");
         }
 
         [Theory]
@@ -64,7 +64,7 @@ namespace MvvmCross.Template.Test
         public void HiddenAndRemoveMvvmCrossTest(string path)
         {
             // Arrange
-            _console.WriteLine($"Reading {path}");
+            _output.WriteLine($"Reading {path}");
 
             string contents = File.ReadAllText(path);
 
@@ -72,12 +72,12 @@ namespace MvvmCross.Template.Test
             Assert.Contains("    <Hidden>true</Hidden>", contents);
             Assert.DoesNotContain("TargetFileName=\"MvvmCrossTest", contents);
 
-            _console.WriteLine($"Checked {path}");
+            _output.WriteLine($"Checked {path}");
         }
 
 
 
-        private readonly ITestOutputHelper _console;
+        private readonly ITestOutputHelper _output;
         private readonly UsingReflection _usingReflection;
     }
 }

@@ -6,7 +6,7 @@ namespace MvvmCross.Template.Test
 {
     public class FixPlatformVsTemplateShould
     {
-        public FixPlatformVsTemplateShould(ITestOutputHelper console) => _console = console;
+        public FixPlatformVsTemplateShould(ITestOutputHelper output) => _output = output;
 
 
         [Theory]
@@ -17,17 +17,17 @@ namespace MvvmCross.Template.Test
         public void MakeManifestReplaceable(string expected, string filePath)
         {
             // Arrange
-            _console.WriteLine($"Checking {expected} in {filePath}");
+            _output.WriteLine($"Checking {expected} in {filePath}");
 
             string contents = File.ReadAllText(filePath);
 
             // Assert
             Assert.Contains(expected, contents);
 
-            _console.WriteLine($"Checked for ReplaceParameters=\"true\"");
+            _output.WriteLine($"Checked for ReplaceParameters=\"true\"");
         }
 
 
-        private readonly ITestOutputHelper _console;
+        private readonly ITestOutputHelper _output;
     }
 }
