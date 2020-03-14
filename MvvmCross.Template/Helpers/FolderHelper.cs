@@ -27,5 +27,18 @@ namespace MvvmCross.Template.Helpers
             // Copy sub-folders
             foreach (var subFolder in subFolders) NaiveCopyFolder(subFolder, destination);
         }
+
+        /// <inheritdoc />
+        public void CopyFolderFiles(string source, string destination)
+        {
+            string[] sourceFiles = Directory.GetFiles(source);
+
+            foreach (var sourceFile in sourceFiles)
+            {
+                string fileName = Path.GetFileName(sourceFile),
+                    destFileName = Path.Combine(destination, fileName);
+                File.Copy(sourceFile, destFileName);
+            }
+        }
     }
 }
