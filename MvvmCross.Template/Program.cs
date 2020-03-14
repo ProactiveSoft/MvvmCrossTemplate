@@ -27,6 +27,8 @@ namespace MvvmCross.Template
             string version = args[0];
             IFixMetadata fixMetadata = new FixCore();
             fixMetadata.UpdateVersion(version);
+            fixMetadata = fixTemplateRoot;
+            fixMetadata.UpdateVersion(version);
         }
     }
 }

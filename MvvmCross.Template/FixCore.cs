@@ -22,7 +22,7 @@ namespace MvvmCross.Template
 
             File.WriteAllLines(mainVmPath, contents);
 
-            WriteLine($"Updated MvvmCross template version {version} in MainViewModel.cs");
+            WriteLine($"\nUpdated MvvmCross template version {version} in MainViewModel.cs");
         }
 
 
