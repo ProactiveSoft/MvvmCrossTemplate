@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MvvmCross.Template": {
+      "commandName": "Project",
+      "commandLineArgs": "6.4.2"
+    }
+  }
+}

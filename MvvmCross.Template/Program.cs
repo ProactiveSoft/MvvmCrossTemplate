@@ -16,9 +16,17 @@ namespace MvvmCross.Template
             fixPlatformProjects = new FixAndroidProject();
             fixPlatformProjects.FixCsProj();
 
-            fixPlatformProjects = new FixIosProject(new FolderHelper());
+            IFolderHelper folderHelper = new FolderHelper();
+            fixPlatformProjects = new FixIosProject(folderHelper);
             fixPlatformProjects.FixVsTemplate();
             ((FixIosProject)fixPlatformProjects).CopyItems();
+
+            FixTemplateRoot fixTemplateRoot = new FixTemplateRoot(folderHelper);
+            fixTemplateRoot.CopyItems();
+
+            string version = args[0];
+            IFixMetadata fixMetadata = new FixCore();
+            fixMetadata.UpdateVersion(version);
         }
     }
 }
