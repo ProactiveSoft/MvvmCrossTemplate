@@ -18,8 +18,9 @@ namespace MvvmCross.Template
 
 
         /// <inheritdoc />
-        public void UpdateVersion(string version)
+        public void UpdateVersion()
         {
+            string version = ((IFixMetadata) this).NewTemplateVersion;
             string[] vsTemplate =
                 File.ReadAllLines(@"D:\Plugins\MvvmCrossTest\Temp\Proso-MvvmCross-Xamarin-Template.vstemplate");
             for (var i = 0; i < vsTemplate.Length; i++)

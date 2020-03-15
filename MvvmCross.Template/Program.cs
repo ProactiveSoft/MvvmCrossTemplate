@@ -24,11 +24,10 @@ namespace MvvmCross.Template
             FixTemplateRoot fixTemplateRoot = new FixTemplateRoot(folderHelper);
             fixTemplateRoot.CopyItems();
 
-            string version = args[0];
             IFixMetadata fixMetadata = new FixCore();
-            fixMetadata.UpdateVersion(version);
+            fixMetadata.UpdateVersion();
             fixMetadata = fixTemplateRoot;
-            fixMetadata.UpdateVersion(version);
+            fixMetadata.UpdateVersion();
         }
     }
 }
