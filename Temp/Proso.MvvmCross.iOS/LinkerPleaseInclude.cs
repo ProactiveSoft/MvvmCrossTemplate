@@ -1,4 +1,4 @@
-﻿using Foundation;
+using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Navigation;
 using MvvmCross.Platforms.Ios.Views;

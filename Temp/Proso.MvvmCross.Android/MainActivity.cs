@@ -1,4 +1,4 @@
-﻿using Android.App;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using MvvmCross.Forms.Platforms.Android.Views;
@@ -7,7 +7,7 @@ using MvvmCross.Forms.Platforms.Android.Views;
 namespace $safeprojectname$
 {
     [Activity(
-        Label = "MvvmCrossTest",
+        Label = "$ext_safeprojectname$",
         Icon = "@mipmap/icon",
         Theme = "@style/MainTheme",
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,

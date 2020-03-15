@@ -1,4 +1,4 @@
-﻿using Android.App;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using MvvmCross.Forms.Platforms.Android.Views;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace $safeprojectname$
 {
     [Activity(
-        Label = "MvvmCrossTest",
+        Label = "$ext_safeprojectname$",
         MainLauncher = true,
         Icon = "@mipmap/icon",
         Theme = "@style/MainTheme.Splash",

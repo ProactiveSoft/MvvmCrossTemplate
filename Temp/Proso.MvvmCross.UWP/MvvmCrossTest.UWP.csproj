@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -17,7 +17,7 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>MvvmCrossTest.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>$safeprojectname$_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -160,17 +160,17 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MvvmCrossTest.Abstraction\MvvmCrossTest.Abstraction.csproj">
+    <ProjectReference Include="..\$ext_safeprojectname$.Abstraction\$ext_safeprojectname$.Abstraction.csproj">
       <Project>{2e3244ef-39d5-43cb-ac36-70a8d42c8e85}</Project>
-      <Name>MvvmCrossTest.Abstraction</Name>
+      <Name>$ext_safeprojectname$.Abstraction</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MvvmCrossTest.Core\MvvmCrossTest.Core.csproj">
+    <ProjectReference Include="..\$ext_safeprojectname$.Core\$ext_safeprojectname$.Core.csproj">
       <Project>{aee678e2-f59f-4b5c-96cc-6c7c8eb73bdf}</Project>
-      <Name>MvvmCrossTest.Core</Name>
+      <Name>$ext_safeprojectname$.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MvvmCrossTest.Forms\MvvmCrossTest.Forms.csproj">
+    <ProjectReference Include="..\$ext_safeprojectname$.Forms\$ext_safeprojectname$.Forms.csproj">
       <Project>{4a6045c2-2ed5-4c7d-95ad-8b82d3e11fb9}</Project>
-      <Name>MvvmCrossTest.Forms</Name>
+      <Name>$ext_safeprojectname$.Forms</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
