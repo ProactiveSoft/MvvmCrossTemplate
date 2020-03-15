@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\$ext_safeprojectname$.Abstraction\$ext_safeprojectname$.Abstraction.csproj" />
+    <ProjectReference Include="..\MvvmCrossTest.Abstraction\MvvmCrossTest.Abstraction.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -14,10 +14,9 @@
     <CreateInPlace>true</CreateInPlace>
     <Icon>__TemplateIcon.ico</Icon>
     <PreviewImage>__PreviewImage.jpg</PreviewImage>
-    <Hidden>true</Hidden>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="$safeprojectname$.csproj" File="MvvmCrossTest.Core.csproj" ReplaceParameters="true">
+    <Project TargetFileName="MvvmCrossTest.Core.csproj" File="MvvmCrossTest.Core.csproj" ReplaceParameters="true">
       <Folder Name="Models" TargetFolderName="Models" />
       <Folder Name="Repos" TargetFolderName="Repos" />
       <Folder Name="ViewModels" TargetFolderName="ViewModels">

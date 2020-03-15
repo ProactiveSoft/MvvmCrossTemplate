@@ -1,4 +1,4 @@
-using MvvmCross.Forms.Platforms.Uap.Views;
+﻿using MvvmCross.Forms.Platforms.Uap.Views;
 
 namespace $safeprojectname$
 {

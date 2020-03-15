@@ -1,4 +1,4 @@
-using MvvmCross;
+﻿using MvvmCross;
 
 namespace $safeprojectname$
 {
