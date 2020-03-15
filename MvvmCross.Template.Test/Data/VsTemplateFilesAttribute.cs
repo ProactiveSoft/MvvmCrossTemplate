@@ -13,7 +13,9 @@ namespace MvvmCross.Template.Test.Data
         {
             string templateFolder = @"D:\Plugins\MvvmCrossTest\Temp";
             IEnumerable<string> vsTemplateFiles =
-                Directory.EnumerateFiles(templateFolder, "*.vstemplate", SearchOption.AllDirectories);
+                Directory.EnumerateFiles(templateFolder, "*.vstemplate", SearchOption.AllDirectories)
+                    .Where(vsTemplateFile =>
+                        vsTemplateFile != Path.Combine(templateFolder, "Proso-MvvmCross-Xamarin-Template.vstemplate"));
             return vsTemplateFiles.Select(vsTemplateFile => new object[] { vsTemplateFile });
         }
     }
