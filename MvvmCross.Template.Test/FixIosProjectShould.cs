@@ -12,7 +12,7 @@ namespace MvvmCross.Template.Test
 
 
         [Fact]
-        [Trait("Task", "Copy Folder")]
+        [Trait("Task", "Fix root")]
         public void CopyAssetsFolder()
         {
             // Arrange
