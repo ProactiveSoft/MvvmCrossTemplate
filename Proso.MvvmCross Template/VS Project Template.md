@@ -203,6 +203,8 @@ ___
 * [MvvmCross 6.3.0 Template][9]
 * [Create VS Project Template][3]
 * [Pack VS Project Template into VSIX][4]
+* [Share AssemblyInfo.cs properties][12]
+* **Visual Studio Template's Schema**: *`C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Xml\Schemas\1033\vstemplate.xsd`*
 
 
 
@@ -227,3 +229,5 @@ ___
 [8]: https://forums.xamarin.com/discussion/comment/362053/#Comment_362053 "Solution: iOS images in Assets.xcassets is not copied in Custom VS project template - Xam Forum"
 [9]: https://github.com/Plac3hold3r/MvxScaffolding/tree/develop/src/Templates/MvxForms/Blank/src "MvvmCross 6.3.0 template - Placeholder"
 [10]: https://github.com/MvvmCross/MvvmCross/tree/develop/Projects/Playground "MvvmCross Playground Sample"
+[11]: C:\Program%20Files%20(x86)\Microsoft%20Visual%20Studio\2019\Enterprise\Xml\Schemas\1033\vstemplate.xsd "Visual Studio (vstemplate) Schema"
+[12]: https://stackoverflow.com/a/49601178 "Sharing AssemblyInfo.cs properties using Directory.Build.props - Stackoverflow"
