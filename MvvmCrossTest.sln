@@ -29,9 +29,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Template", "Template", "{B399C549-7D26-4DF7-9AD4-5364DC580CB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmCross.Template", "MvvmCross.Template\MvvmCross.Template.csproj", "{8F853444-618E-40D0-B695-2206F0A8374F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvvmCross.Template", "MvvmCross.Template\MvvmCross.Template.csproj", "{8F853444-618E-40D0-B695-2206F0A8374F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmCross.Template.Test", "MvvmCross.Template.Test\MvvmCross.Template.Test.csproj", "{00E4228C-69CF-4076-B36C-F60D526BD881}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvvmCross.Template.Test", "MvvmCross.Template.Test\MvvmCross.Template.Test.csproj", "{00E4228C-69CF-4076-B36C-F60D526BD881}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
