@@ -11,7 +11,7 @@ namespace MvvmCross.Template
         /// <inheritdoc />
         public void UpdateVersion()
         {
-            string version = ((IFixMetadata) this).NewTemplateVersion;
+            string version = ((IFixMetadata) this).CurrentMvxVersion;
             string mainVmPath = Path.Combine(_coreFolder, "ViewModels", "MainViewModel.cs");
             string[] contents = File.ReadAllLines(mainVmPath);
             for (var i = 0; i < contents.Length; i++)

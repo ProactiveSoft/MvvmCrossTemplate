@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.IO;
 using MvvmCross.Template.Helpers;
 using static System.Console;
@@ -12,49 +12,108 @@ namespace MvvmCross.Template
 
         public void CopyItems()
         {
-            string source = @"D:\Plugins\MvvmCrossTest\Proso.MvvmCross Template\Template",
-                destination = @"D:\Plugins\MvvmCrossTest\Temp";
-            _folderHelper.CopyFolderFiles(source, destination);
+            string source = Path.Combine(TemplateFolder, "..", "Proso.MvvmCross Template", "Template");
+            _folderHelper.CopyFolderFiles(source, TemplateFolder);
         }
 
 
         /// <inheritdoc />
         public void UpdateVersion()
         {
-            string version = ((IFixMetadata)this).NewTemplateVersion;
-            string[] vsTemplate =
-                File.ReadAllLines(@"D:\Plugins\MvvmCrossTest\Temp\Proso-MvvmCross-Xamarin-Template.vstemplate");
-            for (var i = 0; i < vsTemplate.Length; i++)
-                if (vsTemplate[i].StartsWith("    <Description>"))
+            UpdateMvxVersion();
+            UpdateTemplateVersion();
+            UpdateCopyright();
+
+            void UpdateMvxVersion()
+            {
+                string mvxVersion = ((IFixMetadata)this).CurrentMvxVersion;
+                string vsTemplate = Path.Combine(TemplateFolder, "Proso-MvvmCross-Xamarin-Template.vstemplate");
+                string[] contents = File.ReadAllLines(vsTemplate);
+                for (var i = 0; i < contents.Length; i++)
+                    if (contents[i].StartsWith("    <Description>"))
+                    {
+                        contents[i] = $"    <Description>MvvmCross template for MvvmCross {mvxVersion}.</Description>";
+                        break;
+                    }
+
+                File.WriteAllLines(vsTemplate, contents);
+
+                WriteLine($"\nUpdated MvvmCross template version {mvxVersion} in root .vstemplate");
+            }
+
+            void UpdateTemplateVersion()
+            {
+                string directoryBuildProps = Path.Combine(TemplateFolder, "Directory.Build.props");
+                string[] contents = File.ReadAllLines(directoryBuildProps);
+                List<string> startings = new List<string>(4)
                 {
-                    vsTemplate[i] = $"    <Description>MvvmCross template {version}.</Description>";
-                    break;
-                }
+                    "    <InformationalVersion>",
+                    "    <Version>",
+                    "    <AssemblyVersion>",
+                    "    <FileVersion>"
+                };
 
-            File.WriteAllLines(@"D:\Plugins\MvvmCrossTest\Temp\Proso-MvvmCross-Xamarin-Template.vstemplate", vsTemplate);
+                // ToDo: Extract method which does line-by-line operation
+                for (var line = 0; line < contents.Length && startings.Count > 0; line++)
+                    for (var starting = 0; starting < startings.Count; starting++)
+                    {
+                        if (!contents[line].StartsWith(startings[starting])) continue;
 
-            WriteLine($"\nUpdated MvvmCross template version {version} in root .vstemplate");
+                        string oldVersion = FindVersion(contents[line]),
+                            newVersion = string.Empty;
+                        switch (startings[starting])
+                        {
+                            case "    <InformationalVersion>":
+                            case "    <Version>":
+                            case "    <AssemblyVersion>":
+                                var (year, month, seconds) = ((IFixMetadata)this).CompactCurrentAppVersion;
+                                newVersion = $"{year}.{month}.{seconds}";
+
+                                startings.Remove(startings[starting]);
+                                break;
+                            case "    <FileVersion>":
+                                int day;
+                                (year, month, day, seconds) = ((IFixMetadata)this).CurrentAppVersion;
+                                newVersion = $"{year}.{month}.{day}.{seconds}";
+
+                                startings.Remove((startings[starting]));
+                                break;
+                        }
+
+                        contents[line] = contents[line].Replace(oldVersion, newVersion);
+                        break;
+                    }
+
+                File.WriteAllLines(directoryBuildProps, contents);
+            }
+
+            void UpdateCopyright()
+            {
+                string directoryBuildProps = Path.Combine(TemplateFolder, "Directory.Build.props");
+                string[] contents = File.ReadAllLines(directoryBuildProps);
+                for (var i = 0; i < contents.Length; i++)
+                    if (contents[i].StartsWith("    <Copyright>"))
+                    {
+                        int year = ((IFixMetadata)this).CurrentAppVersion.Year;
+                        contents[i] = $"    <Copyright>© Proso {year}</Copyright>";
+                        break;
+                    }
+                File.WriteAllLines(directoryBuildProps, contents);
+
+                WriteLine("\nAdded copyright to Directory.Build.props\n");
+            }
+
+            string FindVersion(string line)
+            {
+                int start = line.IndexOf('>') + 1,
+                    end = line.LastIndexOf('<');
+                return line[start..end];
+            }
         }
 
-        /// <summary>
-        /// Adds the copyright.
-        /// </summary>
-        public void AddCopyright()
-        {
-            string assemblyInfo = @"D:\Plugins\MvvmCrossTest\Temp\SharedAssemblyInfo.cs";
-            string[] contents = File.ReadAllLines(assemblyInfo);
-            for (var i = 0; i < contents.Length; i++)
-                if (contents[i].StartsWith("[assembly: AssemblyCopyright("))
-                {
-                    contents[i] = $"[assembly: AssemblyCopyright(\"© Proso {DateTime.Today.Year}\")]";
-                    break;
-                }
-            File.WriteAllLines(assemblyInfo, contents);
-
-            WriteLine("Added copyright to SharedAssemblyInfo.cs");
-        }
 
 
         private readonly IFolderHelper _folderHelper;
+        private const string TemplateFolder = @"D:\Plugins\MvvmCrossTest\Temp";
     }
 }

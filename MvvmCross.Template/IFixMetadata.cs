@@ -1,10 +1,11 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace MvvmCross.Template
 {
     public interface IFixMetadata
     {
-        protected internal string NewTemplateVersion
+        protected internal string CurrentMvxVersion
         {
             get
             {
@@ -20,6 +21,28 @@ namespace MvvmCross.Template
                     }
 
                 return "0.0.0";
+            }
+        }
+
+
+        protected internal (int Year, int Month, int Day, int Seconds) CurrentAppVersion
+        {
+            get
+            {
+                DateTime today = DateTime.Today, now = DateTime.Now;
+                int totalSeconds = (int)(now - today).TotalSeconds;
+                return (today.Year, today.Month, today.Day, totalSeconds);
+            }
+        }
+        
+        protected internal (int Year, int Month, int Seconds) CompactCurrentAppVersion
+        {
+            get
+            {
+                var version = CurrentAppVersion;
+                DateTime month = new DateTime(version.Year, version.Month, 1);
+                int totalSeconds = (int)(DateTime.Now - month).TotalSeconds;
+                return (version.Year, version.Month, totalSeconds);
             }
         }
 
