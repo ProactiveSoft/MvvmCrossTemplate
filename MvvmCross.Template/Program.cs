@@ -28,6 +28,8 @@ namespace MvvmCross.Template
             fixMetadata.UpdateVersion();
             fixMetadata = fixTemplateRoot;
             fixMetadata.UpdateVersion();
+
+            fixTemplateRoot.FixDirectoryBuildProps();
         }
     }
 }

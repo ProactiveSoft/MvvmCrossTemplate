@@ -47,7 +47,7 @@ namespace MvvmCross.Template
 
                 int year, month, day, seconds;
                 (year, month, seconds) = ((IFixMetadata)this).CompactCurrentAppVersion;
-                Dictionary<string, string> starts = new Dictionary<string, string>(4)
+                Dictionary<string, string> starts = new Dictionary<string, string>(5)
                 {
                     ["    <InformationalVersion>"] = $"{year}.{month}.{seconds}",
                     ["    <Version>"] = $"{year}.{month}.{seconds}",
@@ -58,50 +58,32 @@ namespace MvvmCross.Template
                 starts["    <FileVersion>"] = $"{year}.{month}.{day}.{seconds}";
                 UpdateValues(contents, starts);
 
-
-                //List<string> startings = new List<string>(4)
-                //{
-                //    "    <InformationalVersion>",
-                //    "    <Version>",
-                //    "    <AssemblyVersion>",
-                //    "    <FileVersion>"
-                //};
-
-                //for (var line = 0; line < contents.Length && startings.Count > 0; line++)
-                //    for (var starting = 0; starting < startings.Count; starting++)
-                //    {
-                //        if (!contents[line].StartsWith(startings[starting])) continue;
-
-                //        string oldVersion = FindValue(contents[line]),
-                //            newVersion = string.Empty;
-                //        switch (startings[starting])
-                //        {
-                //            case "    <InformationalVersion>":
-                //            case "    <Version>":
-                //            case "    <AssemblyVersion>":
-                //                var (year, month, seconds) = ((IFixMetadata)this).CompactCurrentAppVersion;
-                //                newVersion = $"{year}.{month}.{seconds}";
-
-                //                startings.Remove(startings[starting]);
-                //                break;
-                //            case "    <FileVersion>":
-                //                int day;
-                //                (year, month, day, seconds) = ((IFixMetadata)this).CurrentAppVersion;
-                //                newVersion = $"{year}.{month}.{day}.{seconds}";
-
-                //                startings.Remove((startings[starting]));
-                //                break;
-                //        }
-
-                //        contents[line] = contents[line].Replace(oldVersion, newVersion);
-                //        break;
-                //    }
-
                 File.WriteAllLines(directoryBuildProps, contents);
 
                 WriteLine("\nUpdated app version in Directory.Build.props\n");
             }
         }
+
+        public void FixDirectoryBuildProps()
+        {
+            string directoryBuildProps = Path.Combine(TemplateFolder, "Directory.Build.props");
+            string[] contents = File.ReadAllLines(directoryBuildProps);
+
+            Dictionary<string, string> starts = new Dictionary<string, string>(4)
+            {
+                ["    <Product>"] = "Enter product name ...",
+                ["    <Description>"] = "Enter product description ...",
+                ["    <!--<PackageProjectUrl>"] = "https://github.com/ProactiveSoft/",
+                ["    <!--<RepositoryUrl>"] = "https://github.com/ProactiveSoft/"
+            };
+            UpdateValues(contents, starts);
+
+            File.WriteAllLines(directoryBuildProps, contents);
+
+            WriteLine("\nFixed Directory.Build.props\n");
+        }
+
+        #region Helpers
 
         private void UpdateValues(string[] contents, Dictionary<string, string> starts)
         {
@@ -128,6 +110,8 @@ namespace MvvmCross.Template
                 end = line.LastIndexOf('<');
             return line[start..end];
         }
+
+        #endregion
 
 
         private readonly IFolderHelper _folderHelper;
