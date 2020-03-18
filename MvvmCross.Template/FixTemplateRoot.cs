@@ -22,7 +22,6 @@ namespace MvvmCross.Template
         {
             UpdateMvxVersion();
             UpdateTemplateVersion();
-            UpdateCopyright();
 
             void UpdateMvxVersion()
             {
@@ -45,72 +44,90 @@ namespace MvvmCross.Template
             {
                 string directoryBuildProps = Path.Combine(TemplateFolder, "Directory.Build.props");
                 string[] contents = File.ReadAllLines(directoryBuildProps);
-                List<string> startings = new List<string>(4)
+
+                int year, month, day, seconds;
+                (year, month, seconds) = ((IFixMetadata)this).CompactCurrentAppVersion;
+                Dictionary<string, string> starts = new Dictionary<string, string>(4)
                 {
-                    "    <InformationalVersion>",
-                    "    <Version>",
-                    "    <AssemblyVersion>",
-                    "    <FileVersion>"
+                    ["    <InformationalVersion>"] = $"{year}.{month}.{seconds}",
+                    ["    <Version>"] = $"{year}.{month}.{seconds}",
+                    ["    <AssemblyVersion>"] = $"{year}.{month}.{seconds}",
+                    ["    <Copyright>"] = $"© Proso {year}"
                 };
+                (_, _, day, seconds) = ((IFixMetadata)this).CurrentAppVersion;
+                starts["    <FileVersion>"] = $"{year}.{month}.{day}.{seconds}";
+                UpdateValues(contents, starts);
 
-                // ToDo: Extract method which does line-by-line operation
-                for (var line = 0; line < contents.Length && startings.Count > 0; line++)
-                    for (var starting = 0; starting < startings.Count; starting++)
-                    {
-                        if (!contents[line].StartsWith(startings[starting])) continue;
 
-                        string oldVersion = FindVersion(contents[line]),
-                            newVersion = string.Empty;
-                        switch (startings[starting])
-                        {
-                            case "    <InformationalVersion>":
-                            case "    <Version>":
-                            case "    <AssemblyVersion>":
-                                var (year, month, seconds) = ((IFixMetadata)this).CompactCurrentAppVersion;
-                                newVersion = $"{year}.{month}.{seconds}";
+                //List<string> startings = new List<string>(4)
+                //{
+                //    "    <InformationalVersion>",
+                //    "    <Version>",
+                //    "    <AssemblyVersion>",
+                //    "    <FileVersion>"
+                //};
 
-                                startings.Remove(startings[starting]);
-                                break;
-                            case "    <FileVersion>":
-                                int day;
-                                (year, month, day, seconds) = ((IFixMetadata)this).CurrentAppVersion;
-                                newVersion = $"{year}.{month}.{day}.{seconds}";
+                //for (var line = 0; line < contents.Length && startings.Count > 0; line++)
+                //    for (var starting = 0; starting < startings.Count; starting++)
+                //    {
+                //        if (!contents[line].StartsWith(startings[starting])) continue;
 
-                                startings.Remove((startings[starting]));
-                                break;
-                        }
+                //        string oldVersion = FindValue(contents[line]),
+                //            newVersion = string.Empty;
+                //        switch (startings[starting])
+                //        {
+                //            case "    <InformationalVersion>":
+                //            case "    <Version>":
+                //            case "    <AssemblyVersion>":
+                //                var (year, month, seconds) = ((IFixMetadata)this).CompactCurrentAppVersion;
+                //                newVersion = $"{year}.{month}.{seconds}";
 
-                        contents[line] = contents[line].Replace(oldVersion, newVersion);
-                        break;
-                    }
+                //                startings.Remove(startings[starting]);
+                //                break;
+                //            case "    <FileVersion>":
+                //                int day;
+                //                (year, month, day, seconds) = ((IFixMetadata)this).CurrentAppVersion;
+                //                newVersion = $"{year}.{month}.{day}.{seconds}";
+
+                //                startings.Remove((startings[starting]));
+                //                break;
+                //        }
+
+                //        contents[line] = contents[line].Replace(oldVersion, newVersion);
+                //        break;
+                //    }
 
                 File.WriteAllLines(directoryBuildProps, contents);
-            }
 
-            void UpdateCopyright()
-            {
-                string directoryBuildProps = Path.Combine(TemplateFolder, "Directory.Build.props");
-                string[] contents = File.ReadAllLines(directoryBuildProps);
-                for (var i = 0; i < contents.Length; i++)
-                    if (contents[i].StartsWith("    <Copyright>"))
-                    {
-                        int year = ((IFixMetadata)this).CurrentAppVersion.Year;
-                        contents[i] = $"    <Copyright>© Proso {year}</Copyright>";
-                        break;
-                    }
-                File.WriteAllLines(directoryBuildProps, contents);
-
-                WriteLine("\nAdded copyright to Directory.Build.props\n");
-            }
-
-            string FindVersion(string line)
-            {
-                int start = line.IndexOf('>') + 1,
-                    end = line.LastIndexOf('<');
-                return line[start..end];
+                WriteLine("\nUpdated app version in Directory.Build.props\n");
             }
         }
 
+        private void UpdateValues(string[] contents, Dictionary<string, string> starts)
+        {
+            for (int line = 0, count = 0; line < contents.Length && count < starts.Count; line++)
+            {
+                string starting = FindStart(contents[line]);
+                if (!starts.TryGetValue(starting, out string newValue)) continue;
+
+                string oldValue = FindValue(contents[line]);
+                contents[line] = contents[line].Replace(oldValue, newValue);
+                count++;
+            }
+        }
+
+        private string FindStart(string line)
+        {
+            int end = line.IndexOf('>') + 1;
+            return line[..end];
+        }
+
+        private string FindValue(string line)
+        {
+            int start = line.IndexOf('>') + 1,
+                end = line.LastIndexOf('<');
+            return line[start..end];
+        }
 
 
         private readonly IFolderHelper _folderHelper;
