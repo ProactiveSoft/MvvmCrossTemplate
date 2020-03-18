@@ -1,5 +1,5 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
+using MvvmCross.Template.Helpers;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -12,7 +12,7 @@ namespace MvvmCross.Template.Test
 
         [Fact]
         [Trait("Task", "Fix root")]
-        public void UpdateVersion()
+        public void UpdateMvxVersion()
         {
             // Arrange
             // ToDo: Get latest MvvmCross version "expectedVersion" by scraping
@@ -45,23 +45,23 @@ namespace MvvmCross.Template.Test
 
         [Fact]
         [Trait("Task", "Fix root")]
-        public void AddCopyright()
+        public void UpdateTemplateVersion()
         {
             // Arrange
-            string assemblyInfo = Path.Combine(TemplateFolder, "SharedAssemblyInfo.cs"),
-                expectedCopyright = $"© Proso {DateTime.Today.Year}",
-                actualCopyright = string.Empty;
-            foreach (var line in File.ReadAllLines(assemblyInfo))
-                if (line.StartsWith("[assembly: AssemblyCopyright("))
-                {
-                    actualCopyright = line;
-                    break;
-                }
+            string directoryBuildProps = Path.Combine(TemplateFolder, "Directory.Build.props");
+            string contents = File.ReadAllText(directoryBuildProps);
+            IFixMetadata fixMetadata = new FixTemplateRoot(new FolderHelper());
+            var (year, month, day, _) = fixMetadata.CurrentAppVersion;
+            string informationalVersion = $"<InformationalVersion>{year}.{month}",
+                fileVersion = $"<FileVersion>{year}.{month}.{day}",
+                copyright = $"<Copyright>© Proso {year}";
 
-            // Assert
-            Assert.Contains(expectedCopyright, actualCopyright);
+            // Act
+            Assert.Contains(informationalVersion, contents);
+            Assert.Contains(fileVersion, contents);
+            Assert.Contains(copyright, contents);
 
-            _output.WriteLine($"Added copyright: {expectedCopyright}");
+            _output.WriteLine($"Template version is latest: {year}.{month}");
         }
 
 
