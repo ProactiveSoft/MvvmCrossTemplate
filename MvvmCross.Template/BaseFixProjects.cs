@@ -45,7 +45,7 @@ namespace MvvmCross.Template
             foreach (var csprojFile in CsprojFiles)
             {
                 WriteLine($"Fixing {csprojFile}: \\MvvmCrossTest --> \\$ext_safeprojectname$ &");
-                WriteLine($"Fixing {csprojFile}: ..\\..\\SharedAssemblyInfo.cs  -->  ..\\SharedAssemblyInfo.cs");
+                WriteLine($"\t..\\..\\SharedAssemblyInfo.cs  -->  ..\\SharedAssemblyInfo.cs");
 
                 string contents = File.ReadAllText(csprojFile);
                 contents = contents
