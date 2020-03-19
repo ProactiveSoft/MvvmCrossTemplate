@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using static System.Console;
 
 namespace MvvmCross.Template
@@ -62,8 +64,11 @@ namespace MvvmCross.Template
         /// <inheritdoc />
         public virtual void FixVsTemplate()
         {
-            IEnumerable<string> vsTemplates =
-                Directory.EnumerateFiles(TemplateFolder, "*.vstemplate", SearchOption.AllDirectories);
+            string[] vsTemplates =
+                Directory.GetFiles(TemplateFolder, "*.vstemplate", SearchOption.AllDirectories);
+
+            AddDescription();
+
             foreach (var vsTemplate in vsTemplates)
             {
                 string contents = File.ReadAllText(vsTemplate);
@@ -74,6 +79,41 @@ namespace MvvmCross.Template
                 File.WriteAllText(vsTemplate, contents);
 
                 WriteLine($"Fixed {vsTemplate}\n");
+            }
+
+
+            void AddDescription()
+            {
+                WriteLine("\nAdding description to .vstemplate files.\n");
+
+                foreach (var vsTemplate in vsTemplates)
+                {
+                    // Find vstemplate's project
+                    string project = ProjectNameFromPath(vsTemplate);
+
+                    // Add description according to project
+                    string[] contents = File.ReadAllLines(vsTemplate);
+                    for (var line = 0; line < contents.Length; line++)
+                    {
+                        if (!contents[line].StartsWith("    <Description>")) continue;
+
+                        contents[line] = project switch
+                        {
+                            "Abstraction" => "    <Description>MvvmCross Forms template's abstractions.</Description>",
+                            "Core" => "    <Description>MvvmCross Forms template's core logic.</Description>",
+                            "Forms" => "    <Description>MvvmCross Forms template's UI project.</Description>",
+                            "UWP" => "    <Description>MvvmCross Forms UWP Template.</Description>",
+                            "Android" => "    <Description>MvvmCross Forms template for Android.</Description>",
+                            "iOS" => "    <Description>MvvmCross Forms iOS template.</Description>",
+                            _ => "    <Description>Template's description.</Description>"
+                        };
+                        break;
+                    }
+
+                    File.WriteAllLines(vsTemplate, contents);
+                }
+
+                WriteLine("\nAdded description to .vstemplate files.\n");
             }
 
             void AddHidden(string vsTemplate, ref string contents)
@@ -88,10 +128,10 @@ namespace MvvmCross.Template
             void ReplaceMvvmCrossTest(string vsTemplate, ref string contents)
             {
                 string projectName = ProjectNameFromPath(vsTemplate);
-                string oldValue = $"TargetFileName=\"MvvmCrossTest{projectName}";
+                string oldValue = $"TargetFileName=\"MvvmCrossTest.{projectName}";
 
                 WriteLine(
-                    $"Fixing TargetFileName=\"MvvmCrossTest{projectName}  -->  TargetFileName=\"$safeprojectname$: {vsTemplate}");
+                    $"Fixing TargetFileName=\"MvvmCrossTest.{projectName}  -->  TargetFileName=\"$safeprojectname$: {vsTemplate}");
 
                 contents = contents.Replace(oldValue, "TargetFileName=\"$safeprojectname$");
             }
@@ -100,9 +140,9 @@ namespace MvvmCross.Template
 
         private string ProjectNameFromPath(string path)
         {
-            string projectPath = Path.GetDirectoryName(path) ?? string.Empty;
-            int lastDotIndex = projectPath.LastIndexOf('.');
-            return projectPath[lastDotIndex..];
+            string projectPath = Path.GetDirectoryName(path);
+            int start = projectPath.LastIndexOf('.') + 1;
+            return projectPath[start..];
         }
 
 
