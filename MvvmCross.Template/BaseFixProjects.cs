@@ -55,43 +55,43 @@ namespace MvvmCross.Template
                 File.WriteAllText(csprojFile, contents);
 
                 WriteLine("Fixed \\MvvmCrossTest --> \\$ext_safeprojectname$ &");
-                WriteLine("Fixed ..\\..\\SharedAssemblyInfo.cs --> ..\\SharedAssemblyInfo.cs\n");
+                WriteLine("\t..\\..\\SharedAssemblyInfo.cs --> ..\\SharedAssemblyInfo.cs\n");
             }
         }
 
         /// <inheritdoc />
         public virtual void FixVsTemplate()
         {
-            IEnumerable<string> vsTemplateFiles =
+            IEnumerable<string> vsTemplates =
                 Directory.EnumerateFiles(TemplateFolder, "*.vstemplate", SearchOption.AllDirectories);
-            foreach (var vsTemplateFile in vsTemplateFiles)
+            foreach (var vsTemplate in vsTemplates)
             {
-                string contents = File.ReadAllText(vsTemplateFile);
+                string contents = File.ReadAllText(vsTemplate);
 
-                AddHidden(vsTemplateFile, ref contents);
-                ReplaceMvvmCrossTest(vsTemplateFile, ref contents);
+                AddHidden(vsTemplate, ref contents);
+                ReplaceMvvmCrossTest(vsTemplate, ref contents);
 
-                File.WriteAllText(vsTemplateFile, contents);
+                File.WriteAllText(vsTemplate, contents);
 
-                WriteLine($"Fixed {vsTemplateFile}\n");
+                WriteLine($"Fixed {vsTemplate}\n");
             }
 
-            void AddHidden(string vsTemplateFile, ref string contents)
+            void AddHidden(string vsTemplate, ref string contents)
             {
-                WriteLine($"Adding <Hidden>true</Hidden> in {vsTemplateFile}");
+                WriteLine($"Adding <Hidden>true</Hidden> in {vsTemplate}");
 
                 string hidden = @"    <Hidden>true</Hidden>
   </TemplateData>";
                 contents = contents.Replace("  </TemplateData>", hidden);
             }
 
-            void ReplaceMvvmCrossTest(string vsTemplateFile, ref string contents)
+            void ReplaceMvvmCrossTest(string vsTemplate, ref string contents)
             {
-                string projectName = ProjectNameFromPath(vsTemplateFile);
+                string projectName = ProjectNameFromPath(vsTemplate);
                 string oldValue = $"TargetFileName=\"MvvmCrossTest{projectName}";
 
                 WriteLine(
-                    $"Fixing TargetFileName=\"MvvmCrossTest{projectName}  -->  TargetFileName=\"$safeprojectname$: {vsTemplateFile}");
+                    $"Fixing TargetFileName=\"MvvmCrossTest{projectName}  -->  TargetFileName=\"$safeprojectname$: {vsTemplate}");
 
                 contents = contents.Replace(oldValue, "TargetFileName=\"$safeprojectname$");
             }
