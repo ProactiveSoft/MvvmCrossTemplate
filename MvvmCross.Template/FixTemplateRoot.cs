@@ -51,10 +51,10 @@ namespace MvvmCross.Template
                 {
                     ["    <InformationalVersion>"] = $"{year}.{month}.{seconds}",
                     ["    <Version>"] = $"{year}.{month}.{seconds}",
-                    ["    <AssemblyVersion>"] = $"{year}.{month}.{seconds}",
                     ["    <Copyright>"] = $"© Proso {year}"
                 };
                 (_, _, day, seconds) = ((IFixMetadata)this).CurrentAppVersion;
+                starts["    <AssemblyVersion>"] = $"{year}.{month}.{day}.{seconds}";
                 starts["    <FileVersion>"] = $"{year}.{month}.{day}.{seconds}";
                 UpdateValues(contents, starts);
 
