@@ -11,7 +11,7 @@
   <ItemGroup>
     <PackageReference Include="MvvmCross.Forms" Version="6.4.2" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.4.0.55" />
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.396" />
   </ItemGroup>
 
   <ItemGroup>
