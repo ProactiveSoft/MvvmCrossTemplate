@@ -44,13 +44,18 @@ namespace MvvmCross.Template
             CsprojFiles = Directory.EnumerateFiles(TemplateFolder, "*.csproj", SearchOption.AllDirectories);
             foreach (var csprojFile in CsprojFiles)
             {
-                WriteLine($"Fixing \\MvvmCrossTest --> \\$ext_safeprojectname$: {csprojFile}");
+                WriteLine($"Fixing {csprojFile}: \\MvvmCrossTest --> \\$ext_safeprojectname$ &");
+                WriteLine($"Fixing {csprojFile}: ..\\..\\SharedAssemblyInfo.cs  -->  ..\\SharedAssemblyInfo.cs");
 
                 string contents = File.ReadAllText(csprojFile);
-                contents = contents.Replace("\\MvvmCrossTest", "\\$ext_safeprojectname$");
+                contents = contents
+                    .Replace("\\MvvmCrossTest", "\\$ext_safeprojectname$")
+                    .Replace("..\\..\\SharedAssemblyInfo.cs", "..\\SharedAssemblyInfo.cs");
+
                 File.WriteAllText(csprojFile, contents);
 
-                WriteLine("Fixed \\MvvmCrossTest --> \\$ext_safeprojectname$\n");
+                WriteLine("Fixed \\MvvmCrossTest --> \\$ext_safeprojectname$ &");
+                WriteLine("Fixed ..\\..\\SharedAssemblyInfo.cs --> ..\\SharedAssemblyInfo.cs\n");
             }
         }
 
