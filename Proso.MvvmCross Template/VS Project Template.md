@@ -179,7 +179,7 @@ ___
 
 1. Copy `SharedAssemblyInfo.cs` & `Directory.Build.props` to solution folder
 2. Add both to solution using: Add  -->  Existing Item
-3. Add `SharedAssemblyInfo.cs` as a link to each platform projects (UWP, Android & iOS)
+3. Add `SharedAssemblyInfo.cs` as a link to each project
 4. Copy `Assets.xcassets` folder from the builtin Xamarin.Forms template or from your template folder (`D:\Plugins\MvvmCrossTest\Proso.MvvmCross Template\Template\Proso.MvvmCross.iOS\Assets.xcassets`).   ...*[more details][8]*
 
 
