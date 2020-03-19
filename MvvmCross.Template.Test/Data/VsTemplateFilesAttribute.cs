@@ -12,11 +12,11 @@ namespace MvvmCross.Template.Test.Data
         public override IEnumerable<object[]> GetData(MethodInfo testMethod)
         {
             string templateFolder = @"D:\Plugins\MvvmCrossTest\Temp";
-            IEnumerable<string> vsTemplateFiles =
+            IEnumerable<string> vsTemplates =
                 Directory.EnumerateFiles(templateFolder, "*.vstemplate", SearchOption.AllDirectories)
-                    .Where(vsTemplateFile =>
-                        vsTemplateFile != Path.Combine(templateFolder, "Proso-MvvmCross-Xamarin-Template.vstemplate"));
-            return vsTemplateFiles.Select(vsTemplateFile => new object[] { vsTemplateFile });
+                    .Where(vsTemplate =>
+                        vsTemplate != Path.Combine(templateFolder, "Proso-MvvmCross-Xamarin-Template.vstemplate"));
+            return vsTemplates.Select(vsTemplate => new object[] { vsTemplate });
         }
     }
 }
