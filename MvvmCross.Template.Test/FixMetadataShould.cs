@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using MvvmCross.Template.Helpers;
 using Xunit;
 using Xunit.Abstractions;
@@ -64,6 +66,37 @@ namespace MvvmCross.Template.Test
             _output.WriteLine($"Template version is latest: {year}.{month}");
         }
 
+        [Fact]
+        [Trait("Task", "Fix root")]
+        public void FixDirectoryBuildProps()
+        {
+            // Arrange
+            string directoryBuildProps = Path.Combine(TemplateFolder, "Directory.Build.props");
+            string[] contents = File.ReadAllLines(directoryBuildProps);
+            HashSet<string> starts = new HashSet<string>(4)
+                {"    <Product>", "    <Description>", "    <!--<PackageProjectUrl>", "    <!--<RepositoryUrl>"};
+            int count = 0;
+            foreach (var line in contents)
+            {
+                string starting = FindStart(line);
+                if (!starts.Contains(starting)) continue;
+
+                // Assert
+                Assert.DoesNotContain("MvvmCross", line, StringComparison.OrdinalIgnoreCase);
+                Assert.DoesNotContain("Template", line, StringComparison.OrdinalIgnoreCase);
+
+                if (++count == starts.Count) break;
+            }
+
+            _output.WriteLine("Directory.Build.props fixed.");
+
+
+            string FindStart(string sentence)
+            {
+                int end = sentence.IndexOf('>') + 1;
+                return sentence[..end];
+            }
+        }
 
         private const string TemplateFolder = @"D:\Plugins\MvvmCrossTest\Temp";
         private readonly ITestOutputHelper _output;
