@@ -18,6 +18,7 @@
   </TemplateData>
   <TemplateContent>
     <Project TargetFileName="$safeprojectname$.csproj" File="MvvmCrossTest.Forms.csproj" ReplaceParameters="true">
+      <Folder Name="Properties" TargetFolderName="Properties" />
       <Folder Name="Helpers" TargetFolderName="Helpers">
         <ProjectItem ReplaceParameters="true" TargetFileName="CommonSetup.cs">CommonSetup.cs</ProjectItem>
       </Folder>

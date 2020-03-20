@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MvvmCross" Version="6.4.2" />
   </ItemGroup>
 
@@ -14,6 +18,7 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Properties\" />
     <Folder Include="Repos\" />
   </ItemGroup>
 
