@@ -1,17 +1,29 @@
-﻿using Xunit;
+﻿using MvvmCrossTest.Core.ViewModels;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace MvvmCrossTest.Test.Core
 {
     public class MainViewModelShould
     {
+        public MainViewModelShould(ITestOutputHelper output) => _output = output;
+
+
         [Fact]
         public void SetTitle()
         {
             // Arrange
-            string expected = "V 6.4.2";
+            MainViewModel vm = new MainViewModel();
 
             // Act
-            Assert.Equal(expected, "V 6.4.2");
+            vm.Prepare();
+
+            // Assert
+            Assert.Equal(vm.Title, "V 6.4.2");
+            _output.WriteLine($"Title set to current Mvx version: {vm.Title}");
         }
+
+
+        private readonly ITestOutputHelper _output;
     }
 }
