@@ -11,7 +11,7 @@ namespace MvvmCross.Template
             {
                 string[] contents =
                     File.ReadAllLines(
-                        @"D:\Plugins\MvvmCrossTest\MvvmCrossTest\MvvmCrossTest.Forms\MvvmCrossTest.Forms.csproj");
+                        @"D:\Plugins\MvvmCrossTest\MvvmCrossTest\MvvmCrossTest.Core\MvvmCrossTest.Core.csproj");
                 foreach (var line in contents)
                     if (line.StartsWith("    <PackageReference Include=\"MvvmCross"))
                     {
@@ -34,7 +34,7 @@ namespace MvvmCross.Template
                 return (today.Year, today.Month, today.Day, totalSeconds);
             }
         }
-        
+
         protected internal (int Year, int Month, int Seconds) CompactCurrentAppVersion
         {
             get
