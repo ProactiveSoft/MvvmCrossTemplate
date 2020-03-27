@@ -1,9 +1,7 @@
 ﻿using System.Reflection;
 using Android.App;
 using Android.OS;
-using Android.Support.V7.App;
 using Android.Runtime;
-using Android.Widget;
 using Xunit.Runners.UI;
 using Xunit.Sdk;
 using MvvmCrossTest.Test.Core;
