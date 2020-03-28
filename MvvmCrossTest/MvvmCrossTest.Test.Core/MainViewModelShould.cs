@@ -10,14 +10,16 @@ namespace MvvmCrossTest.Test.Core
         public MainViewModelShould(ITestOutputHelper output) => _output = output;
 
 
-        [Fact(Skip = "csproj file not present on Android & iOS. So test will fail.")]
+        //[Fact(Skip = "csproj file not present on Android & iOS. So test will fail.")]
+        [Fact]
         public void SetTitle()
         {
             // Arrange
             MainViewModel sot = new MainViewModel();
             // ToDo: Get Mvx version from Mvx GitHub:
             // https://github.com/MvvmCross/MvvmCross/blob/develop/CHANGELOG.md
-            string expectedMvxVersion = FindCurrentMvxVersion();
+            //string expectedMvxVersion = FindCurrentMvxVersion();
+            string expectedMvxVersion = "V 6.4.2";
 
             // Act
             sot.Prepare();
