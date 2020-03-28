@@ -1,14 +1,14 @@
----
-uti: com.xamarin.workbook
-id: f9121e87-d59c-484e-ac1a-c2fe4ee504bf
-title: VS Project Template
-platforms:
-- DotNetCore
----
+## List of Contents
+- [List of Contents](#list-of-contents)
+- [To Do](#to-do)
+- [Overview](#overview)
+- [Template Creation Steps](#template-creation-steps)
+- [Gotchas](#gotchas)
+- [Template Usage Steps](#template-usage-steps)
+- [Resources](#resources)
 
-```csharp
-using static System.Console;
-```
+
+___
 ___
 
 
@@ -16,27 +16,6 @@ ___
 
 Use `Directory.Build.props` file to specify latest C# version for all projects in a solution at one place.  
 Source - [C# language versioning](https://docs.microsoft.com/en-in/dotnet/csharp/language-reference/configure-language-version "C# language versioning - MS Doc")
-
-```xml
-<Project>
- <PropertyGroup>
-   <LangVersion>latest</LangVersion>
- </PropertyGroup>
-</Project>
-```
-
-___
-___
-
-
-## List of Contents
-- [To Do](#to-do)
-- [List of Contents](#list-of-contents)
-- [Overview](#overview)
-- [Template Creation Steps](#template-creation-steps)
-- [Gotchas](#gotchas)
-- [Template Usage Steps](#template-usage-steps)
-- [Resources](#resources)
 
 
 
