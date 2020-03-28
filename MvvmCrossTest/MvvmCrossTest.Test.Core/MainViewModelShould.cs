@@ -9,7 +9,6 @@ namespace MvvmCrossTest.Test.Core
         public MainViewModelShould(ITestOutputHelper output) => _output = output;
 
 
-        //[Fact(Skip = "csproj file not present on Android & iOS. So test will fail.")]
         [Fact]
         public void SetTitle()
         {
