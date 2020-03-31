@@ -27,7 +27,7 @@ namespace MvvmCross.Template
             string manifest = Path.Combine(_androidFolder, "Properties", "AndroidManifest.xml");
             string contents = File.ReadAllText(manifest);
             WriteLine(
-                $"{manifest}:Fixing package=\"com.companyname.MvvmCrossTest\"  -->  package=\"com.proso.$ext_safeprojectname$\"");
+                $"\n{manifest}:Fixing package=\"com.companyname.MvvmCrossTest\"  -->  package=\"com.proso.$ext_safeprojectname$\"");
             WriteLine($"{manifest}: Fixing android:label=\"$safeprojectname$\"  -->  android:label=\"$ext_safeprojectname$\"");
 
             contents = contents.Replace("package=\"com.companyname.MvvmCrossTest\"",
@@ -35,7 +35,7 @@ namespace MvvmCross.Template
                 .Replace("android:label=\"$safeprojectname$\"", "android:label=\"$ext_safeprojectname$\"");
             File.WriteAllText(manifest, contents);
 
-            WriteLine($"{manifest}: Fixed");
+            WriteLine($"{manifest}: Fixed\n");
         }
 
 
