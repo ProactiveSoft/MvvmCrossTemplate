@@ -47,7 +47,22 @@ namespace MvvmCross.Template
         /// <inheritdoc />
         public override void CorrectManifest()
         {
-            throw new System.NotImplementedException();
+            string manifest = Path.Combine(_uwpFolder, "Package.appxmanifest");
+            string contents = File.ReadAllText(manifest);
+
+            WriteLine($"\n{manifest}: Fixing <DisplayName>MvvmCrossTest.UWP  -->  <DisplayName>$ext_safeprojectname$");
+            WriteLine($"{manifest}: Fixing EntryPoint=\"MvvmCrossTest.UWP.App\"  -->  EntryPoint=\"$safeprojectname$.App\"");
+            WriteLine($"{manifest}: Fixing DisplayName=\"MvvmCrossTest.UWP\"  -->  DisplayName=\"$ext_safeprojectname$\"");
+            WriteLine($"{manifest}: Fixing Description=\"MvvmCrossTest.UWP\"  -->  Description=\"$ext_safeprojectname$ UWP app.\"");
+
+            contents = contents.Replace("<DisplayName>MvvmCrossTest.UWP", "<DisplayName>$ext_safeprojectname$")
+                .Replace("EntryPoint=\"MvvmCrossTest.UWP.App\"", "EntryPoint=\"$safeprojectname$.App\"")
+                .Replace("DisplayName=\"MvvmCrossTest.UWP\"", "DisplayName=\"$ext_safeprojectname$\"")
+                .Replace("Description=\"MvvmCrossTest.UWP\"", "Description=\"$ext_safeprojectname$ UWP app.\"");
+
+            File.WriteAllText(manifest, contents);
+
+            WriteLine($"{manifest}: Fixed.\n");
         }
 
         private readonly string _uwpFolder;

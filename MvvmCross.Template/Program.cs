@@ -12,6 +12,7 @@ namespace MvvmCross.Template
             IFixPlatformProjects fixPlatformProjects = new FixUwpProject();
             fixPlatformProjects.FixCsProj();
             fixPlatformProjects.FixVsTemplate();
+            fixPlatformProjects.CorrectManifest();
 
             fixPlatformProjects = new FixAndroidProject();
             fixPlatformProjects.FixCsProj();
