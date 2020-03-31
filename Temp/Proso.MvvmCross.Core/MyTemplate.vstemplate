@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>Proso.MvvmCross.Core</Name>
-    <Description>MvvmCross Forms template's core logic.</Description>
+    <Description>Tem Description</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -14,10 +14,9 @@
     <CreateInPlace>true</CreateInPlace>
     <Icon>__TemplateIcon.ico</Icon>
     <PreviewImage>__PreviewImage.jpg</PreviewImage>
-    <Hidden>true</Hidden>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="$safeprojectname$.csproj" File="MvvmCrossTest.Core.csproj" ReplaceParameters="true">
+    <Project TargetFileName="MvvmCrossTest.Core.csproj" File="MvvmCrossTest.Core.csproj" ReplaceParameters="true">
       <Folder Name="Properties" TargetFolderName="Properties" />
       <Folder Name="Models" TargetFolderName="Models" />
       <Folder Name="Repos" TargetFolderName="Repos" />

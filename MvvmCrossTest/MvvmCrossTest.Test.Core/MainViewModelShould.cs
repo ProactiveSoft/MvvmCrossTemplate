@@ -10,6 +10,7 @@ namespace MvvmCrossTest.Test.Core
 
 
         [Fact]
+        [Trait("File", ".cs")]
         public void SetTitle()
         {
             // Arrange

@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using Android.App;
 
 // General Information about an assembly is controlled through the following 

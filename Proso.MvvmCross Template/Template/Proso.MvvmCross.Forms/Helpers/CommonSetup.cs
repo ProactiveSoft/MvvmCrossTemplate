@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using $ext_safeprojectname$.Abstraction.Helpers;
 using $ext_safeprojectname$.Core.ViewModels;
@@ -8,7 +8,6 @@ namespace $safeprojectname$.Helpers
 {
     public class CommonSetup : ICommonSetup
     {
-        /// <inheritdoc />
         public IDictionary<Type, Type> InitializeLookupDictionary() =>
             new Dictionary<Type, Type>
             {

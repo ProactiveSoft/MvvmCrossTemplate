@@ -1,4 +1,4 @@
-using $ext_safeprojectname$.Abstraction.ViewModels;
+﻿using MvvmCrossTest.Abstraction.ViewModels;
 
 namespace $safeprojectname$.ViewModels
 {

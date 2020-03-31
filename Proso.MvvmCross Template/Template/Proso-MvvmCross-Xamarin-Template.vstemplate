@@ -2,7 +2,7 @@
   xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
   <TemplateData>
     <Name>MvvmCross Template</Name>
-    <Description>MvvmCross template 6.4.2.</Description>
+    <Description>MvvmCross template for MvvmCross 6.4.2.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -27,31 +27,56 @@
   <TemplateContent>
     <ProjectCollection>
 
-      <SolutionFolder Name="Common">
-        <ProjectTemplateLink ProjectName="$safeprojectname$.Abstraction" CopyParameters="true">
-          Proso.MvvmCross.Abstraction\MyTemplate.vstemplate
-        </ProjectTemplateLink>
-        <ProjectTemplateLink ProjectName="$safeprojectname$.Core" CopyParameters="true">
-          Proso.MvvmCross.Core\MyTemplate.vstemplate
-        </ProjectTemplateLink>
-        <ProjectTemplateLink ProjectName="$safeprojectname$.Forms" CopyParameters="true">
-          Proso.MvvmCross.Forms\MyTemplate.vstemplate
-        </ProjectTemplateLink>
+      <SolutionFolder Name="Code">
+        <SolutionFolder Name="Common">
+          <ProjectTemplateLink ProjectName="$safeprojectname$.Abstraction" CopyParameters="true">
+            Proso.MvvmCross.Abstraction\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$safeprojectname$.Core" CopyParameters="true">
+            Proso.MvvmCross.Core\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$safeprojectname$.Forms" CopyParameters="true">
+            Proso.MvvmCross.Forms\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+        </SolutionFolder>
+
+        <SolutionFolder Name="Mobile">
+          <ProjectTemplateLink ProjectName="$safeprojectname$.iOS" CopyParameters="true">
+            Proso.MvvmCross.iOS\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$safeprojectname$.Droid" CopyParameters="true">
+            Proso.MvvmCross.Android\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+        </SolutionFolder>
+
+        <SolutionFolder Name="Desktop">
+          <ProjectTemplateLink ProjectName="$safeprojectname$.UWP" CopyParameters="true">
+            Proso.MvvmCross.UWP\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+        </SolutionFolder>
       </SolutionFolder>
 
-      <SolutionFolder Name="Mobile">
-        <ProjectTemplateLink ProjectName="$safeprojectname$.iOS" CopyParameters="true">
-          Proso.MvvmCross.iOS\MyTemplate.vstemplate
-        </ProjectTemplateLink>
-        <ProjectTemplateLink ProjectName="$safeprojectname$.Droid" CopyParameters="true">
-          Proso.MvvmCross.Android\MyTemplate.vstemplate
-        </ProjectTemplateLink>
-      </SolutionFolder>
+      <SolutionFolder Name="Tests">
+        <SolutionFolder Name="Common">
+          <ProjectTemplateLink ProjectName="$safeprojectname$.Test.Core" CopyParameters="true">
+            Proso.MvvmCross.Test.Core\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+        </SolutionFolder>
 
-      <SolutionFolder Name="Desktop">
-        <ProjectTemplateLink ProjectName="$safeprojectname$.UWP" CopyParameters="true">
-          Proso.MvvmCross.UWP\MyTemplate.vstemplate
-        </ProjectTemplateLink>
+        <SolutionFolder Name="Mobile">
+          <ProjectTemplateLink ProjectName="$safeprojectname$.Test.iOS" CopyParameters="true">
+            Proso.MvvmCross.Test.iOS\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+          <ProjectTemplateLink ProjectName="$safeprojectname$.Test.Droid" CopyParameters="true">
+            Proso.MvvmCross.Test.Droid\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+        </SolutionFolder>
+
+        <SolutionFolder Name="Desktop">
+          <ProjectTemplateLink ProjectName="$safeprojectname$.Test.UWP" CopyParameters="true">
+            Proso.MvvmCross.Test.UWP\MyTemplate.vstemplate
+          </ProjectTemplateLink>
+        </SolutionFolder>
       </SolutionFolder>
 
     </ProjectCollection>

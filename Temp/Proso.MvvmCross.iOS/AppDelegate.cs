@@ -1,4 +1,4 @@
-using Foundation;
+﻿using Foundation;
 using MvvmCross.Forms.Platforms.Ios.Core;
 using Syncfusion.XForms.iOS.Border;
 using Syncfusion.XForms.iOS.Buttons;

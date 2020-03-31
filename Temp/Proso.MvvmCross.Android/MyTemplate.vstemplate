@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>Proso.MvvmCross.Android</Name>
-    <Description>MvvmCross Forms template for Android.</Description>
+    <Description>Template description.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -13,10 +13,9 @@
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
     <Icon>__TemplateIcon.ico</Icon>
     <PreviewImage>__PreviewImage.jpg</PreviewImage>
-    <Hidden>true</Hidden>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="$safeprojectname$.csproj" File="MvvmCrossTest.Android.csproj" ReplaceParameters="true">
+    <Project TargetFileName="MvvmCrossTest.Android.csproj" File="MvvmCrossTest.Android.csproj" ReplaceParameters="true">
       <Folder Name="Assets" TargetFolderName="Assets">
         <ProjectItem ReplaceParameters="true" TargetFileName="AboutAssets.txt">AboutAssets.txt</ProjectItem>
       </Folder>

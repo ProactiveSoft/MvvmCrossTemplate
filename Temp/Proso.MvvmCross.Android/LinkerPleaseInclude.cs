@@ -1,4 +1,4 @@
-using Android.App;
+﻿using Android.App;
 using Android.Views;
 using Android.Widget;
 using MvvmCross.Binding.BindingContext;

@@ -4,9 +4,9 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    xmlns:mvxBind="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
-    xmlns:viewModels="clr-namespace:$ext_safeprojectname$.Core.ViewModels;assembly=$ext_safeprojectname$.Core"
     xmlns:formsViews="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:mvxBind="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:MvvmCrossTest.Core.ViewModels;assembly=MvvmCrossTest.Core"
     Title="{Binding Title}">
 
     <!--<formsViews:MvxContentPage.BindingContext>
