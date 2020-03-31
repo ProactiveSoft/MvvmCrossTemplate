@@ -15,6 +15,7 @@ namespace MvvmCross.Template
 
             fixPlatformProjects = new FixAndroidProject();
             fixPlatformProjects.FixCsProj();
+            fixPlatformProjects.CorrectManifest();
 
             IFolderHelper folderHelper = new FolderHelper();
             fixPlatformProjects = new FixIosProject(folderHelper);
