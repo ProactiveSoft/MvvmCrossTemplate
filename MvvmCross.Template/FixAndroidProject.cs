@@ -5,7 +5,11 @@ namespace MvvmCross.Template
 {
     class FixAndroidProject : BaseFixPlatformProjects
     {
-        public FixAndroidProject() => _androidFolder = Path.Combine(TemplateFolder, "Proso.MvvmCross.Android");
+        public FixAndroidProject()
+        {
+            _androidFolder = Path.Combine(TemplateFolder, "Proso.MvvmCross.Android");
+            _androidTestFolder = Path.Combine(TemplateFolder, "Proso.MvvmCross.Test.Droid");
+        }
 
 
         /// <inheritdoc />
@@ -24,22 +28,40 @@ namespace MvvmCross.Template
         /// <inheritdoc />
         public override void CorrectManifest()
         {
-            string manifest = Path.Combine(_androidFolder, "Properties", "AndroidManifest.xml");
-            string contents = File.ReadAllText(manifest);
-            WriteLine(
-                $"\n{manifest}:Fixing package=\"com.companyname.MvvmCrossTest\"  -->  package=\"com.proso.$ext_safeprojectname$\"");
-            WriteLine($"{manifest}: Fixing android:label=\"$safeprojectname$\"  -->  android:label=\"$ext_safeprojectname$\"");
+            FixAndroid();
+            FixTest();
 
-            contents = contents.Replace("package=\"com.companyname.MvvmCrossTest\"",
-                    "package=\"com.proso.$ext_safeprojectname$\"")
-                .Replace("android:label=\"$safeprojectname$\"", "android:label=\"$ext_safeprojectname$\"");
-            File.WriteAllText(manifest, contents);
+            void FixAndroid()
+            {
+                string manifest = Path.Combine(_androidFolder, "Properties", "AndroidManifest.xml");
+                string contents = File.ReadAllText(manifest);
+                WriteLine(
+                    $"\n{manifest}:Fixing package=\"com.companyname.MvvmCrossTest\"  -->  package=\"com.proso.$ext_safeprojectname$\"");
+                WriteLine($"{manifest}: Fixing android:label=\"$safeprojectname$\"  -->  android:label=\"$ext_safeprojectname$\"");
 
-            WriteLine($"{manifest}: Fixed\n");
+                contents = contents.Replace("package=\"com.companyname.MvvmCrossTest\"",
+                        "package=\"com.proso.$ext_safeprojectname$\"")
+                    .Replace("android:label=\"$safeprojectname$\"", "android:label=\"$ext_safeprojectname$\"");
+                File.WriteAllText(manifest, contents);
+
+                WriteLine($"{manifest}: Fixed\n");
+            }
+
+            void FixTest()
+            {
+                string manifest = Path.Combine(_androidTestFolder, "Properties", "AndroidManifest.xml");
+                string contents = File.ReadAllText(manifest);
+                WriteLine($"\n{manifest}: Fix package=\"com.companyname.mvvmcrosstest.test.droid\"  -->  package=\"com.proso.$ext_safeprojectname$.test\"");
+                contents = contents.Replace("package=\"com.companyname.mvvmcrosstest.test.droid\"",
+                    "package=\"com.proso.$ext_safeprojectname$.test\"");
+                File.WriteAllText(manifest, contents);
+
+                WriteLine($"{manifest}: Fixed\n");
+            }
         }
 
 
 
-        private readonly string _androidFolder;
+        private readonly string _androidFolder, _androidTestFolder;
     }
 }
