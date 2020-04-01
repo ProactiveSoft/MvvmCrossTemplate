@@ -11,6 +11,7 @@ namespace MvvmCross.Template
         {
             _folderHelper = folderHelper;
             _iOsFolder = Path.Combine(TemplateFolder, "Proso.MvvmCross.iOS");
+            _testIosFolder = Path.Combine(TemplateFolder, "Proso.MvvmCross.Test.iOS");
         }
 
 
@@ -66,34 +67,65 @@ namespace MvvmCross.Template
         /// <inheritdoc />
         public override void CorrectManifest()
         {
-            string manifest = Path.Combine(_iOsFolder, "Info.plist");
-            WriteLine($@"{Environment.NewLine}{manifest}: Fixing <key>CFBundleDisplayName</key>
+            FixIos();
+            FixTest();
+
+
+
+            void FixIos()
+            {
+                string manifest = Path.Combine(_iOsFolder, "Info.plist");
+                WriteLine($@"{Environment.NewLine}{manifest}: Fixing <key>CFBundleDisplayName</key>
     <string>MvvmCrossTest</string>  -->  <key>CFBundleDisplayName</key>
     <string>$ext_safeprojectname$</string>");
-            WriteLine(@"Fixing <key>CFBundleIdentifier</key>
+                WriteLine(@"Fixing <key>CFBundleIdentifier</key>
     <string>com.companyname.MvvmCrossTest</string>  -->  <key>CFBundleIdentifier</key>
     <string>com.proso.$ext_safeprojectname$</string>");
-            WriteLine(@"<key>CFBundleName</key>
+                WriteLine(@"<key>CFBundleName</key>
     <string>MvvmCrossTest</string>  -->  <key>CFBundleName</key>
     <string>$ext_safeprojectname$</string>");
 
-            string contents = File.ReadAllText(manifest);
-            contents = contents.Replace(@"<key>CFBundleDisplayName</key>
+                string contents = File.ReadAllText(manifest);
+                contents = contents.Replace(@"<key>CFBundleDisplayName</key>
     <string>MvvmCrossTest</string>", @"<key>CFBundleDisplayName</key>
     <string>$ext_safeprojectname$</string>")
-                .Replace(@"<key>CFBundleIdentifier</key>
+                    .Replace(@"<key>CFBundleIdentifier</key>
     <string>com.companyname.MvvmCrossTest</string>", @"<key>CFBundleIdentifier</key>
     <string>com.proso.$ext_safeprojectname$</string>")
-                .Replace(@"<key>CFBundleName</key>
+                    .Replace(@"<key>CFBundleName</key>
     <string>MvvmCrossTest</string>", @"<key>CFBundleName</key>
     <string>$ext_safeprojectname$</string>");
-            File.WriteAllText(manifest, contents);
+                File.WriteAllText(manifest, contents);
 
-            WriteLine($"{manifest} fixed\n");
+                WriteLine($"{manifest} fixed\n");
+            }
+
+            void FixTest()
+            {
+                string manifest = Path.Combine(_testIosFolder, "Info.plist"),
+                    contents = File.ReadAllText(manifest);
+
+                WriteLine($"\n{manifest}: Fixing" + $@"{Environment.NewLine}    <key>CFBundleDisplayName</key>
+    <string>MvvmCrossTest.Test.iOS</string>  -->  <key>CFBundleDisplayName</key>
+    <string>$ext_safeprojectname$.Test</string>" + $@"{Environment.NewLine}    <key>CFBundleIdentifier</key>
+    <string>com.companyname.MvvmCrossTest.Test.iOS</string>  -->  <key>CFBundleIdentifier</key>
+    <string>com.proso.$ext_safeprojectname$.Test</string>");
+
+                contents = contents.Replace(@"<key>CFBundleDisplayName</key>
+    <string>MvvmCrossTest.Test.iOS</string>", @"<key>CFBundleDisplayName</key>
+    <string>$ext_safeprojectname$.Test</string>")
+                    .Replace(@"<key>CFBundleIdentifier</key>
+    <string>com.companyname.MvvmCrossTest.Test.iOS</string>", @"<key>CFBundleIdentifier</key>
+    <string>com.proso.$ext_safeprojectname$.Test</string>");
+
+                File.WriteAllText(manifest, contents);
+
+                WriteLine($"{manifest}: Fixed.\n");
+            }
         }
 
 
-        private readonly string _iOsFolder;
+        private readonly string _iOsFolder, _testIosFolder;
         private readonly IFolderHelper _folderHelper;
     }
 }
