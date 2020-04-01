@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using MvvmCross.Template.Helpers;
 using static System.Console;
 
@@ -65,7 +66,30 @@ namespace MvvmCross.Template
         /// <inheritdoc />
         public override void CorrectManifest()
         {
-            throw new System.NotImplementedException();
+            string manifest = Path.Combine(_iOsFolder, "Info.plist");
+            WriteLine($@"{Environment.NewLine}{manifest}: Fixing <key>CFBundleDisplayName</key>
+    <string>MvvmCrossTest</string>  -->  <key>CFBundleDisplayName</key>
+    <string>$ext_safeprojectname$</string>");
+            WriteLine(@"Fixing <key>CFBundleIdentifier</key>
+    <string>com.companyname.MvvmCrossTest</string>  -->  <key>CFBundleIdentifier</key>
+    <string>com.proso.$ext_safeprojectname$</string>");
+            WriteLine(@"<key>CFBundleName</key>
+    <string>MvvmCrossTest</string>  -->  <key>CFBundleName</key>
+    <string>$ext_safeprojectname$</string>");
+
+            string contents = File.ReadAllText(manifest);
+            contents = contents.Replace(@"<key>CFBundleDisplayName</key>
+    <string>MvvmCrossTest</string>", @"<key>CFBundleDisplayName</key>
+    <string>$ext_safeprojectname$</string>")
+                .Replace(@"<key>CFBundleIdentifier</key>
+    <string>com.companyname.MvvmCrossTest</string>", @"<key>CFBundleIdentifier</key>
+    <string>com.proso.$ext_safeprojectname$</string>")
+                .Replace(@"<key>CFBundleName</key>
+    <string>MvvmCrossTest</string>", @"<key>CFBundleName</key>
+    <string>$ext_safeprojectname$</string>");
+            File.WriteAllText(manifest, contents);
+
+            WriteLine($"{manifest} fixed\n");
         }
 
 
