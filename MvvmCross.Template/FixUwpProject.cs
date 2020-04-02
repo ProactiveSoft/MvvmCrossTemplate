@@ -35,19 +35,42 @@ namespace MvvmCross.Template
         /// <inheritdoc />
         public override void FixVsTemplate()
         {
-            base.FixVsTemplate();
+            FixUwp();
+            FixTest();
 
-            string vsTemplate = Path.Combine(_uwpFolder, "MyTemplate.vstemplate");
-            WriteLine(
-                $"Fixing <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Package.appxmanifest\"  -->  <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Package.appxmanifest\": {vsTemplate}");
 
-            string contents = File.ReadAllText(vsTemplate);
-            contents = contents.Replace(
-                "      <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Package.appxmanifest\"",
-                "      <ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Package.appxmanifest\"");
-            File.WriteAllText(vsTemplate, contents);
 
-            WriteLine("Fixed ReplaceParameters=\"false\"  -->  ReplaceParameters=\"true\"\n");
+            void FixUwp()
+            {
+                base.FixVsTemplate();
+
+                string vsTemplate = Path.Combine(_uwpFolder, "MyTemplate.vstemplate");
+                WriteLine(
+                    $"\n{vsTemplate}: Fixing <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Package.appxmanifest\"  -->  <ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Package.appxmanifest\"");
+
+                string contents = File.ReadAllText(vsTemplate);
+                contents = contents.Replace(
+                    "      <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Package.appxmanifest\"",
+                    "      <ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Package.appxmanifest\"");
+                File.WriteAllText(vsTemplate, contents);
+
+                WriteLine("Fixed.\n");
+            }
+
+            void FixTest()
+            {
+                string vsTemplate = Path.Combine(_testUwpFolder, "MyTemplate.vstemplate");
+                WriteLine(
+                    $"\n{vsTemplate}: Fixing <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Package.appxmanifest\"  -->  <ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Package.appxmanifest\"");
+
+                string contents = File.ReadAllText(vsTemplate);
+                contents = contents.Replace(
+                    "      <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Package.appxmanifest\"",
+                    "      <ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Package.appxmanifest\"");
+                File.WriteAllText(vsTemplate, contents);
+
+                WriteLine("Fixed.\n");
+            }
         }
 
         /// <inheritdoc />
