@@ -10,7 +10,7 @@ namespace MvvmCross.Template
         {
             base.FixCsProj();   // Fixes \MvvmCrossTest
 
-            foreach (var csprojFile in CsprojFiles!)
+            foreach (var csprojFile in CsprojFiles!)   // Fixes <Name>MvvmCrossTest
             {
                 WriteLine($"Fixing <Name>MvvmCrossTest  -->  <Name>$ext_safeprojectname$: {csprojFile}");
 

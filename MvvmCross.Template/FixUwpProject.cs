@@ -15,6 +15,8 @@ namespace MvvmCross.Template
         /// <inheritdoc />
         public override void FixCsProj()
         {
+            // Not all MvvmCrossTest is replaced w/ $ext_safeprojectname$ because
+            // at some places $safeprojectname$ will be used.
             base.FixCsProj();   // Fixes "<Name>MvvmCrossTest"
 
             string csproj = Path.Combine(_uwpFolder, "MvvmCrossTest.UWP.csproj");
