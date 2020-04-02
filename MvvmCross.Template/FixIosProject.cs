@@ -124,6 +124,49 @@ namespace MvvmCross.Template
             }
         }
 
+        /// <inheritdoc />
+        public override void FixCsProj()
+        {
+            FixIos();
+            FixTest();
+
+
+
+            void FixIos()
+            {
+                string csProj = Path.Combine(_iOsFolder, "MvvmCrossTest.iOS.csproj"),
+                    contents = File.ReadAllText(csProj);
+
+                WriteLine($@"{Environment.NewLine}{csProj}: Fixing <ImageAsset Include=""Assets.xcassets\AppIcon.appiconset\Contents.json"">
+      <Visible>false</Visible>  -->  <ImageAsset Include=""Assets.xcassets\AppIcon.appiconset\Contents.json"">
+      <Visible>true</Visible>");
+
+                contents = contents.Replace(@"<ImageAsset Include=""Assets.xcassets\AppIcon.appiconset\Contents.json"">
+      <Visible>false</Visible>", @"<ImageAsset Include=""Assets.xcassets\AppIcon.appiconset\Contents.json"">
+      <Visible>true</Visible>");
+                File.WriteAllText(csProj, contents);
+
+                WriteLine("Fixed.\n");
+            }
+
+            void FixTest()
+            {
+                string csProj = Path.Combine(_testIosFolder, "MvvmCrossTest.Test.iOS.csproj"),
+                    contents = File.ReadAllText(csProj);
+
+                WriteLine($@"{Environment.NewLine}{csProj}: Fixing <ImageAsset Include=""Assets.xcassets\AppIcon.appiconset\Contents.json"">
+      <Visible>false</Visible>  -->  <ImageAsset Include=""Assets.xcassets\AppIcon.appiconset\Contents.json"">
+      <Visible>true</Visible>");
+
+                contents = contents.Replace(@"<ImageAsset Include=""Assets.xcassets\AppIcon.appiconset\Contents.json"">
+      <Visible>false</Visible>", @"<ImageAsset Include=""Assets.xcassets\AppIcon.appiconset\Contents.json"">
+      <Visible>true</Visible>");
+                File.WriteAllText(csProj, contents);
+
+                WriteLine("Fixed.\n");
+            }
+        }
+
 
         private readonly string _iOsFolder, _testIosFolder;
         private readonly IFolderHelper _folderHelper;
