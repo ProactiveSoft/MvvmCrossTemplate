@@ -17,6 +17,7 @@ ___
 Use `Directory.Build.props` file to specify latest C# version for all projects in a solution at one place.  
 Source - [C# language versioning](https://docs.microsoft.com/en-in/dotnet/csharp/language-reference/configure-language-version "C# language versioning - MS Doc")
 
+Create template using VSIX (Work item 879) 
 
 
 ___
@@ -187,6 +188,7 @@ ___
 * [Pack VS Project Template into VSIX][4]
 * [Share AssemblyInfo.cs properties][12]
 * **Visual Studio Template's Schema**: *`C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Xml\Schemas\1033\vstemplate.xsd`*
+* [Create template using VSIX][13]
 
 
 
@@ -213,3 +215,4 @@ ___
 [10]: https://github.com/MvvmCross/MvvmCross/tree/develop/Projects/Playground "MvvmCross Playground Sample"
 [11]: C:\Program%20Files%20(x86)\Microsoft%20Visual%20Studio\2019\Enterprise\Xml\Schemas\1033\vstemplate.xsd "Visual Studio (vstemplate) Schema"
 [12]: https://stackoverflow.com/a/49601178 "Sharing AssemblyInfo.cs properties using Directory.Build.props - Stackoverflow"
+[13]: https://www.dotnetcurry.com/visual-studio/1521/visual-studio-project-setup-solution-snapshotter "Streamlining Your Visual Studio Project Setup - Dot Net Curry"
