@@ -99,10 +99,14 @@ namespace MvvmCross.Template
                         {
                             "Abstraction" => "    <Description>MvvmCross Forms template's abstractions.</Description>",
                             "Core" => "    <Description>MvvmCross Forms template's core logic.</Description>",
+                            "Test.Core" => "    <Description>Tests for core logic.</Description>",
                             "Forms" => "    <Description>MvvmCross Forms template's UI project.</Description>",
                             "UWP" => "    <Description>MvvmCross Forms UWP Template.</Description>",
+                            "Test.UWP" => "    <Description>UWP host for tests.</Description>",
                             "Android" => "    <Description>MvvmCross Forms template for Android.</Description>",
+                            "Test.Droid" => "    <Description>Android host for tests.</Description>",
                             "iOS" => "    <Description>MvvmCross Forms iOS template.</Description>",
+                            "Test.iOS" => "    <Description>iOS host for tests.</Description>",
                             _ => "    <Description>Template's description.</Description>"
                         };
                         break;
@@ -139,8 +143,11 @@ namespace MvvmCross.Template
         private string ProjectNameFromPath(string path)
         {
             string projectPath = Path.GetDirectoryName(path);
-            int start = projectPath.LastIndexOf('.') + 1;
-            return projectPath[start..];
+
+            int start = projectPath.LastIndexOf('.');   // Code projects
+            if (projectPath.Contains(".Test"))   // Test projects
+                start = projectPath.LastIndexOf('.', start - 1);
+            return projectPath[++start..];
         }
 
 
