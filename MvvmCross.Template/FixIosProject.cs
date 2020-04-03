@@ -20,17 +20,17 @@ namespace MvvmCross.Template
         {
             string vsTemplate = Path.Combine(_iOsFolder, "MyTemplate.vstemplate");
             WriteLine(
-                $"Fixing <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Entitlements.plist\"  -->  ReplaceParameters=\"true\": {vsTemplate}");
+                $"\n{vsTemplate}: Set ReplaceParameters=\"false\" to ReplaceParameters=\"true\" for Entitlements.plist, Info.plist & LaunchScreen.storyboard");
 
             string contents = File.ReadAllText(vsTemplate);
             contents = contents.Replace(
-                "      <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Entitlements.plist\"",
-                "      <ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Entitlements.plist\"");
-            WriteLine($"Corrected to ReplaceParameters=\"true\" TargetFileName=\"Entitlements.plist\")");
-            contents = contents.Replace(
-                "      <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Info.plist\"",
-                "      <ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Info.plist\"");
-            WriteLine($"Corrected to ReplaceParameters=\"true\" TargetFileName=\"Info.plist\")\n");
+                    "      <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Entitlements.plist\"",
+                    "      <ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Entitlements.plist\"")
+                .Replace("      <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Info.plist\"",
+                    "      <ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Info.plist\"")
+                .Replace("<ProjectItem ReplaceParameters=\"false\" TargetFileName=\"LaunchScreen.storyboard\"",
+                    "<ProjectItem ReplaceParameters=\"true\" TargetFileName=\"LaunchScreen.storyboard\"");
+            WriteLine("Corrected.\n");
 
 
             WriteLine("\nIncluding assets in .vstemplate file:");
@@ -53,8 +53,8 @@ namespace MvvmCross.Template
       </Folder>
       <Folder Name=""Properties"" TargetFolderName=""Properties"">";
             contents = contents.Replace("      <Folder Name=\"Properties\" TargetFolderName=\"Properties\">", assets);
-
             File.WriteAllText(vsTemplate, contents);
+            WriteLine("Included Assets.\n");
         }
 
         public void CopyItems()
