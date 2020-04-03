@@ -14,6 +14,7 @@ namespace MvvmCross.Template.Test
         [InlineData("<ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Package.appxmanifest\"", @"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.UWP\MyTemplate.vstemplate")]
         [InlineData("<ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Entitlements.plist\"", @"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.iOS\MyTemplate.vstemplate")]
         [InlineData("<ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Info.plist\"", @"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.iOS\MyTemplate.vstemplate")]
+        [InlineData("<ProjectItem ReplaceParameters=\"true\" TargetFileName=\"LaunchScreen.storyboard\"", @"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.iOS\MyTemplate.vstemplate")]
         public void MakeManifestReplaceable(string expected, string filePath)
         {
             // Arrange
