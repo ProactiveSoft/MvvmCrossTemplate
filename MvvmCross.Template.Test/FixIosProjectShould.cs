@@ -17,16 +17,21 @@ namespace MvvmCross.Template.Test
         {
             // Arrange
             string source = @"D:\Plugins\MvvmCrossTest\MvvmCrossTest\MvvmCrossTest.iOS\Assets.xcassets",
-                destination = @"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.iOS\Assets.xcassets",
+                destinationProject = @"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.iOS\Assets.xcassets",
+                destinationTest = @"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.Test.iOS\Assets.xcassets",
                 sourceSubFolder = Path.Combine(source, "AppIcon.appiconset"),
-                destinationSubFolder = Path.Combine(destination, "AppIcon.appiconset");
+                destinationSubFolderProject = Path.Combine(destinationProject, "AppIcon.appiconset"),
+                destinationSubFolderTest = Path.Combine(destinationTest, "AppIcon.appiconset");
 
             int noOfSourceSubFolders = Directory.GetDirectories(source).Length,
-                noOfDestinationSubFolders = Directory.GetDirectories(destination).Length;
+                noOfDestinationSubFoldersProject = Directory.GetDirectories(destinationProject).Length,
+                noOfDestinationSubFoldersTest = Directory.GetDirectories(destinationTest).Length;
 
             string[] sourceFiles = Directory.GetFiles(sourceSubFolder),
-                destinationFiles = Directory.GetFiles(destinationSubFolder),
-                destinationFilesName = destinationFiles.Select(Path.GetFileName).ToArray()!;
+                destinationFilesProject = Directory.GetFiles(destinationSubFolderProject),
+                destinationFilesTest = Directory.GetFiles(destinationSubFolderTest),
+                destinationFilesNameProject = destinationFilesProject.Select(Path.GetFileName).ToArray()!,
+                destinationFilesNameTest = destinationFilesTest.Select(Path.GetFileName).ToArray()!;
 
             Random random = new Random();
             int index = random.Next(0, sourceFiles.Length);
@@ -34,10 +39,13 @@ namespace MvvmCross.Template.Test
             string randomSourceFileName = Path.GetFileName(sourceFiles[index]);
 
             // Assert
-            Assert.True(Directory.Exists(destination));
-            Assert.True(Directory.Exists(destinationSubFolder));
-            Assert.Equal(noOfSourceSubFolders, noOfDestinationSubFolders);
-            Assert.Contains(randomSourceFileName, destinationFilesName);
+            Assert.True(Directory.Exists(destinationSubFolderProject));
+            Assert.True(Directory.Exists(destinationSubFolderTest));
+            Assert.Equal(noOfSourceSubFolders, noOfDestinationSubFoldersProject);
+            Assert.Equal(noOfSourceSubFolders, noOfDestinationSubFoldersTest);
+            Assert.Contains(randomSourceFileName, destinationFilesNameProject);
+            Assert.Contains(randomSourceFileName, destinationFilesNameTest);
+
             _output.WriteLine(
                 $"Assets folder successfully copied.{Environment.NewLine}Random file {randomSourceFileName} is present in destination folder");
         }

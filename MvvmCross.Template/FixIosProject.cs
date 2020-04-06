@@ -96,7 +96,9 @@ namespace MvvmCross.Template
         {
             // Copy Assets.xcassets folder
             string source = Path.Combine(TemplateFolder, "..", "MvvmCrossTest", "MvvmCrossTest.iOS", "Assets.xcassets");
-            _folderHelper.NaiveCopyFolder(source, _iOsFolder);
+            _folderHelper.NaiveCopyFolder(source, _iOsFolder);   // Copy to iOS project
+            _folderHelper.NaiveCopyFolder(source, _testIosFolder);   // Copy to iOS test project
+
         }
 
         /// <inheritdoc />
