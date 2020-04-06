@@ -1,0 +1,55 @@
+<Project>
+  <PropertyGroup>
+    <InformationalVersion>2020.4.510944</InformationalVersion>
+    <Version>2020.4.510944</Version>
+    <AssemblyVersion>2020.4.6.78944</AssemblyVersion>
+    <FileVersion>2020.4.6.78944</FileVersion>
+
+    <Company>Proso</Company>
+    <Product>Enter product name ...</Product>
+    <Description>Enter product description ...</Description>
+    <Authors>Proso</Authors>
+    <!--<PackageProjectUrl>https://github.com/ProactiveSoft/</PackageProjectUrl>-->
+    <NeutralLanguage>en</NeutralLanguage>
+    <!--<RepositoryUrl>https://github.com/ProactiveSoft/</RepositoryUrl>-->
+    <RepositoryType>git</RepositoryType>
+    <Configuration></Configuration>
+    <Copyright>© Proso 2020</Copyright>
+
+    <!--<LangVersion>8</LangVersion>-->
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <!-- Assembly Attributes -->
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Reflection.AssemblyTrademarkAttribute">
+      <_Parameter1>Proso™</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Reflection.AssemblyCultureAttribute">
+      <_Parameter1></_Parameter1>
+    </AssemblyAttribute>
+    
+    <!-- Test assemblies -->
+    <!-- <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>Proso..Test.Core</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>Proso..Test.Droid</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>Proso..Test.iOS</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>Proso..Test.UWp</_Parameter1>
+    </AssemblyAttribute> -->
+  </ItemGroup>
+
+  <!--Nuget packages-->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

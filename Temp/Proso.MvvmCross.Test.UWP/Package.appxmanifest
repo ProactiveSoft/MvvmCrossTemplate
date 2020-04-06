@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <Package
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
@@ -14,7 +14,7 @@
   <mp:PhoneIdentity PhoneProductId="b8918adb-4ba8-4de2-95d2-63d60d13c510" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>MvvmCrossTest.Test.UWP</DisplayName>
+    <DisplayName>$ext_safeprojectname$.Test</DisplayName>
     <PublisherDisplayName>anila</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="MvvmCrossTest.Test.UWP.App">
+      EntryPoint="$safeprojectname$.App">
       <uap:VisualElements
-        DisplayName="MvvmCrossTest.Test.UWP"
+        DisplayName="$ext_safeprojectname$.Test"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="MvvmCrossTest.Test.UWP"
+        Description="$ext_safeprojectname$ host for tests."
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

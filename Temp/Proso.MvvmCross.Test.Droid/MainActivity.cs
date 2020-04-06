@@ -1,10 +1,10 @@
-﻿using System.Reflection;
+using System.Reflection;
 using Android.App;
 using Android.OS;
 using Android.Runtime;
 using Xunit.Runners.UI;
 using Xunit.Sdk;
-using MvvmCrossTest.Test.Core;
+using $ext_safeprojectname$.Test.Core;
 
 namespace $safeprojectname$
 {

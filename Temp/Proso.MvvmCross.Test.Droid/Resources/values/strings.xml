@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">$safeprojectname$</string>
+    <string name="app_name">$ext_safeprojectname$.Test</string>
     <string name="action_settings">Settings</string>
 </resources>

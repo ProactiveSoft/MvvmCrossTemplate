@@ -1,4 +1,4 @@
-﻿using MvvmCross.ViewModels;
+using MvvmCross.ViewModels;
 using $safeprojectname$.Annotations;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;

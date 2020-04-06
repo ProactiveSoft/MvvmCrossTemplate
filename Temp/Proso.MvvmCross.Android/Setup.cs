@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using MvvmCross;
 using MvvmCross.Forms.Platforms.Android.Core;
 using MvvmCross.Logging;
-using MvvmCrossTest.Abstraction.Helpers;
-using MvvmCrossTest.Forms.Helpers;
+using $ext_safeprojectname$.Abstraction.Helpers;
+using $ext_safeprojectname$.Forms.Helpers;
 using Serilog;
 
 namespace $safeprojectname$

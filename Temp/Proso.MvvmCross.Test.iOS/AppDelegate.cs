@@ -1,6 +1,6 @@
-﻿using System.Reflection;
+using System.Reflection;
 using Foundation;
-using MvvmCrossTest.Test.Core;
+using $ext_safeprojectname$.Test.Core;
 using UIKit;
 using Xunit.Runner;
 using Xunit.Sdk;

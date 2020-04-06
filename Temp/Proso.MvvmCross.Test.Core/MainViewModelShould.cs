@@ -1,4 +1,4 @@
-﻿using MvvmCrossTest.Core.ViewModels;
+using $ext_safeprojectname$.Core.ViewModels;
 using Xunit;
 using Xunit.Abstractions;
 

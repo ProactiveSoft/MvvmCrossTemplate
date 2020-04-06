@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms.Xaml;
+using Xamarin.Forms.Xaml;
 using MvvmCross.Forms.Views;
 
 namespace $safeprojectname$.Views

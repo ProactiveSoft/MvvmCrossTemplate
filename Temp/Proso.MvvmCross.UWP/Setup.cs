@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using MvvmCross;
 using MvvmCross.Forms.Platforms.Uap.Core;
-using MvvmCrossTest.Abstraction.Helpers;
-using MvvmCrossTest.Forms.Helpers;
+using $ext_safeprojectname$.Abstraction.Helpers;
+using $ext_safeprojectname$.Forms.Helpers;
 using Syncfusion.XForms.UWP.Border;
 using Syncfusion.XForms.UWP.Buttons;
 
