@@ -6,18 +6,23 @@ namespace MvvmCross.Template
     {
         static void Main(string[] args)
         {
+            // Fix common files
             IFixLibraryProjects fixProjects = new BaseFixProjects();
             fixProjects.FixCSharp();
 
+            // Fix UWP
             IFixPlatformProjects fixPlatformProjects = new FixUwpProject();
             fixPlatformProjects.FixCsProj();
             fixPlatformProjects.FixVsTemplate();
             fixPlatformProjects.CorrectManifest();
 
+            // Fix Android
             fixPlatformProjects = new FixAndroidProject();
             fixPlatformProjects.FixCsProj();
             fixPlatformProjects.CorrectManifest();
+            ((FixAndroidProject)fixPlatformProjects).FixOtherFiles();
 
+            // Fix iOS
             IFolderHelper folderHelper = new FolderHelper();
             fixPlatformProjects = new FixIosProject(folderHelper);
             fixPlatformProjects.FixCsProj();

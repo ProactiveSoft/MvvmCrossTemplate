@@ -62,6 +62,21 @@ namespace MvvmCross.Template
             }
         }
 
+        public void FixOtherFiles()
+        {
+            // Fix strings.xml
+            string strings = Path.Combine(_testAndroidFolder, "Resources", "values", "strings.xml"),
+                contents = File.ReadAllText(strings);
+
+            WriteLine(
+                $"\n{strings}: Fixing <string name=\"app_name\">$safeprojectname$  -->  <string name=\"app_name\">$ext_safeprojectname$.Test");
+
+            contents = contents.Replace("<string name=\"app_name\">$safeprojectname$",
+                "<string name=\"app_name\">$ext_safeprojectname$.Test");
+            File.WriteAllText(strings, contents);
+            WriteLine("Fixed.\n");
+        }
+
 
 
         private readonly string _androidFolder, _testAndroidFolder;
