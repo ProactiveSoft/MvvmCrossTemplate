@@ -115,7 +115,7 @@ namespace MvvmCross.Template
     <string>$ext_safeprojectname$</string>");
                 WriteLine(@"Fixing <key>CFBundleIdentifier</key>
     <string>com.companyname.MvvmCrossTest</string>  -->  <key>CFBundleIdentifier</key>
-    <string>com.proso.$ext_safeprojectname$</string>");
+    <string>com.$ext_safeprojectname$</string>");
                 WriteLine(@"<key>CFBundleName</key>
     <string>MvvmCrossTest</string>  -->  <key>CFBundleName</key>
     <string>$ext_safeprojectname$</string>");
@@ -126,7 +126,7 @@ namespace MvvmCross.Template
     <string>$ext_safeprojectname$</string>")
                     .Replace(@"<key>CFBundleIdentifier</key>
     <string>com.companyname.MvvmCrossTest</string>", @"<key>CFBundleIdentifier</key>
-    <string>com.proso.$ext_safeprojectname$</string>")
+    <string>com.$ext_safeprojectname$</string>")
                     .Replace(@"<key>CFBundleName</key>
     <string>MvvmCrossTest</string>", @"<key>CFBundleName</key>
     <string>$ext_safeprojectname$</string>");
@@ -144,14 +144,14 @@ namespace MvvmCross.Template
     <string>MvvmCrossTest.Test.iOS</string>  -->  <key>CFBundleDisplayName</key>
     <string>$ext_safeprojectname$.Test</string>" + $@"{Environment.NewLine}    <key>CFBundleIdentifier</key>
     <string>com.companyname.MvvmCrossTest.Test.iOS</string>  -->  <key>CFBundleIdentifier</key>
-    <string>com.proso.$ext_safeprojectname$.Test</string>");
+    <string>com.$ext_safeprojectname$.Test</string>");
 
                 contents = contents.Replace(@"<key>CFBundleDisplayName</key>
     <string>MvvmCrossTest.Test.iOS</string>", @"<key>CFBundleDisplayName</key>
     <string>$ext_safeprojectname$.Test</string>")
                     .Replace(@"<key>CFBundleIdentifier</key>
     <string>com.companyname.MvvmCrossTest.Test.iOS</string>", @"<key>CFBundleIdentifier</key>
-    <string>com.proso.$ext_safeprojectname$.Test</string>");
+    <string>com.$ext_safeprojectname$.Test</string>");
 
                 File.WriteAllText(manifest, contents);
 
