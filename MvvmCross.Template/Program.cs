@@ -4,11 +4,13 @@ namespace MvvmCross.Template
 {
     class Program
     {
-        static void Main(string[] args)
+        private static void Main(string region = null, string session = null, string package = null,
+            string project = null, string[] args = null)
         {
             // Fix common files
             IFixLibraryProjects fixProjects = new BaseFixProjects();
             fixProjects.FixCSharp();
+
 
             // Fix UWP
             IFixPlatformProjects fixPlatformProjects = new FixUwpProject();
@@ -16,11 +18,13 @@ namespace MvvmCross.Template
             fixPlatformProjects.FixVsTemplate();
             fixPlatformProjects.CorrectManifest();
 
+
             // Fix Android
             fixPlatformProjects = new FixAndroidProject();
             fixPlatformProjects.FixCsProj();
             fixPlatformProjects.CorrectManifest();
             ((FixAndroidProject)fixPlatformProjects).FixOtherFiles();
+
 
             // Fix iOS
             IFolderHelper folderHelper = new FolderHelper();
@@ -30,6 +34,8 @@ namespace MvvmCross.Template
             fixPlatformProjects.CorrectManifest();
             ((FixIosProject)fixPlatformProjects).CopyItems();
 
+
+            // Fix template root & metadata
             FixTemplateRoot fixTemplateRoot = new FixTemplateRoot(folderHelper);
             fixTemplateRoot.CopyItems();
 
