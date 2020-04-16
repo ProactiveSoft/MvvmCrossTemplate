@@ -6,6 +6,8 @@ namespace MvvmCross.Template
 {
     class BaseFixProjects : IFixLibraryProjects
     {
+        #region Fix Usings
+        /// <summary>Fixes C# files: Using statements containing MvvmCrossTest w/ $ext_safeprojectname$.</summary>
         /// <inheritdoc />
         public void FixCSharp()
         {
@@ -13,11 +15,16 @@ namespace MvvmCross.Template
             IEnumerable<string> csFiles = Directory.EnumerateFiles(TemplateFolder, "*.cs", SearchOption.AllDirectories);
             foreach (var csFile in csFiles)
             {
-                WriteLine($"Editing {csFile}");
+                WriteLine($"{csFile}: Fixing using statements...");
 
                 string[] content = File.ReadAllLines(csFile);
                 for (int i = 0; i < content.Length; i++)
                 {
+                    // If namespace line is reached, then all using statements have been processed.
+                    // So stop looking further in file.
+                    //
+                    // In Android's Activity file, more processing needs to be done after fixing using statements.
+                    // So for Activity file, continue processing file after fixing using statements.
                     if (content[i].Contains("namespace") && IsFileNotActivity(csFile)) break;
 
                     content[i] = content[i].Replace("MvvmCrossTest", "$ext_safeprojectname$");
@@ -25,17 +32,22 @@ namespace MvvmCross.Template
 
                 File.WriteAllLines(csFile, content);
 
-                WriteLine($"Finished {csFile}\n");
+                WriteLine("Finished.\n");
             }
-        }
+            #endregion
 
-        private bool IsFileNotActivity(string filePath)
-        {
-            string? fileName = Path.GetFileName(filePath);
-            if (fileName != null)
-                return !(fileName.Contains("Activity") || fileName.Contains("SplashScreen"));
 
-            return true;
+
+            #region Check if Activity
+            bool IsFileNotActivity(string filePath)
+            {
+                string? fileName = Path.GetFileName(filePath);
+                if (fileName != null)
+                    return !(fileName.Contains("Activity") || fileName.Contains("SplashScreen"));
+
+                return true;
+            }
+            #endregion
         }
 
         /// <inheritdoc />
@@ -142,7 +154,7 @@ namespace MvvmCross.Template
 
         private string ProjectNameFromPath(string path)
         {
-            string projectPath = Path.GetDirectoryName(path);
+            string projectPath = Path.GetDirectoryName(path)!;
 
             int start = projectPath.LastIndexOf('.');   // Code projects
             if (projectPath.Contains(".Test"))   // Test projects
