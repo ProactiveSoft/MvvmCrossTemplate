@@ -50,14 +50,16 @@ namespace MvvmCross.Template
             #endregion
         }
 
+        #region Replace MvvmCrossTest
+        /// <summary>Replaces <em>\MvvmCrossTest</em> w/ <em>\$ext_safeprojectname$</em> &amp; removes extra ..\ in <em>..\..\SharedAssemblyInfo.cs</em>.</summary>
         /// <inheritdoc />
         public virtual void FixCsProj()
         {
             CsprojFiles = Directory.EnumerateFiles(TemplateFolder, "*.csproj", SearchOption.AllDirectories);
             foreach (var csprojFile in CsprojFiles)
             {
-                WriteLine($"Fixing {csprojFile}: \\MvvmCrossTest --> \\$ext_safeprojectname$ &");
-                WriteLine($"\t..\\..\\SharedAssemblyInfo.cs  -->  ..\\SharedAssemblyInfo.cs");
+                WriteLine($"{csprojFile}: Fixing \\MvvmCrossTest --> \\$ext_safeprojectname$ &");
+                WriteLine("\t..\\..\\SharedAssemblyInfo.cs  -->  ..\\SharedAssemblyInfo.cs");
 
                 string contents = File.ReadAllText(csprojFile);
                 contents = contents
@@ -66,10 +68,10 @@ namespace MvvmCross.Template
 
                 File.WriteAllText(csprojFile, contents);
 
-                WriteLine("Fixed \\MvvmCrossTest --> \\$ext_safeprojectname$ &");
-                WriteLine("\t..\\..\\SharedAssemblyInfo.cs --> ..\\SharedAssemblyInfo.cs\n");
+                WriteLine("Fixed.\n");
             }
         }
+        #endregion
 
         /// <inheritdoc />
         public virtual void FixVsTemplate()

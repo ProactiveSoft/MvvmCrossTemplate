@@ -12,6 +12,10 @@ namespace MvvmCross.Template
         }
 
 
+        #region Replace MvvmCrossTest
+        /// <summary>
+        /// Replaces name of PackageCertificateKeyFile:  MvvmCrossTest  --&gt; $safeprojectname$.
+        /// </summary>
         /// <inheritdoc />
         public override void FixCsProj()
         {
@@ -21,16 +25,16 @@ namespace MvvmCross.Template
 
             string csproj = Path.Combine(_uwpFolder, "MvvmCrossTest.UWP.csproj");
             WriteLine(
-                $"Fixing <PackageCertificateKeyFile>MvvmCrossTest.UWP  -->  <PackageCertificateKeyFile>$safeprojectname$: {csproj}");
+                $"{csproj}: Fixing <PackageCertificateKeyFile>MvvmCrossTest.UWP  -->  <PackageCertificateKeyFile>$safeprojectname$");
 
             string contents = File.ReadAllText(csproj);
             contents = contents.Replace("<PackageCertificateKeyFile>MvvmCrossTest.UWP",
                 "<PackageCertificateKeyFile>$safeprojectname$");
             File.WriteAllText(csproj, contents);
 
-            WriteLine(
-                "Fixed <PackageCertificateKeyFile>MvvmCrossTest.UWP  -->  <PackageCertificateKeyFile>$safeprojectname$\n");
-        }
+            WriteLine("Fixed.\n");
+        } 
+        #endregion
 
         /// <inheritdoc />
         public override void FixVsTemplate()

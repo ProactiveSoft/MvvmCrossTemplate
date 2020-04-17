@@ -5,6 +5,10 @@ namespace MvvmCross.Template
 {
     abstract class BaseFixPlatformProjects : BaseFixProjects, IFixPlatformProjects
     {
+        #region Replace MvvmCrossTest
+        /// <summary>
+        /// Replaces &lt;Name&gt;MvvmCrossTest  --&gt;  &lt;Name&gt;$ext_safeprojectname$.
+        /// </summary>
         /// <inheritdoc />
         public override void FixCsProj()
         {
@@ -12,15 +16,16 @@ namespace MvvmCross.Template
 
             foreach (var csprojFile in CsprojFiles!)   // Fixes <Name>MvvmCrossTest
             {
-                WriteLine($"Fixing <Name>MvvmCrossTest  -->  <Name>$ext_safeprojectname$: {csprojFile}");
+                WriteLine($"{csprojFile}: Fixing <Name>MvvmCrossTest  -->  <Name>$ext_safeprojectname$");
 
                 string contents = File.ReadAllText(csprojFile);
                 contents = contents.Replace("<Name>MvvmCrossTest", "<Name>$ext_safeprojectname$");
                 File.WriteAllText(csprojFile, contents);
 
-                WriteLine($"Fixed <Name>MvvmCrossTest  -->  <Name>$ext_safeprojectname$.\n");
+                WriteLine("Fixed.\n");
             }
-        }
+        } 
+        #endregion
 
         /// <inheritdoc />
         public abstract void CorrectManifest();
