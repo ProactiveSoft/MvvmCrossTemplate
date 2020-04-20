@@ -95,6 +95,7 @@ namespace MvvmCross.Template
 
             AddDescription();
 
+            #region vstemplate content read once
             foreach (var vsTemplate in vsTemplates)
             {
                 string contents = File.ReadAllText(vsTemplate);
@@ -105,7 +106,8 @@ namespace MvvmCross.Template
                 File.WriteAllText(vsTemplate, contents);
 
                 WriteLine($"Fixed {vsTemplate}\n");
-            }
+            } 
+            #endregion
 
 
             #region Add Description
@@ -156,9 +158,10 @@ namespace MvvmCross.Template
                 string hidden = @"    <Hidden>true</Hidden>
   </TemplateData>";
                 contents = contents.Replace("  </TemplateData>", hidden);
-            } 
+            }
             #endregion
 
+            #region Fix TargetFileName
             void ReplaceMvvmCrossTest(string vsTemplate, ref string contents)
             {
                 string projectName = ProjectNameFromPath(vsTemplate);
@@ -168,7 +171,8 @@ namespace MvvmCross.Template
                     $"Fixing TargetFileName=\"MvvmCrossTest.{projectName}  -->  TargetFileName=\"$safeprojectname$: {vsTemplate}");
 
                 contents = contents.Replace(oldValue, "TargetFileName=\"$safeprojectname$");
-            }
+            } 
+            #endregion
         }
 
 
