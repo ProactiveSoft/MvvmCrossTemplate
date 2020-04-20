@@ -73,7 +73,21 @@ namespace MvvmCross.Template
         }
         #endregion
 
-        /// <inheritdoc />
+
+        /// <summary>
+        ///   <para>Makes following changes to .vstemplate file:</para>
+        ///   <list type="bullet">
+        ///     <item>
+        ///       <font color="#2a2a2a">Adds description</font>
+        ///     </item>
+        ///     <item>
+        ///       <font color="#2a2a2a">Makes template hidden</font>
+        ///     </item>
+        ///     <item>
+        ///       <font color="#2a2a2a">Replaces MvvmCrossTest</font>
+        ///     </item>
+        ///   </list>
+        /// </summary>
         public virtual void FixVsTemplate()
         {
             string[] vsTemplates =
@@ -94,6 +108,7 @@ namespace MvvmCross.Template
             }
 
 
+            #region Add Description
             void AddDescription()
             {
                 WriteLine("\nAdding description to .vstemplate files.\n");
@@ -131,7 +146,9 @@ namespace MvvmCross.Template
 
                 WriteLine("\nAdded description to .vstemplate files.\n");
             }
+            #endregion
 
+            #region Make Sub-project Hidden
             void AddHidden(string vsTemplate, ref string contents)
             {
                 WriteLine($"Adding <Hidden>true</Hidden> in {vsTemplate}");
@@ -139,7 +156,8 @@ namespace MvvmCross.Template
                 string hidden = @"    <Hidden>true</Hidden>
   </TemplateData>";
                 contents = contents.Replace("  </TemplateData>", hidden);
-            }
+            } 
+            #endregion
 
             void ReplaceMvvmCrossTest(string vsTemplate, ref string contents)
             {
@@ -154,6 +172,12 @@ namespace MvvmCross.Template
         }
 
 
+        #region Find project name from path        
+        /// <summary>
+        /// Finds project name from path.
+        /// </summary>
+        /// <param name="path">File's path.</param>
+        /// <returns>Project's name</returns>
         private string ProjectNameFromPath(string path)
         {
             string projectPath = Path.GetDirectoryName(path)!;
@@ -163,6 +187,7 @@ namespace MvvmCross.Template
                 start = projectPath.LastIndexOf('.', start - 1);
             return projectPath[++start..];
         }
+        #endregion
 
 
         protected readonly string TemplateFolder = @"D:\Plugins\MvvmCrossTest\Temp";
