@@ -18,8 +18,9 @@ namespace MvvmCross.Template
         /// <inheritdoc />
         public override void FixVsTemplate()
         {
+            #region iOS Assets
             string assets =
-                @"      <Folder Name=""Assets.xcassets"" TargetFolderName=""Assets.xcassets"">
+                    @"      <Folder Name=""Assets.xcassets"" TargetFolderName=""Assets.xcassets"">
         <Folder Name=""AppIcon.appiconset"" TargetFolderName=""AppIcon.appiconset"">
           <ProjectItem TargetFileName=""Contents.json"" ReplaceParameters=""true"">Contents.json</ProjectItem>
           <ProjectItem TargetFileName=""Icon20.png"" ReplaceParameters=""false"">Icon20.png</ProjectItem>
@@ -38,14 +39,16 @@ namespace MvvmCross.Template
         </Folder>
       </Folder>
       <Folder Name=""Properties"" TargetFolderName=""Properties"">";
+            #endregion
 
             FixIos();
             FixTest();
 
 
 
-            void FixIos()
+            void FixIos()   // Fix iOS's vstemplate   
             {
+                #region Make iOS files replaceable
                 string vsTemplate = Path.Combine(_iOsFolder, "MyTemplate.vstemplate");
                 WriteLine(
                     $"\n{vsTemplate}: Set ReplaceParameters=\"false\" to ReplaceParameters=\"true\" for Entitlements.plist, Info.plist & LaunchScreen.storyboard");
@@ -59,17 +62,21 @@ namespace MvvmCross.Template
                     .Replace("<ProjectItem ReplaceParameters=\"false\" TargetFileName=\"LaunchScreen.storyboard\"",
                         "<ProjectItem ReplaceParameters=\"true\" TargetFileName=\"LaunchScreen.storyboard\"");
                 WriteLine("Corrected.\n");
+                #endregion
 
 
+                #region Add assets in iOS
                 WriteLine($"\n{vsTemplate}: Including assets.");
 
                 contents = contents.Replace("      <Folder Name=\"Properties\" TargetFolderName=\"Properties\">", assets);
                 File.WriteAllText(vsTemplate, contents);
                 WriteLine("Included Assets.\n");
+                #endregion
             }
 
-            void FixTest()
+            void FixTest()   // Fix Test.iOS's vstemplate
             {
+                #region Make Test.iOS files replaceable
                 string vsTemplate = Path.Combine(_testIosFolder, "MyTemplate.vstemplate");
                 WriteLine(
                     $"\n{vsTemplate}: Set ReplaceParameters=\"false\" to ReplaceParameters=\"true\" for Entitlements.plist & Info.plist");
@@ -81,14 +88,17 @@ namespace MvvmCross.Template
                     .Replace("      <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Info.plist\"",
                         "      <ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Info.plist\"");
                 WriteLine("Corrected.\n");
+                #endregion
 
 
+                #region Add assets in Test.iOS
                 WriteLine($"\n{vsTemplate}: Including assets.");
 
                 contents = contents.Replace("      <Folder Name=\"Properties\" TargetFolderName=\"Properties\">", assets);
 
                 File.WriteAllText(vsTemplate, contents);
                 WriteLine("Included Assets.\n");
+                #endregion
             }
         }
 
