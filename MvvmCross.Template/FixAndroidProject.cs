@@ -12,9 +12,13 @@ namespace MvvmCross.Template
         }
 
 
+        /// <summary>
+        /// Fixes Android.csproj: AssemblyName.
+        /// </summary>
         /// <inheritdoc />
         public override void FixCsProj()
         {
+            #region Fix AssemblyName
             string csproj = Path.Combine(_androidFolder, "MvvmCrossTest.Android.csproj");
             WriteLine($"Fixing <AssemblyName>MvvmCrossTest.Android  -->  <AssemblyName>$safeprojectname$: {csproj}");
 
@@ -23,6 +27,7 @@ namespace MvvmCross.Template
             File.WriteAllText(csproj, contents);
 
             WriteLine("Fixed: <AssemblyName>MvvmCrossTest.Android  -->  <AssemblyName>$safeprojectname$");
+            #endregion
         }
 
         /// <inheritdoc />
