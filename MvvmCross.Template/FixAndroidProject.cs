@@ -20,13 +20,13 @@ namespace MvvmCross.Template
         {
             #region Fix AssemblyName
             string csproj = Path.Combine(_androidFolder, "MvvmCrossTest.Android.csproj");
-            WriteLine($"Fixing <AssemblyName>MvvmCrossTest.Android  -->  <AssemblyName>$safeprojectname$: {csproj}");
+            WriteLine($"{csproj}: Fixing <AssemblyName>MvvmCrossTest.Android  -->  <AssemblyName>$safeprojectname$");
 
             string contents = File.ReadAllText(csproj);
             contents = contents.Replace("<AssemblyName>MvvmCrossTest.Android", "<AssemblyName>$safeprojectname$");
             File.WriteAllText(csproj, contents);
 
-            WriteLine("Fixed: <AssemblyName>MvvmCrossTest.Android  -->  <AssemblyName>$safeprojectname$");
+            WriteLine("Fixed.\n");
             #endregion
         }
 
