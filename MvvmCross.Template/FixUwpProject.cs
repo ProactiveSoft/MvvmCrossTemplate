@@ -33,9 +33,11 @@ namespace MvvmCross.Template
             File.WriteAllText(csproj, contents);
 
             WriteLine("Fixed.\n");
-        } 
+        }
         #endregion
 
+
+        /// <summary>UWP: Makes Package.appxmanifest file's value replaceable.</summary>
         /// <inheritdoc />
         public override void FixVsTemplate()
         {
@@ -44,8 +46,12 @@ namespace MvvmCross.Template
 
 
 
-            void FixUwp()
+            void FixUwp()   // Fix UWP's .vstemplate
             {
+                #region Make UWP Package.appxmanifest replaceable
+                // Adds description
+                // Make sub-projects hidden
+                // Replaces MvvmCrossTest in TargetFileName
                 base.FixVsTemplate();
 
                 string vsTemplate = Path.Combine(_uwpFolder, "MyTemplate.vstemplate");
@@ -59,10 +65,12 @@ namespace MvvmCross.Template
                 File.WriteAllText(vsTemplate, contents);
 
                 WriteLine("Fixed.\n");
+                #endregion
             }
 
-            void FixTest()
+            void FixTest()   // Fix Test.UWP's .vstemplate
             {
+                #region Make Test.UWP Package.appxmanifest replaceable
                 string vsTemplate = Path.Combine(_testUwpFolder, "MyTemplate.vstemplate");
                 WriteLine(
                     $"\n{vsTemplate}: Fixing <ProjectItem ReplaceParameters=\"false\" TargetFileName=\"Package.appxmanifest\"  -->  <ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Package.appxmanifest\"");
@@ -74,6 +82,7 @@ namespace MvvmCross.Template
                 File.WriteAllText(vsTemplate, contents);
 
                 WriteLine("Fixed.\n");
+                #endregion
             }
         }
 
