@@ -86,6 +86,9 @@ namespace MvvmCross.Template
             }
         }
 
+        /// <summary>
+        /// Correct UWP's manifest. 
+        /// </summary>
         /// <inheritdoc />
         public override void CorrectManifest()
         {
@@ -94,16 +97,17 @@ namespace MvvmCross.Template
 
 
 
+            #region Fix UWP Manifest
             void FixUwp()
             {
                 string manifest = Path.Combine(_uwpFolder, "Package.appxmanifest");
                 string contents = File.ReadAllText(manifest);
 
-                WriteLine($"\n{manifest}: Fixing <DisplayName>MvvmCrossTest.UWP  -->  <DisplayName>$ext_safeprojectname$");
-                WriteLine($"{manifest}: Fixing EntryPoint=\"MvvmCrossTest.UWP.App\"  -->  EntryPoint=\"$safeprojectname$.App\"");
-                WriteLine($"{manifest}: Fixing DisplayName=\"MvvmCrossTest.UWP\"  -->  DisplayName=\"$ext_safeprojectname$\"");
-                WriteLine(
-                    $"{manifest}: Fixing Description=\"MvvmCrossTest.UWP\"  -->  Description=\"$ext_safeprojectname$ UWP app.\"");
+                WriteLine($"\n{manifest}: Fixing:" +
+                          "\n\t<DisplayName>MvvmCrossTest.Test.UWP  -->  <DisplayName>$ext_safeprojectname$.Test" +
+                          "\n\tEntryPoint=\"MvvmCrossTest.Test.UWP.App\"  -->  EntryPoint=\"$safeprojectname$.App\"" +
+                          "\n\tDisplayName=\"MvvmCrossTest.Test.UWP\"  -->  DisplayName=\"$ext_safeprojectname$.Test\"" +
+                          "\n\tDescription=\"MvvmCrossTest.Test.UWP\"  -->  Description=\"$ext_safeprojectname$ host for tests.\"");
 
                 contents = contents.Replace("<DisplayName>MvvmCrossTest.UWP", "<DisplayName>$ext_safeprojectname$")
                     .Replace("EntryPoint=\"MvvmCrossTest.UWP.App\"", "EntryPoint=\"$safeprojectname$.App\"")
@@ -112,9 +116,11 @@ namespace MvvmCross.Template
 
                 File.WriteAllText(manifest, contents);
 
-                WriteLine($"{manifest}: Fixed.\n");
+                WriteLine("Fixed.\n");
             }
+            #endregion
 
+            #region Fix Test.UWP Manifest
             void FixTest()
             {
                 string manifest = Path.Combine(_testUwpFolder, "Package.appxmanifest");
@@ -133,8 +139,9 @@ namespace MvvmCross.Template
 
                 File.WriteAllText(manifest, contents);
 
-                WriteLine($"{manifest}: Fixed.\n");
+                WriteLine("Fixed.\n");
             }
+            #endregion
         }
 
         private readonly string _uwpFolder, _testUwpFolder;
