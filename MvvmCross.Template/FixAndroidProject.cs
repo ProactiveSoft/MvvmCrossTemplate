@@ -30,6 +30,9 @@ namespace MvvmCross.Template
             #endregion
         }
 
+        /// <summary>
+        /// Correct Android's manifest.
+        /// </summary>
         /// <inheritdoc />
         public override void CorrectManifest()
         {
@@ -38,12 +41,13 @@ namespace MvvmCross.Template
 
 
 
+            #region Fix Android Manifest
             void FixAndroid()
             {
                 string manifest = Path.Combine(_androidFolder, "Properties", "AndroidManifest.xml");
                 string contents = File.ReadAllText(manifest);
                 WriteLine(
-                    $"\n{manifest}:Fixing package=\"com.companyname.MvvmCrossTest\"  -->  package=\"com.$ext_safeprojectname$\"");
+                    $"\n{manifest}: Fixing package=\"com.companyname.MvvmCrossTest\"  -->  package=\"com.$ext_safeprojectname$\"");
                 WriteLine($"{manifest}: Fixing android:label=\"$safeprojectname$\"  -->  android:label=\"$ext_safeprojectname$\"");
 
                 contents = contents.Replace("package=\"com.companyname.MvvmCrossTest\"",
@@ -51,20 +55,24 @@ namespace MvvmCross.Template
                     .Replace("android:label=\"$safeprojectname$\"", "android:label=\"$ext_safeprojectname$\"");
                 File.WriteAllText(manifest, contents);
 
-                WriteLine($"{manifest}: Fixed\n");
+                WriteLine("Fixed\n");
             }
+            #endregion
 
+            #region Fix Test.Android Manifest
             void FixTest()
             {
                 string manifest = Path.Combine(_testAndroidFolder, "Properties", "AndroidManifest.xml");
                 string contents = File.ReadAllText(manifest);
                 WriteLine($"\n{manifest}: Fix package=\"com.companyname.mvvmcrosstest.test.droid\"  -->  package=\"com.$ext_safeprojectname$.test\"");
+
                 contents = contents.Replace("package=\"com.companyname.mvvmcrosstest.test.droid\"",
                     "package=\"com.$ext_safeprojectname$.test\"");
                 File.WriteAllText(manifest, contents);
 
-                WriteLine($"{manifest}: Fixed\n");
+                WriteLine("Fixed\n");
             }
+            #endregion
         }
 
         public void FixOtherFiles()
