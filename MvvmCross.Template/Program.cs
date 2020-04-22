@@ -36,7 +36,6 @@ namespace MvvmCross.Template
             // Fix iOS
             IFolderHelper folderHelper = new FolderHelper();
             fixPlatformProjects = new FixIosProject(folderHelper);
-            fixPlatformProjects.FixCsProj();
             fixPlatformProjects.FixVsTemplate();
             fixPlatformProjects.CorrectManifest();
             ((FixIosProject)fixPlatformProjects).CopyItems();
