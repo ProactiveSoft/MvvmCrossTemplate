@@ -111,6 +111,9 @@ namespace MvvmCross.Template
 
         }
 
+        /// <summary>
+        /// Correct iOS manifest.
+        /// </summary>
         /// <inheritdoc />
         public override void CorrectManifest()
         {
@@ -119,6 +122,7 @@ namespace MvvmCross.Template
 
 
 
+            #region Fix iOS Manifest
             void FixIos()
             {
                 string manifest = Path.Combine(_iOsFolder, "Info.plist");
@@ -144,9 +148,11 @@ namespace MvvmCross.Template
     <string>$ext_safeprojectname$</string>");
                 File.WriteAllText(manifest, contents);
 
-                WriteLine($"{manifest} fixed\n");
+                WriteLine("Fixed.\n");
             }
+            #endregion
 
+            #region Fix Test.iOS Manifest
             void FixTest()
             {
                 string manifest = Path.Combine(_testIosFolder, "Info.plist"),
@@ -167,8 +173,9 @@ namespace MvvmCross.Template
 
                 File.WriteAllText(manifest, contents);
 
-                WriteLine($"{manifest}: Fixed.\n");
+                WriteLine("Fixed.\n");
             }
+            #endregion
         }
 
 
