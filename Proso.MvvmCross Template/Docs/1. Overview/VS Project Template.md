@@ -139,10 +139,18 @@ ___
 
 *UWP*:
 
-* `Package.appxmanifest`\`s parameters are not replaced by default. Configure `.vstemplate` to replace.
+`Package.appxmanifest`\`s parameters are not replaced by default. Configure `.vstemplate` to replace.
 
 ```xml
 <ProjectItem ReplaceParameters="true" TargetFileName="Package.appxmanifest">Package.appxmanifest</ProjectItem>
+```
+
+Manually add UWP Test platform SDK to *Test.UWP.csproj*:
+
+```xml
+<ItemGroup>
+  <SDKReference Include="TestPlatform.Universal, Version=$(VisualStudioVersion)" />
+</ItemGroup>
 ```
 
 
