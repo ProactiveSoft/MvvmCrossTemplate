@@ -5,9 +5,9 @@ namespace MvvmCross.Template.Helpers
     class FolderHelper : IFolderHelper
     {
         /// <inheritdoc />
-        public void NaiveCopyFolder(string source, string destination)
+        public void CopyFolder(string source, string destination)
         {
-            // Check directory exists
+            // Create destination folder
             string sourceFolderName = new DirectoryInfo(source).Name;
             destination = Path.Combine(destination, sourceFolderName);
             if (!Directory.Exists(destination)) Directory.CreateDirectory(destination);
@@ -25,7 +25,7 @@ namespace MvvmCross.Template.Helpers
             if (subFolders.Length == 0) return;   // Stop condition
 
             // Copy sub-folders
-            foreach (var subFolder in subFolders) NaiveCopyFolder(subFolder, destination);
+            foreach (var subFolder in subFolders) CopyFolder(subFolder, destination);
         }
 
         /// <inheritdoc />

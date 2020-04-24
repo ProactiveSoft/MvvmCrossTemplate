@@ -2,7 +2,10 @@
 {
     public interface IFolderHelper
     {
-        void NaiveCopyFolder(string source, string destination);
+        /// <summary>Copies the folder.</summary>
+        /// <param name="source"> Source folder's path.</param>
+        /// <param name="destination"> Destination folder's path (path of parent's folder in destination).</param>
+        void CopyFolder(string source, string destination);
 
 
         /// <summary>Copies folder's files.
