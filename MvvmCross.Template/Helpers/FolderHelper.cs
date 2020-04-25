@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 
 namespace MvvmCross.Template.Helpers
 {
@@ -31,8 +32,8 @@ namespace MvvmCross.Template.Helpers
         /// <inheritdoc />
         public void CopyFolderFiles(string source, string destination)
         {
-            string[] sourceFiles = Directory.GetFiles(source);
-
+            if (!Directory.Exists(destination)) Directory.CreateDirectory(destination);
+            IEnumerable<string> sourceFiles = Directory.EnumerateFiles(source);
             foreach (var sourceFile in sourceFiles)
             {
                 string fileName = Path.GetFileName(sourceFile),

@@ -9,7 +9,7 @@
 
 
         /// <summary>Copies folder's files.
-        /// Sub-folders files are not copied.</summary>
+        /// Sub-folders are not copied.</summary>
         /// <param name="source">  Source folder's path.</param>
         /// <param name="destination"> Destination folder's path.</param>
         void CopyFolderFiles(string source, string destination);
