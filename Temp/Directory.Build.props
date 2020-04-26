@@ -1,9 +1,9 @@
 <Project>
   <PropertyGroup>
-    <InformationalVersion>2020.4.45904</InformationalVersion>
-    <Version>2020.4.45904</Version>
-    <AssemblyVersion>2020.4.22.46805</AssemblyVersion>
-    <FileVersion>2020.4.22.46805</FileVersion>
+    <InformationalVersion>2020.4.52978</InformationalVersion>
+    <Version>2020.4.52978</Version>
+    <AssemblyVersion>2020.4.26.3968</AssemblyVersion>
+    <FileVersion>2020.4.26.3968</FileVersion>
 
     <Company>Proso</Company>
     <Product>Enter product name ...</Product>
