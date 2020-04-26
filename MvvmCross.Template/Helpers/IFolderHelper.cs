@@ -1,5 +1,6 @@
 ﻿namespace MvvmCross.Template.Helpers
 {
+    /// <summary>  Folder operations.</summary>
     public interface IFolderHelper
     {
         /// <summary>Copies the folder.</summary>
