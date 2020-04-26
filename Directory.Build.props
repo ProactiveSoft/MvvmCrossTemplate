@@ -29,8 +29,10 @@
     <AssemblyAttribute Include="System.Reflection.AssemblyCultureAttribute">
       <_Parameter1></_Parameter1>
     </AssemblyAttribute>
+  </ItemGroup>
 
-    <!-- Test assemblies -->
+  <!-- Test assemblies -->
+  <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
       <_Parameter1>MvvmCrossTest.Test.Core</_Parameter1>
     </AssemblyAttribute>
