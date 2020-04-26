@@ -102,14 +102,16 @@ namespace MvvmCross.Template
             }
         }
 
+        #region Copy Assets folder
+        /// <summary>Copies assets to iOS &amp; Test.IOS projects.</summary>
         public void CopyItems()
         {
-            // Copy Assets.xcassets folder
             string source = Path.Combine(TemplateFolder, "..", "MvvmCrossTest", "MvvmCrossTest.iOS", "Assets.xcassets");
             _folderHelper.CopyFolder(source, _iOsFolder);   // Copy to iOS project
-            _folderHelper.CopyFolder(source, _testIosFolder);   // Copy to iOS test project
+            _folderHelper.CopyFolder(source, _testIosFolder);   // Copy to Test.iOS
 
         }
+        #endregion
 
         /// <summary>
         /// Correct iOS manifest.
