@@ -5,16 +5,23 @@ using static System.Console;
 
 namespace MvvmCross.Template
 {
+    /// <summary>Class containing methods to fix files in template's root.</summary>
+    /// <seealso cref="MvvmCross.Template.IFixMetadata" />
     public class FixTemplateRoot : IFixMetadata
     {
+        /// <summary>Initializes a new instance of the <see cref="T:MvvmCross.Template.FixTemplateRoot"/> class.</summary>
+        /// <param name="folderHelper">Helper service to handle folder operations.</param>
         public FixTemplateRoot(IFolderHelper folderHelper) => _folderHelper = folderHelper;
 
 
+        #region Copy Files to Template Root
+        /// <summary>Copies files to template's root folder.</summary>
         public void CopyItems()
         {
             string source = Path.Combine(TemplateFolder, "..", "Proso.MvvmCross Template", "Template");
             _folderHelper.CopyFolderFiles(source, TemplateFolder);
-        }
+        } 
+        #endregion
 
 
         /// <inheritdoc />
