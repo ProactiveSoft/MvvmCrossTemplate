@@ -32,6 +32,10 @@ namespace MvvmCross.Template
         }
         #endregion
 
+        #region Version based on Time
+        /// <summary>
+        /// Version based on time: Year.Month.Day.NormalizedSeconds
+        /// </summary>
         protected internal (int Year, int Month, int Day, int Seconds) CurrentAppVersion
         {
             get
@@ -45,7 +49,12 @@ namespace MvvmCross.Template
                 return (today.Year, today.Month, today.Day, totalSeconds);
             }
         }
+        #endregion
 
+        #region Compact version based on time
+        /// <summary>
+        /// Compact version based on time: Year.Month.NormalizedSeconds
+        /// </summary>
         protected internal (int Year, int Month, int Seconds) CompactCurrentAppVersion
         {
             get
@@ -61,6 +70,7 @@ namespace MvvmCross.Template
                 return (version.Year, version.Month, totalSeconds);
             }
         }
+        #endregion
 
         /// <summary>
         /// Updates Mvx &amp; Template's version.
