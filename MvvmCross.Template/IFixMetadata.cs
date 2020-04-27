@@ -3,8 +3,15 @@ using System.IO;
 
 namespace MvvmCross.Template
 {
+    /// <summary>
+    /// Interface to fix metadata (like version numbers).
+    /// </summary>
     public interface IFixMetadata
     {
+        #region Current Mvx Version
+        /// <summary>
+        /// Current Mvx version.
+        /// </summary>
         protected internal string CurrentMvxVersion
         {
             get
@@ -23,6 +30,7 @@ namespace MvvmCross.Template
                 return "0.0.0";
             }
         }
+        #endregion
 
         protected internal (int Year, int Month, int Day, int Seconds) CurrentAppVersion
         {
@@ -54,6 +62,9 @@ namespace MvvmCross.Template
             }
         }
 
+        /// <summary>
+        /// Updates Mvx &amp; Template's version.
+        /// </summary>
         void UpdateVersion();
     }
 }

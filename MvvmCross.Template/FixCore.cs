@@ -8,11 +8,18 @@ namespace MvvmCross.Template
         public FixCore() => _coreFolder = Path.Combine(TemplateFolder, "Proso.MvvmCross.Core");
 
 
+        #region Update Mvx Version
+        /// <summary>
+        /// Updates Mvx version in MainViewModel.cs.
+        /// </summary>
         /// <inheritdoc />
         public void UpdateVersion()
         {
-            string version = ((IFixMetadata) this).CurrentMvxVersion;
+            string version = ((IFixMetadata)this).CurrentMvxVersion;
             string mainVmPath = Path.Combine(_coreFolder, "ViewModels", "MainViewModel.cs");
+
+            WriteLine($"{mainVmPath}: Updating Mvx version to {version}.");
+
             string[] contents = File.ReadAllLines(mainVmPath);
             for (var i = 0; i < contents.Length; i++)
                 if (contents[i].StartsWith("            Title ="))
@@ -23,8 +30,9 @@ namespace MvvmCross.Template
 
             File.WriteAllLines(mainVmPath, contents);
 
-            WriteLine($"\nUpdated MvvmCross template version {version} in MainViewModel.cs");
+            WriteLine("Updated\n");
         }
+        #endregion
 
 
         private readonly string _coreFolder;
