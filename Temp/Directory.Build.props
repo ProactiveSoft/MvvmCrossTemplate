@@ -1,9 +1,9 @@
 <Project>
   <PropertyGroup>
-    <InformationalVersion>2020.4.52978</InformationalVersion>
-    <Version>2020.4.52978</Version>
-    <AssemblyVersion>2020.4.26.3968</AssemblyVersion>
-    <FileVersion>2020.4.26.3968</FileVersion>
+    <InformationalVersion>2020.4.55311</InformationalVersion>
+    <Version>2020.4.55311</Version>
+    <AssemblyVersion>2020.4.27.10771</AssemblyVersion>
+    <FileVersion>2020.4.27.10771</FileVersion>
 
     <Company>Proso</Company>
     <Product>Enter product name ...</Product>
@@ -29,8 +29,10 @@
     <AssemblyAttribute Include="System.Reflection.AssemblyCultureAttribute">
       <_Parameter1></_Parameter1>
     </AssemblyAttribute>
-    
-    <!-- Test assemblies -->
+  </ItemGroup>
+
+  <!-- Test assemblies -->
+  <ItemGroup>
     <!-- <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
       <_Parameter1>Proso..Test.Core</_Parameter1>
     </AssemblyAttribute>
