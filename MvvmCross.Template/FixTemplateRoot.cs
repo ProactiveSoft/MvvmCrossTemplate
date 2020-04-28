@@ -58,12 +58,13 @@ namespace MvvmCross.Template
             void UpdateTemplateVersion()   // Updates Template's version
             {
                 string directoryBuildProps = Path.Combine(TemplateFolder, "Directory.Build.props");
-                WriteLine($"{directoryBuildProps}: Updating template version...");
+                WriteLine($"{directoryBuildProps}: Updating template's version...");
                 string[] contents = File.ReadAllLines(directoryBuildProps);
 
                 int year, month, day, seconds;
                 (year, month, seconds) = ((IFixMetadata)this).CompactCurrentAppVersion;
                 // Dictionary of tags to be updated.
+                #region Dictionary of Tags to Update
                 Dictionary<string, string> openingTags = new Dictionary<string, string>(5)
                 {
                     ["    <InformationalVersion>"] = $"{year}.{month}.{seconds}",
@@ -73,6 +74,7 @@ namespace MvvmCross.Template
                 (_, _, day, seconds) = ((IFixMetadata)this).CurrentAppVersion;
                 openingTags["    <AssemblyVersion>"] = $"{year}.{month}.{day}.{seconds}";
                 openingTags["    <FileVersion>"] = $"{year}.{month}.{day}.{seconds}";
+                #endregion
 
                 UpdateTexts(contents, openingTags);   // Update tag's text
 
@@ -104,7 +106,7 @@ namespace MvvmCross.Template
 
         #region Helpers
 
-        #region Update XML Element Text
+        #region Update Element Text
         /// <summary>Updates text of specified tags.</summary>
         /// <param name="contents">The contents.</param>
         /// <param name="openingTags">The opening tags.</param>
@@ -136,7 +138,7 @@ namespace MvvmCross.Template
         }
         #endregion
 
-        #region Get Element Value
+        #region Get Element Text
         /// <summary>Gets the text of XML Element.</summary>
         /// <param name="element">The element.</param>
         /// <returns>Element's text.</returns>

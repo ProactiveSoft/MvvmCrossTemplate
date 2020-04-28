@@ -34,7 +34,8 @@ namespace MvvmCross.Template
 
         #region Version based on Time
         /// <summary>
-        /// Version based on time: Year.Month.Day.NormalizedSeconds
+        /// Version based on time: CurrentYear.CurrentMonth.CurrentDay.TodayTotalSeconds.
+        /// <para>Today's total seconds till now is normalized between 0 - 65,534.</para>
         /// </summary>
         protected internal (int Year, int Month, int Day, int Seconds) CurrentAppVersion
         {
@@ -42,7 +43,7 @@ namespace MvvmCross.Template
             {
                 DateTime today = DateTime.Today, now = DateTime.Now;
                 int totalSeconds = (int)(now - today).TotalSeconds;
-                // Normalize multiplier = Max uint / no.of sec in 1 day
+                // Normalize multiplier = Max ushort / no.of sec in 1 day
                 // Source: Normalize no. between 0-1: https://stackoverflow.com/a/39776893/4038979
                 double normalizeMultiplier = (double)65_534 / 86_400;
                 totalSeconds = (int)Math.Round(totalSeconds * normalizeMultiplier);
@@ -53,7 +54,8 @@ namespace MvvmCross.Template
 
         #region Compact version based on time
         /// <summary>
-        /// Compact version based on time: Year.Month.NormalizedSeconds
+        /// Compact version based on time: CurrentYear.CurrentMonth.CurrentMonthTotalSeconds.
+        /// <para>Current month's total seconds till now is normalized between 0 - 65,534.</para>
         /// </summary>
         protected internal (int Year, int Month, int Seconds) CompactCurrentAppVersion
         {
@@ -62,7 +64,7 @@ namespace MvvmCross.Template
                 var version = CurrentAppVersion;
                 DateTime month = new DateTime(version.Year, version.Month, 1);
                 int totalSeconds = (int)(DateTime.Now - month).TotalSeconds;
-                // Normalize multiplier = Max uint / no.of sec in 1 month
+                // Normalize multiplier = Max ushort / no.of sec in 1 month
                 // Source: Normalize no. between 0-1: https://stackoverflow.com/a/39776893/4038979
                 double normalizeMultiplier = (double)65_534 / 26_78_400;
                 totalSeconds = (int)Math.Round(totalSeconds * normalizeMultiplier);
