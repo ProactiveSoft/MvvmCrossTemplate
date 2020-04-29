@@ -83,7 +83,7 @@ namespace MvvmCross.Template.Test
 
         [Fact]
         [Trait("Task", "Fix root")]
-        public void FixDirectoryBuildProps()
+        public void FixSolutionMetadata()
         {
             // Arrange
             string directoryBuildProps = Path.Combine(TemplateFolder, "Directory.Build.props");
