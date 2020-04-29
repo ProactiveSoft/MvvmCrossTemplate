@@ -113,6 +113,23 @@ namespace MvvmCross.Template.Test
             }
         }
 
+        [Fact]
+        [Trait("Task", "Fix root")]
+        public void AddInternalsVisibleTo()
+        {
+            // Arrange
+            string directoryBuildProps = Path.Combine(TemplateFolder, "Directory.Build.props"),
+                contents = File.ReadAllText(directoryBuildProps),
+                expectedSubstring = @"    <!-- <AssemblyAttribute Include=""System.Runtime.CompilerServices.InternalsVisibleTo"">
+      <_Parameter1>Proso..Test.Core</_Parameter1>
+    </AssemblyAttribute>";
+
+            // Assert
+            Assert.Contains(expectedSubstring, contents);
+
+            _output.WriteLine($"{directoryBuildProps}: InternalsVisibleTo found.");
+        }
+
         [Trait("Task", "Fix Manifest")]
         [Theory]
         [InlineData(@"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.Android\Properties\AndroidManifest.xml")]
