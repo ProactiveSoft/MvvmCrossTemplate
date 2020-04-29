@@ -63,8 +63,9 @@ namespace MvvmCross.Template
 
                 int year, month, day, seconds;
                 (year, month, seconds) = ((IFixMetadata)this).CompactCurrentAppVersion;
-                // Dictionary of tags to be updated.
+
                 #region Dictionary of Tags to Update
+                // Dictionary of tags to be updated.
                 Dictionary<string, string> openingTags = new Dictionary<string, string>(5)
                 {
                     ["    <InformationalVersion>"] = $"{year}.{month}.{seconds}",
@@ -94,25 +95,29 @@ namespace MvvmCross.Template
 
 
 
+            #region Fix Solution's Metadata
             void FixSolutionMetadata()
             {
                 WriteLine($"{directoryBuildProps}: Fixing solution's metadata.");
                 string[] contents = File.ReadAllLines(directoryBuildProps);
 
-                Dictionary<string, string> starts = new Dictionary<string, string>(4)
+                // Dictionary of tags to be updated.
+                Dictionary<string, string> openingTags = new Dictionary<string, string>(4)
                 {
                     ["    <Product>"] = "Enter product name ...",
                     ["    <Description>"] = "Enter product description ...",
                     ["    <!--<PackageProjectUrl>"] = "https://github.com/ProactiveSoft/",
                     ["    <!--<RepositoryUrl>"] = "https://github.com/ProactiveSoft/"
                 };
-                UpdateTexts(contents, starts);
+                UpdateTexts(contents, openingTags);   // Update tag's text
 
                 File.WriteAllLines(directoryBuildProps, contents);
 
                 WriteLine("Fixed.\n");
             }
+            #endregion
 
+            #region Make Internals Visible To Test
             void MakeInternalsVisibleToTest()
             {
                 WriteLine($"{directoryBuildProps}: Adding <InternalsVisibleTo/> attribute.");
@@ -155,6 +160,7 @@ namespace MvvmCross.Template
 
                 WriteLine("Fixed.\n");
             }
+            #endregion
         }
 
         #region Helpers
