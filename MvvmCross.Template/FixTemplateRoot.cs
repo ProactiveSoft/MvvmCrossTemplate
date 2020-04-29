@@ -85,23 +85,76 @@ namespace MvvmCross.Template
             #endregion
         }
 
+        /// <summary>Fixes solution's metadata in Directory.Build.props.</summary>
         public void FixDirectoryBuildProps()
         {
             string directoryBuildProps = Path.Combine(TemplateFolder, "Directory.Build.props");
-            string[] contents = File.ReadAllLines(directoryBuildProps);
+            FixSolutionMetadata();
+            MakeInternalsVisibleToTest();
 
-            Dictionary<string, string> starts = new Dictionary<string, string>(4)
+
+
+            void FixSolutionMetadata()
             {
-                ["    <Product>"] = "Enter product name ...",
-                ["    <Description>"] = "Enter product description ...",
-                ["    <!--<PackageProjectUrl>"] = "https://github.com/ProactiveSoft/",
-                ["    <!--<RepositoryUrl>"] = "https://github.com/ProactiveSoft/"
-            };
-            UpdateTexts(contents, starts);
+                WriteLine($"{directoryBuildProps}: Fixing solution's metadata.");
+                string[] contents = File.ReadAllLines(directoryBuildProps);
 
-            File.WriteAllLines(directoryBuildProps, contents);
+                Dictionary<string, string> starts = new Dictionary<string, string>(4)
+                {
+                    ["    <Product>"] = "Enter product name ...",
+                    ["    <Description>"] = "Enter product description ...",
+                    ["    <!--<PackageProjectUrl>"] = "https://github.com/ProactiveSoft/",
+                    ["    <!--<RepositoryUrl>"] = "https://github.com/ProactiveSoft/"
+                };
+                UpdateTexts(contents, starts);
 
-            WriteLine("\nFixed Directory.Build.props\n");
+                File.WriteAllLines(directoryBuildProps, contents);
+
+                WriteLine("Fixed.\n");
+            }
+
+            void MakeInternalsVisibleToTest()
+            {
+                WriteLine($"{directoryBuildProps}: Adding <InternalsVisibleTo/> attribute.");
+                string contents = File.ReadAllText(directoryBuildProps);
+
+                string oldValue = @"  <ItemGroup>
+    <AssemblyAttribute Include=""System.Runtime.CompilerServices.InternalsVisibleTo"">
+      <_Parameter1>MvvmCrossTest.Test.Core</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include=""System.Runtime.CompilerServices.InternalsVisibleTo"">
+      <_Parameter1>MvvmCrossTest.Test.Droid</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include=""System.Runtime.CompilerServices.InternalsVisibleTo"">
+      <_Parameter1>MvvmCrossTest.Test.iOS</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include=""System.Runtime.CompilerServices.InternalsVisibleTo"">
+      <_Parameter1>MvvmCrossTest.Test.UWp</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include=""System.Runtime.CompilerServices.InternalsVisibleTo"">
+      <_Parameter1>MvvmCross.Template.Test</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>",
+                    newValue = @"  <ItemGroup>
+    <!-- <AssemblyAttribute Include=""System.Runtime.CompilerServices.InternalsVisibleTo"">
+      <_Parameter1>Proso..Test.Core</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include=""System.Runtime.CompilerServices.InternalsVisibleTo"">
+      <_Parameter1>Proso..Test.Droid</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include=""System.Runtime.CompilerServices.InternalsVisibleTo"">
+      <_Parameter1>Proso..Test.iOS</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include=""System.Runtime.CompilerServices.InternalsVisibleTo"">
+      <_Parameter1>Proso..Test.UWp</_Parameter1>
+    </AssemblyAttribute> -->
+  </ItemGroup>";
+
+                contents = contents.Replace(oldValue, newValue);
+                File.WriteAllText(directoryBuildProps, contents);
+
+                WriteLine("Fixed.\n");
+            }
         }
 
         #region Helpers
