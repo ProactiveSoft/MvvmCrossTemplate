@@ -1,9 +1,9 @@
 <Project>
   <PropertyGroup>
-    <InformationalVersion>2020.4.55311</InformationalVersion>
-    <Version>2020.4.55311</Version>
-    <AssemblyVersion>2020.4.27.10771</AssemblyVersion>
-    <FileVersion>2020.4.27.10771</FileVersion>
+    <InformationalVersion>2020.4.60510</InformationalVersion>
+    <Version>2020.4.60510</Version>
+    <AssemblyVersion>2020.4.29.40845</AssemblyVersion>
+    <FileVersion>2020.4.29.40845</FileVersion>
 
     <Company>Proso</Company>
     <Product>Enter product name ...</Product>
@@ -54,4 +54,5 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+
 </Project>
