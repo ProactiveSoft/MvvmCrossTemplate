@@ -15,6 +15,7 @@ namespace MvvmCross.Template.Test
         }
 
 
+        #region Fix Usings
         [Theory]
         [Trait("File", ".cs")]
         [CSharpFiles]
@@ -30,7 +31,8 @@ namespace MvvmCross.Template.Test
             Assert.DoesNotContain("MvvmCrossTest", contents);
 
             _output.WriteLine($"Checked {filePath}");
-        }
+        } 
+        #endregion
 
         [Theory]
         [Trait("File", ".vstemplate")]

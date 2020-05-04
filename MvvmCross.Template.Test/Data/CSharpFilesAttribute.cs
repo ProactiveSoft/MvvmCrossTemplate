@@ -8,12 +8,14 @@ namespace MvvmCross.Template.Test.Data
 {
     public class CSharpFilesAttribute : DataAttribute
     {
+        #region Find all .cs files Path
         /// <inheritdoc />
         public override IEnumerable<object[]> GetData(MethodInfo testMethod)
         {
             string templateFolder = @"D:\Plugins\MvvmCrossTest\Temp";
             IEnumerable<string> csFiles = Directory.EnumerateFiles(templateFolder, "*.cs", SearchOption.AllDirectories);
             return csFiles.Select(csFile => new object[] { csFile });
-        }
+        } 
+        #endregion
     }
 }
