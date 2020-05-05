@@ -15,24 +15,6 @@ namespace MvvmCross.Template.Test
         }
 
 
-        #region Fix Usings
-        [Theory]
-        [Trait("File", ".cs")]
-        [CSharpFiles]
-        public void FixCSharp(string filePath)
-        {
-            // Arrange
-            _output.WriteLine($"Reading {filePath}");
-
-            string contents = File.ReadAllText(filePath);
-
-
-            // Assert
-            Assert.DoesNotContain("MvvmCrossTest", contents);
-
-            _output.WriteLine($"Checked {filePath}");
-        } 
-        #endregion
 
         [Theory]
         [Trait("File", ".vstemplate")]

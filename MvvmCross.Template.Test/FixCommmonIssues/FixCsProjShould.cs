@@ -3,18 +3,18 @@ using MvvmCross.Template.Test.Data;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace MvvmCross.Template.Test
+namespace MvvmCross.Template.Test.FixCommmonIssues
 {
-    public class FixCoreShould
+    public class FixCsProjShould
     {
-        public FixCoreShould(ITestOutputHelper output) => _output = output;
+        public FixCsProjShould(ITestOutputHelper output) => _output = output;
 
 
         #region Test Fixes for Common Issues in .csproj
         [Theory]
         [Trait("File", ".csproj")]
         [CsProjFiles]
-        public void FixCsProj(string csproj)
+        public void RemoveMvvmCrossTestAndExtraParent(string csproj)
         {
             // Arrange
             _output.WriteLine($"{csproj}: Checking for MvvmCrossTest &");
