@@ -3,7 +3,7 @@ using MvvmCross.Template.Test.Data;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace MvvmCross.Template.Test.FixCommmonIssues
+namespace MvvmCross.Template.Test.FixCommonIssues
 {
     public class FixCsharpShould
     {
