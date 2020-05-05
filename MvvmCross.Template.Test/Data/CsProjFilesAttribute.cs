@@ -8,6 +8,7 @@ namespace MvvmCross.Template.Test.Data
 {
     public class CsProjFilesAttribute : DataAttribute
     {
+        #region Get Paths of all .csproj Files
         /// <inheritdoc />
         public override IEnumerable<object[]> GetData(MethodInfo testMethod)
         {
@@ -16,5 +17,6 @@ namespace MvvmCross.Template.Test.Data
                 Directory.EnumerateFiles(templateFolder, "*.csproj", SearchOption.AllDirectories);
             return csprojFiles.Select(csprojFile => new object[] { csprojFile });
         }
+        #endregion
     }
 }

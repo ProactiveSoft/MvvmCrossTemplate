@@ -10,14 +10,15 @@ namespace MvvmCross.Template.Test
         public FixCoreShould(ITestOutputHelper output) => _output = output;
 
 
+        #region Test Fixes for Common Issues in .csproj
         [Theory]
         [Trait("File", ".csproj")]
         [CsProjFiles]
         public void FixCsProj(string csproj)
         {
             // Arrange
-            _output.WriteLine($"Checking {csproj}: for MvvmCrossTest &");
-            _output.WriteLine($"\t..\\..\\SharedAssemblyInfo.cs");
+            _output.WriteLine($"{csproj}: Checking for MvvmCrossTest &");
+            _output.WriteLine("\t..\\..\\SharedAssemblyInfo.cs");
 
             string contents = File.ReadAllText(csproj);
 
@@ -25,8 +26,9 @@ namespace MvvmCross.Template.Test
             Assert.DoesNotContain("MvvmCrossTest", contents);
             Assert.Contains("\"..\\SharedAssemblyInfo.cs\"", contents);
 
-            _output.WriteLine("Checked file.");
+            _output.WriteLine("Checked.");
         }
+        #endregion
 
 
 
