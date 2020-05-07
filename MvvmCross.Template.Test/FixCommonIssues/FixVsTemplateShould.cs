@@ -4,11 +4,11 @@ using MvvmCross.Template.Test.Helpers;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace MvvmCross.Template.Test
+namespace MvvmCross.Template.Test.FixCommonIssues
 {
-    public class BaseFixProjectsShould
+    public class FixVsTemplateShould
     {
-        public BaseFixProjectsShould(ITestOutputHelper output)
+        public FixVsTemplateShould(ITestOutputHelper output)
         {
             _output = output;
             _usingReflection = new UsingReflection(_output);
@@ -24,7 +24,7 @@ namespace MvvmCross.Template.Test
         [InlineData(@"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.UWP\MyTemplate.vstemplate", "UWP")]
         [InlineData(@"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.Android\MyTemplate.vstemplate", "Android")]
         [InlineData(@"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.iOS\MyTemplate.vstemplate", "iOS")]
-        public void ProjectNameFromPath(string path, string expectedProjectName)
+        public void GetProjectNameFromPath(string path, string expectedProjectName)
         {
             // Arrange
             BaseFixProjects sut = new BaseFixProjects();
@@ -42,22 +42,38 @@ namespace MvvmCross.Template.Test
             _output.WriteLine($"Project name: {actualProjectName}");
         }
 
+        #region Test Add Description
         [Theory]
         [Trait("File", ".vstemplate")]
         [VsTemplateFiles]
-        public void HiddenAndRemoveMvvmCrossTest(string path)
+        public void AddDescriptionInVsTemplate(string path)
         {
             // Arrange
-            _output.WriteLine($"Reading {path}");
+            string contents = File.ReadAllText(path);
 
+            // Act
+            Assert.DoesNotContain("<Description>Template's description.", contents);
+
+            _output.WriteLine($"{path}: Added description.");
+        }
+        #endregion
+
+        #region Test Make Hidden & Remove MvvmCrossTest
+        [Theory]
+        [Trait("File", ".vstemplate")]
+        [VsTemplateFiles]
+        public void MakeHiddenAndRemoveMvvmCrossTest(string path)
+        {
+            // Arrange
             string contents = File.ReadAllText(path);
 
             // Assert
             Assert.Contains("    <Hidden>true</Hidden>", contents);
             Assert.DoesNotContain("TargetFileName=\"MvvmCrossTest", contents);
 
-            _output.WriteLine($"Checked {path}");
+            _output.WriteLine($"{path}: Checked.");
         }
+        #endregion
 
 
 

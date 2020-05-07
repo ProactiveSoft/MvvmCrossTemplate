@@ -13,19 +13,6 @@ namespace MvvmCross.Template.Test
         public FixMetadataShould(ITestOutputHelper output) => _output = output;
 
 
-        [Theory]
-        [Trait("File", ".vstemplate")]
-        [VsTemplateFiles]
-        public void AddDescriptionInVsTemplate(string path)
-        {
-            // Arrange
-            string contents = File.ReadAllText(path);
-
-            // Act
-            Assert.DoesNotContain("<Description>Template's description.", contents);
-
-            _output.WriteLine($"{path}: Added description.");
-        }
 
         [Fact]
         [Trait("Task", "Fix root")]
