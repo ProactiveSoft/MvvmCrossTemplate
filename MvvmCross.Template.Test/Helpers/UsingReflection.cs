@@ -6,7 +6,9 @@ namespace MvvmCross.Template.Test.Helpers
 {
     public class UsingReflection
     {
-        public UsingReflection(ITestOutputHelper console) => _console = console;
+        public UsingReflection(ITestOutputHelper output) => _output = output;
+
+
 
         /// <summary>Calls the private method of the given object using reflection.</summary>
         /// <typeparam name="TInstance">The type of the instance in which private method is present.</typeparam>
@@ -28,27 +30,27 @@ namespace MvvmCross.Template.Test.Helpers
             }
             catch (TargetException targetException)
             {
-                _console.WriteLine($"{targetException.StackTrace}");
+                _output.WriteLine($"{targetException.StackTrace}");
                 throw;
             }
             catch (ArgumentException)
             {
-                _console.WriteLine($"Method {methodName} parameter's signature doesn't match.");
+                _output.WriteLine($"Method {methodName} parameter's signature doesn't match.");
                 throw;
             }
             catch (TargetInvocationException)
             {
-                _console.WriteLine($"Target method {methodName} threw an exception.");
+                _output.WriteLine($"Target method {methodName} threw an exception.");
                 throw;
             }
             catch (TargetParameterCountException)
             {
-                _console.WriteLine($"No.of parameters of method {methodName} doesn't match.");
+                _output.WriteLine($"No.of parameters of method {methodName} doesn't match.");
                 throw;
             }
         }
 
 
-        private readonly ITestOutputHelper _console;
+        private readonly ITestOutputHelper _output;
     }
 }
