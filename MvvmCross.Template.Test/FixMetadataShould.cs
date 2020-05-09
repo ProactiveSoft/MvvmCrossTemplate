@@ -117,26 +117,7 @@ namespace MvvmCross.Template.Test
             _output.WriteLine($"{directoryBuildProps}: InternalsVisibleTo found.");
         }
 
-        [Trait("Task", "Fix Manifest")]
-        [Theory]
-        [InlineData(@"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.Android\Properties\AndroidManifest.xml")]
-        [InlineData(@"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.Test.Droid\Properties\AndroidManifest.xml")]
-        [InlineData(@"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.UWP\Package.appxmanifest")]
-        [InlineData(@"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.Test.UWP\Package.appxmanifest")]
-        [InlineData(@"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.iOS\Info.plist")]
-        [InlineData(@"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.Test.iOS\Info.plist")]
-        public void CheckMvvmCrossTestNotManifest(string manifest)
-        {
-            // Arrange
-            string contents = File.ReadAllText(manifest),
-                expectedValue = "MvvmCrossTest";
-            _output.WriteLine($"Checking {expectedValue} not in {manifest} ...");
 
-            // Assert
-            Assert.DoesNotContain(expectedValue, contents);
-
-            _output.WriteLine("Checked.");
-        }
 
         private const string TemplateFolder = @"D:\Plugins\MvvmCrossTest\Temp";
         private readonly ITestOutputHelper _output;
