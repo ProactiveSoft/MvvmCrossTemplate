@@ -2,16 +2,18 @@
 using Xunit;
 using Xunit.Abstractions;
 
-namespace MvvmCross.Template.Test
+namespace MvvmCross.Template.Test.FixPlatformSpecificIssues
 {
-    public class FixPlatformVsTemplateShould
+    public class FixVsTemplateShould
     {
-        public FixPlatformVsTemplateShould(ITestOutputHelper output) => _output = output;
+        public FixVsTemplateShould(ITestOutputHelper output) => _output = output;
+
 
 
         [Trait("File", ".vstemplate")]
         [Theory]
         [InlineData("<ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Package.appxmanifest\"", @"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.UWP\MyTemplate.vstemplate")]
+        [InlineData("<ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Package.appxmanifest\"", @"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.Test.UWP\MyTemplate.vstemplate")]
         [InlineData("<ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Entitlements.plist\"", @"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.iOS\MyTemplate.vstemplate")]
         [InlineData("<ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Entitlements.plist\"", @"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.Test.iOS\MyTemplate.vstemplate")]
         [InlineData("<ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Info.plist\"", @"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.iOS\MyTemplate.vstemplate")]
@@ -27,8 +29,27 @@ namespace MvvmCross.Template.Test
             // Assert
             Assert.Contains(expected, contents);
 
-            _output.WriteLine($"Checked for ReplaceParameters=\"true\"");
+            _output.WriteLine("Checked.");
         }
+
+        [Trait("File", ".vstemplate")]
+        [Theory]
+        [InlineData(@"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.iOS\MyTemplate.vstemplate")]
+        [InlineData(@"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.Test.iOS\MyTemplate.vstemplate")]
+        public void AddIosAssets(string path)
+        {
+            // Arrange
+            _output.WriteLine($"{path}: Checking for assets ...");
+            string expected = @"      <Folder Name=""Assets.xcassets"" TargetFolderName=""Assets.xcassets"">
+        <Folder Name=""AppIcon.appiconset"" TargetFolderName=""AppIcon.appiconset"">",
+                contents = File.ReadAllText(path);
+
+            // Assert
+            Assert.Contains(expected, contents);
+
+            _output.WriteLine("Checked.");
+        }
+
 
 
         private readonly ITestOutputHelper _output;

@@ -28,7 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="FixPlatformSpecificIssues\" />
     <Folder Include="FixRootIssues\" />
     <Folder Include="Properties\" />
   </ItemGroup>
