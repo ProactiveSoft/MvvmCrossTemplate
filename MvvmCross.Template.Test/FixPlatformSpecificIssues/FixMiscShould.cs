@@ -4,17 +4,18 @@ using System.Linq;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace MvvmCross.Template.Test
+namespace MvvmCross.Template.Test.FixPlatformSpecificIssues
 {
-    public class FixIosProjectShould
+    public class FixMiscShould
     {
-        public FixIosProjectShould(ITestOutputHelper output) => _output = output;
+        public FixMiscShould(ITestOutputHelper output) => _output = output;
 
 
 
+        #region Test Assets files Present
         [Fact]
-        [Trait("Task", "Fix root")]
-        public void CopyAssetsFolder()
+        [Trait("Task", "Fix misc")]
+        public void CopyIosAssetsFolder()
         {
             // Arrange
             string source = @"D:\Plugins\MvvmCrossTest\MvvmCrossTest\MvvmCrossTest.iOS\Assets.xcassets",
@@ -40,16 +41,20 @@ namespace MvvmCross.Template.Test
             string randomSourceFileName = Path.GetFileName(sourceFiles[index]);
 
             // Assert
+            // Check destination exists
             Assert.True(Directory.Exists(destinationSubFolderProject));
             Assert.True(Directory.Exists(destinationSubFolderTest));
+            // Check no.of folders in destination folder
             Assert.Equal(noOfSourceSubFolders, noOfDestinationSubFoldersProject);
             Assert.Equal(noOfSourceSubFolders, noOfDestinationSubFoldersTest);
+            // Check random file is present in destination folder
             Assert.Contains(randomSourceFileName, destinationFilesNameProject);
             Assert.Contains(randomSourceFileName, destinationFilesNameTest);
 
             _output.WriteLine(
                 $"Assets folder successfully copied.{Environment.NewLine}Random file {randomSourceFileName} is present in destination folder");
         }
+        #endregion
 
 
 
