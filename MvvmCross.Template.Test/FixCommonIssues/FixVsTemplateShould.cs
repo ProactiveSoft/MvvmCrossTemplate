@@ -16,6 +16,7 @@ namespace MvvmCross.Template.Test.FixCommonIssues
 
 
 
+        #region Test Project Name from Path
         [Theory]
         [Trait("File", ".vstemplate")]
         [InlineData(@"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.Abstraction\MyTemplate.vstemplate", "Abstraction")]
@@ -30,8 +31,6 @@ namespace MvvmCross.Template.Test.FixCommonIssues
             BaseFixProjects sut = new BaseFixProjects();
 
             // Act
-            _output.WriteLine($"Getting project name from {path}");
-
             string actualProjectName =
                 _usingReflection.CallPrivateMethod<BaseFixProjects, string>(sut, "ProjectNameFromPath",
                     new object[] { path });
@@ -39,8 +38,9 @@ namespace MvvmCross.Template.Test.FixCommonIssues
             // Assert
             Assert.Equal(expectedProjectName, actualProjectName);
 
-            _output.WriteLine($"Project name: {actualProjectName}");
+            _output.WriteLine($"Got project name: {actualProjectName} from path: {path}.");
         }
+        #endregion
 
         #region Test Add Description
         [Theory]
