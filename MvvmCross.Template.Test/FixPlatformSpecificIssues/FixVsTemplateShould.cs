@@ -10,6 +10,7 @@ namespace MvvmCross.Template.Test.FixPlatformSpecificIssues
 
 
 
+        #region Test Manifest Replaceable
         [Trait("File", ".vstemplate")]
         [Theory]
         [InlineData("<ProjectItem ReplaceParameters=\"true\" TargetFileName=\"Package.appxmanifest\"", @"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.UWP\MyTemplate.vstemplate")]
@@ -31,7 +32,9 @@ namespace MvvmCross.Template.Test.FixPlatformSpecificIssues
 
             _output.WriteLine("Checked.");
         }
+        #endregion
 
+        #region Test Assets are Added
         [Trait("File", ".vstemplate")]
         [Theory]
         [InlineData(@"D:\Plugins\MvvmCrossTest\Temp\Proso.MvvmCross.iOS\MyTemplate.vstemplate")]
@@ -49,6 +52,7 @@ namespace MvvmCross.Template.Test.FixPlatformSpecificIssues
 
             _output.WriteLine("Checked.");
         }
+        #endregion
 
 
 
