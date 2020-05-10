@@ -46,6 +46,7 @@ namespace MvvmCross.Template.Test.FixRootIssues
         }
         #endregion
 
+        #region Test InternalsVisibleTo Attribute Fixed
         [Fact]
         [Trait("Task", "Fix root")]
         public void AddInternalsVisibleTo()
@@ -62,6 +63,7 @@ namespace MvvmCross.Template.Test.FixRootIssues
 
             _output.WriteLine($"{directoryBuildProps}: InternalsVisibleTo found.");
         }
+        #endregion
 
 
 
