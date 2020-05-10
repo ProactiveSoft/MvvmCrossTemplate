@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using MvvmCross.Template.Helpers;
-using MvvmCross.Template.Test.Data;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace MvvmCross.Template.Test
+namespace MvvmCross.Template.Test.FixRootIssues
 {
-    public class FixMetadataShould
+    public class FixDirectoryBuildPropsShould
     {
-        public FixMetadataShould(ITestOutputHelper output) => _output = output;
+        public FixDirectoryBuildPropsShould(ITestOutputHelper output) => _output = output;
 
 
 
+        #region Test Solution Metadata Fixed
         [Fact]
         [Trait("Task", "Fix root")]
         public void FixSolutionMetadata()
@@ -21,30 +20,31 @@ namespace MvvmCross.Template.Test
             // Arrange
             string directoryBuildProps = Path.Combine(TemplateFolder, "Directory.Build.props");
             string[] contents = File.ReadAllLines(directoryBuildProps);
-            HashSet<string> starts = new HashSet<string>(4)
+            HashSet<string> fixedOpeningTags = new HashSet<string>(4)
                 {"    <Product>", "    <Description>", "    <!--<PackageProjectUrl>", "    <!--<RepositoryUrl>"};
             int count = 0;
             foreach (var line in contents)
             {
-                string starting = FindStart(line);
-                if (!starts.Contains(starting)) continue;
+                string currentTag = GetOpeningTag(line);
+                if (!fixedOpeningTags.Contains(currentTag)) continue;
 
                 // Assert
                 Assert.DoesNotContain("MvvmCross", line, StringComparison.OrdinalIgnoreCase);
                 Assert.DoesNotContain("Template", line, StringComparison.OrdinalIgnoreCase);
 
-                if (++count == starts.Count) break;
+                if (++count == fixedOpeningTags.Count) break;
             }
 
             _output.WriteLine("Directory.Build.props fixed.");
 
 
-            string FindStart(string sentence)
+            string GetOpeningTag(string sentence)
             {
                 int end = sentence.IndexOf('>') + 1;
                 return sentence[..end];
             }
         }
+        #endregion
 
         [Fact]
         [Trait("Task", "Fix root")]
