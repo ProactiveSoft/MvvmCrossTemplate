@@ -193,6 +193,7 @@ ___
 * [MvvmCross Playground][10]
 * [MvvmCross 6.3.0 Template][9]
 * [Create VS Project Template][3]
+* [VS 2022 Project Template Sample][14]
 * [Pack VS Project Template into VSIX][4]
 * [Share AssemblyInfo.cs properties][12]
 * **Visual Studio Template's Schema**: *`C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Xml\Schemas\1033\vstemplate.xsd`*
@@ -213,7 +214,7 @@ ___
 
 [1]: https://www.youtube.com/watch?v=jUmRUQs2xrs "How to create a visual studio solution template (multi project) - YouTube"
 [2]: https://github.com/JTOne123/XamFormsMvxTemplate "A Visual Studio 2017 template for projects based on Xamarin.Forms 3.3 and MvvmCross 6.2 - GitHub"
-[3]: https://docs.microsoft.com/en-us/visualstudio/ide/creating-project-and-item-templates?view=vs-2019 "Create Project & Item Templates - MS Doc"
+[3]: https://docs.microsoft.com/en-us/visualstudio/ide/creating-project-and-item-templates?view=vs-2022 "Create Project & Item Templates - MS Doc"
 [4]: https://www.youtube.com/watch?v=Jhi1WFp47Qk "Create Project template & pack it into a VSIX VS extension - MS Doc"
 [5]: .\Images\Projects-drop-down-menu.png "Projects (in the Solution) drop-down menu"
 [6]: .\Images\Export-Template-Wizard.png "Create VS project template wizard"
@@ -224,3 +225,4 @@ ___
 [11]: C:\Program%20Files%20(x86)\Microsoft%20Visual%20Studio\2019\Enterprise\Xml\Schemas\1033\vstemplate.xsd "Visual Studio (vstemplate) Schema"
 [12]: https://stackoverflow.com/a/49601178 "Sharing AssemblyInfo.cs properties using Directory.Build.props - Stackoverflow"
 [13]: https://www.dotnetcurry.com/visual-studio/1521/visual-studio-project-setup-solution-snapshotter "Streamlining Your Visual Studio Project Setup - Dot Net Curry"
+[14]: https://github.com/sayedihashimi/template-sample "VS 2022 Project Template Sample - Sayed Hashimi"
