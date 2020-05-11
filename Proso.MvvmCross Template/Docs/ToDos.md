@@ -11,9 +11,8 @@ ___
 
 *To Do*: 
 
-* Manually zip template
-* Test template
-* Doc: Template, Working w/ files & Unit Test
+* Learn & create [VS Template using Json](https://channel9.msdn.com/Shows/Visual-Studio-Toolbox/Create-a-NET-Core-Project-Template-for-Visual-Studio "New way to create templates using Json")
+
 * Programatically zip root
 * Copy template to VS's template folder
 * Update NuGet
